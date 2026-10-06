@@ -45,6 +45,9 @@ internal class HodhodChatViewModel(val repo: HodhodRepository, private val saved
     private val _createdTicket = MutableStateFlow<TicketSummary?>(null)
     val createdTicket: StateFlow<TicketSummary?> = _createdTicket.asStateFlow()
 
+    /** «My tickets» list state (filter, pages, counters); survives navigation between list and thread. */
+    val ticketList = TicketListController(repo, viewModelScope)
+
     private val _notice = MutableStateFlow<Notice?>(null)
     val notice: StateFlow<Notice?> = _notice.asStateFlow()
 
@@ -65,7 +68,10 @@ internal class HodhodChatViewModel(val repo: HodhodRepository, private val saved
 
     fun go(route: Route) { _route.value = route; saved["route"] = route.name }
 
-    fun setShowTickets(v: Boolean) { _showTickets.value = v; saved["showTickets"] = v }
+    fun setShowTickets(v: Boolean) {
+        _showTickets.value = v; saved["showTickets"] = v
+        if (!v) setTicketView(null, null) // leaving the tickets panel: next time start from the list again
+    }
 
     fun setTicketView(v: TicketView?, number: Int? = _ticketNumber.value) {
         _ticketView.value = v; saved["ticketView"] = v?.name

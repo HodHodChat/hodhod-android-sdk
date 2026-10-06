@@ -31,7 +31,7 @@ import chat.hodhod.sdk.ui.util.isTeamOnline
 @Composable
 internal fun HomeBody(
     config: WidgetConfig, agents: List<Agent>, hasActive: Boolean, unread: Int, decision: StartDecision, showTickets: Boolean,
-    flowSlot: @Composable () -> Boolean,
+    ticketSummary: TicketSummaryCounts, flowSlot: @Composable () -> Boolean,
     onStartChat: () -> Unit, onOpenTickets: () -> Unit, modifier: Modifier = Modifier,
 ) {
     val c = HodhodTheme.colors
@@ -63,6 +63,8 @@ internal fun HomeBody(
             }
             if (decision.mode == StartMode.CHOICE && !showTickets) TicketChoiceCard(onOpenTickets)
         }
+        // «My tickets»: every contact mode, also during a live chat -- the visitor can always reach all their tickets (open and closed).
+        if (ticketSummary.total > 0) MyTicketsRow(ticketSummary, onOpenTickets)
     }
 }
 

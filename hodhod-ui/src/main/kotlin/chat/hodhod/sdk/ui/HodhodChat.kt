@@ -127,10 +127,12 @@ private fun HodhodChatLoaded(vm: HodhodChatViewModel, config: WidgetConfig, loca
     val contact by repo.contact.collectAsState()
     val notices by repo.issueNotices.collectAsState()
     val connection by repo.connection.collectAsState()
+    val ticketSummary by repo.ticketSummary.collectAsState()
     val showTickets by vm.showTickets.collectAsState()
     val ticketView by vm.ticketView.collectAsState()
     val decision = remember(config) { config.startMode() }
-    val showTicketPanel = if (decision.mode == StartMode.CHOICE) showTickets else decision.mode == StartMode.TICKET && (config.contactMode == ContactMode.TICKET || !hasActive)
+    // Tickets panel = Home for ticket inboxes; in every other mode the visitor opens it from the «My tickets» row / choice card (showTickets).
+    val showTicketPanel = showTickets || (decision.mode == StartMode.TICKET && (config.contactMode == ContactMode.TICKET || !hasActive))
     val needsPreChat = config.preChatForm.enabled && config.preChatForm.fields.any { it.enabled } && !hasActive && !contact.preChatSatisfied
     var confirmEnd by remember { mutableStateOf(false) }
 
@@ -146,7 +148,7 @@ private fun HodhodChatLoaded(vm: HodhodChatViewModel, config: WidgetConfig, loca
             route == Route.CHAT || route == Route.PRECHAT -> vm.go(Route.HOME)
             route == Route.HOME && !hasActive && !showTicketPanel && repo.flow.view.value?.nav?.canBack == true -> repo.flow.goBack()
             route == Route.HOME && ticketView == TicketView.THREAD -> vm.setTicketView(TicketView.LIST)
-            route == Route.HOME && showTicketPanel && decision.mode == StartMode.CHOICE -> vm.setShowTickets(false)
+            route == Route.HOME && showTickets -> vm.setShowTickets(false)
             else -> onClose?.invoke() ?: Unit
         }
     }
@@ -180,9 +182,10 @@ private fun HodhodChatLoaded(vm: HodhodChatViewModel, config: WidgetConfig, loca
         // ---- body
         Box(Modifier.weight(1f).fillMaxWidth()) {
             when (route) {
-                Route.HOME -> if (showTicketPanel) TicketsPanel(vm, config, decision.offlineReason, canGoBack = decision.mode == StartMode.CHOICE, locale = locale, onBack = { vm.setShowTickets(false) })
+                Route.HOME -> if (showTicketPanel) TicketsPanel(vm, config, decision.offlineReason, canGoBack = showTickets, locale = locale, onBack = { vm.setShowTickets(false) },
+                    onOpenChat = { vm.setShowTickets(false); vm.go(Route.CHAT) })
                 else Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
-                    HomeBody(config, agents, hasActive, unread, decision, showTickets,
+                    HomeBody(config, agents, hasActive, unread, decision, showTickets, ticketSummary,
                         flowSlot = {
                             val slot = FlowRunnerSlot.content
                             if (slot != null && !hasActive) slot { startChat() }

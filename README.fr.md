@@ -22,11 +22,11 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta02") // brings hodhod-core
+    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta03") // brings hodhod-core
 }
 ```
 
-Code source : <https://github.com/HodHodChat/hodhod-android-sdk>. [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) construit le paquet à partir du tag git `1.0.0-beta02` (le tag doit exister dans le dépôt ; voir `docs/RELEASING.md`). Module core seul : `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta02`.
+Code source : <https://github.com/HodHodChat/hodhod-android-sdk>. [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) construit le paquet à partir du tag git `1.0.0-beta03` (le tag doit exister dans le dépôt ; voir `docs/RELEASING.md`). Module core seul : `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta03`.
 
 ## Configuration
 
@@ -65,6 +65,10 @@ fun Home() = Box(Modifier.fillMaxSize()) {
 ## Parcours de chatbot (flows)
 
 Si la boîte de réception a un [parcours de chatbot](https://hodhod.chat/features/chatbot-flows) actif, le SDK l'exécute nativement sur l'écran d'accueil, sans code supplémentaire : les 17 types de nœuds, variables et conditions, validation des saisies, notes, et transfert à un agent en direct **ou sous forme de ticket**, avec les mêmes analyses de parcours que le widget web. Si l'option `require_flow` du parcours est activée, la carte directe « Démarrer la conversation » reste masquée tant qu'un parcours est disponible (elle réapparaît si le parcours ne peut pas être chargé). Le moteur a été comparé au moteur web avec 40 scénarios de parité (mêmes étapes, variables et événements) ; les écrans ont été vérifiés sur émulateur en persan (RTL) et en anglais.
+
+## Mes tickets
+
+Les visiteurs voient toujours **tous** leurs tickets, ouverts et fermés, quel que soit le mode de contact de la boîte (chat, ticket, les deux, ticket hors horaires). L'accueil affiche une ligne compacte « Mes tickets » avec le nombre de tickets ouverts dès qu'il existe au moins un ticket, même pendant un chat en direct. La liste propose les filtres Ouverts / Fermés / Tous avec compteurs (par défaut Ouverts s'il y en a, sinon Tous), des états vides par filtre, des badges de statut, des heures relatives, le tirer pour actualiser et le chargement de la suite. Les tickets qu'un agent a créés à partir d'un chat portent l'étiquette « Depuis le chat » ; s'il s'agit du chat en direct actuel, un appui ouvre le chat. Dans les boîtes uniquement ticket, la liste est l'accueil avec un bouton bien visible « Nouveau ticket » ; dans les boîtes uniquement chat, le bouton est masqué mais la liste reste accessible. Nécessite un serveur avec `GET /api/v1/widget/tickets?status=&page=&per_page=` et `/tickets/summary` ; les serveurs plus anciens sont comptés et filtrés côté client.
 
 ## Identifier l’utilisateur
 

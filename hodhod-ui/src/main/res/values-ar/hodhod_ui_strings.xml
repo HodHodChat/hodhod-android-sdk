@@ -9,4 +9,18 @@
     <string name="hodhod_ui_attach_camera">التقاط صورة</string>
     <string name="hodhod_ui_attach_file">ملف</string>
     <string name="hodhod_ui_scroll_bottom">الانتقال إلى أحدث الرسائل</string>
+    <string name="hodhod_ui_tickets_filter_open">مفتوحة</string>
+    <string name="hodhod_ui_tickets_filter_closed">مغلقة</string>
+    <string name="hodhod_ui_tickets_filter_all">الكل</string>
+    <string name="hodhod_ui_tickets_filter_label">تصفية التذاكر</string>
+    <string name="hodhod_ui_tickets_open_count">%1$s مفتوحة</string>
+    <string name="hodhod_ui_tickets_total_count">المجموع %1$s</string>
+    <string name="hodhod_ui_tickets_new">تذكرة جديدة</string>
+    <string name="hodhod_ui_tickets_from_chat">من المحادثة</string>
+    <string name="hodhod_ui_tickets_empty_open">ليس لديك تذاكر مفتوحة.</string>
+    <string name="hodhod_ui_tickets_empty_closed">لا توجد تذاكر مغلقة بعد.</string>
+    <string name="hodhod_ui_tickets_load_more">تحميل المزيد</string>
+    <string name="hodhod_ui_tickets_updated">آخر تحديث %1$s</string>
+    <string name="hodhod_ui_tickets_open_chat_hint">يفتح محادثتك الحالية</string>
+    <string name="hodhod_ui_tickets_now">الآن</string>
 </resources>

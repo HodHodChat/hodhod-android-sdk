@@ -74,64 +74,50 @@ internal fun TicketStatusBadge(status: TicketStatus) {
     Text(stringResource(statusLabelRes(status)), Modifier.clip(RoundedCornerShape(50)).background(bg).padding(horizontal = 10.dp, vertical = 4.dp), color = fg, fontSize = 11.5.sp, fontWeight = FontWeight.Bold)
 }
 
-/** Ticket mode: form, my tickets, success and thread (widget TicketPanel.vue). Navigation state lives in the view-model. */
+/**
+ * Tickets panel: my tickets (filters, pagination), form, success and thread (widget TicketPanel.vue). Navigation state lives in the view-model.
+ * [canGoBack]: opened from the Home row / choice card (back returns to Home); [canCreate]: the inbox accepts new tickets (not chat-only).
+ */
 @Composable
-internal fun TicketsPanel(vm: HodhodChatViewModel, config: WidgetConfig, offlineReason: Boolean, canGoBack: Boolean, locale: String?, onBack: () -> Unit, modifier: Modifier = Modifier) {
+internal fun TicketsPanel(
+    vm: HodhodChatViewModel, config: WidgetConfig, offlineReason: Boolean, canGoBack: Boolean, locale: String?, onBack: () -> Unit, modifier: Modifier = Modifier,
+    canCreate: Boolean = config.contactMode != ContactMode.CHAT, onOpenChat: () -> Unit = {},
+) {
     val repo = vm.repo
-    val tickets by repo.tickets.collectAsState()
+    val summary by repo.ticketSummary.collectAsState()
+    val listUi by vm.ticketList.ui.collectAsState()
     val view by vm.ticketView.collectAsState()
     val number by vm.ticketNumber.collectAsState()
     val created by vm.createdTicket.collectAsState()
-    var loading by remember { mutableStateOf(true) }
-    var failed by remember { mutableStateOf(false) }
-    val scope = rememberCoroutineScope()
-    val load = suspend {
-        loading = true; failed = false
-        val r = repo.loadTickets()
-        failed = r.isFailure; loading = false
-        if (vm.ticketView.value == null) vm.setTicketView(if (r.getOrNull()?.isNotEmpty() == true) TicketView.LIST else TicketView.FORM)
+    val convo by repo.conversation.collectAsState()
+    LaunchedEffect(Unit) { vm.ticketList.open() }
+    LaunchedEffect(Unit) { repo.ticketActivity.collect { vm.ticketList.onRemoteChange() } }
+    // counters moved (agent closed / replied, other device): reload the visible filter quietly
+    LaunchedEffect(summary) {
+        val c = listUi.counts
+        if (listUi.initialized && c != null && (c.open != summary.open || c.total != summary.total)) vm.ticketList.onRemoteChange()
     }
-    LaunchedEffect(Unit) { load() }
-    val current = view ?: if (loading) null else TicketView.FORM
+    val knowsTickets = listUi.hasTickets || summary.total > 0
+    val decided = listUi.initialized || listUi.failed
+    val current = view ?: if (!decided) null else if (knowsTickets || listUi.failed || !canCreate) TicketView.LIST else TicketView.FORM
+    fun openTicket(t: TicketSummary) {
+        val activeId = (convo as? ConversationState.Active)?.id
+        if (t.conversationId != null && t.conversationId == activeId) onOpenChat() // the ticket IS the live chat: one UI only
+        else vm.setTicketView(TicketView.THREAD, t.number)
+    }
+    if (current == TicketView.LIST) {
+        TicketListPane(vm, listUi, locale, canGoBack, canCreate, prominentNew = config.contactMode == ContactMode.TICKET, onBack = onBack, onOpen = ::openTicket,
+            onNew = { vm.setTicketView(TicketView.FORM) }, modifier = modifier)
+        return
+    }
     Column(modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(16.dp).imePadding(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         when (current) {
-            null -> Box(Modifier.fillMaxWidth().padding(32.dp), contentAlignment = Alignment.Center) { CircularProgressIndicator(color = HodhodTheme.colors.accent) }
-            TicketView.THREAD -> TicketThreadView(vm, number ?: 0, locale) { vm.setTicketView(TicketView.LIST); scope.launch { load() } }
+            null -> TicketSkeleton(3)
+            TicketView.THREAD -> TicketThreadView(vm, number ?: 0, locale) { vm.setTicketView(TicketView.LIST); vm.ticketList.refresh() }
             TicketView.SUCCESS -> TicketSuccess(config, created, locale, onTrack = { created?.let { vm.setTicketView(TicketView.THREAD, it.number) } }, onNew = { vm.setTicketView(TicketView.FORM) })
-            TicketView.LIST -> {
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                    SectionTitle(stringResource(R.string.hodhod_widget_ticket_my_tickets))
-                    if (canGoBack) GhostButton(stringResource(R.string.hodhod_widget_ticket_back), onBack)
-                }
-                TicketList(tickets, loading, failed) { vm.setTicketView(TicketView.THREAD, it.number) }
-                PrimaryButton(stringResource(R.string.hodhod_widget_ticket_ticket_choice), { vm.setTicketView(TicketView.FORM) }, leading = Icons.Rounded.Add, trailing = null)
-            }
-            TicketView.FORM -> TicketFormView(vm, config, offlineReason, locale, showBack = canGoBack || tickets.isNotEmpty(),
-                onBack = { if (tickets.isNotEmpty()) vm.setTicketView(TicketView.LIST) else onBack() })
-        }
-    }
-}
-
-@Composable
-private fun TicketList(tickets: List<TicketSummary>, loading: Boolean, failed: Boolean, onOpen: (TicketSummary) -> Unit) {
-    val c = HodhodTheme.colors
-    val locale = androidx.compose.ui.platform.LocalConfiguration.current.locales[0].toLanguageTag()
-    when {
-        loading && tickets.isEmpty() -> BodyHint(stringResource(R.string.hodhod_widget_ticket_list_loading))
-        failed && tickets.isEmpty() -> Text(stringResource(R.string.hodhod_widget_ticket_load_failed), color = c.rubyText, fontSize = 13.sp, modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite })
-        tickets.isEmpty() -> BodyHint(stringResource(R.string.hodhod_widget_ticket_list_empty))
-        else -> Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            tickets.forEach { t ->
-                Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(18.dp)).background(c.surface).border(1.dp, c.border, RoundedCornerShape(18.dp)).clickable(role = Role.Button) { onOpen(t) }.padding(16.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                    Column(Modifier.weight(1f).padding(end = 8.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                        Text("\u2066#${t.number}\u2069 · " + Dates.dayShort(t.updatedAt, locale), color = c.textSecondary, fontSize = 12.sp)
-                        Text(t.subject, color = c.text, fontWeight = FontWeight.Bold, fontSize = 14.sp, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
-                            style = androidx.compose.ui.text.TextStyle(textDirection = androidx.compose.ui.text.style.TextDirection.Content))
-                    }
-                    TicketStatusBadge(t.status)
-                }
-            }
+            TicketView.LIST -> Unit
+            TicketView.FORM -> TicketFormView(vm, config, offlineReason, locale, showBack = canGoBack || knowsTickets,
+                onBack = { if (knowsTickets) { vm.setTicketView(TicketView.LIST); vm.ticketList.refresh() } else onBack() })
         }
     }
 }

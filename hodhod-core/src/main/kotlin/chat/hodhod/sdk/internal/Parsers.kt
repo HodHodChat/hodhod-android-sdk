@@ -105,7 +105,10 @@ internal object Parsers {
         createdAt = o.long("created_at") ?: 0,
         updatedAt = o.long("updated_at") ?: 0,
         resolvedAt = o.long("resolved_at"),
-        conversationId = o.int("conversation_id"),
+        conversationId = o.int("conversation_display_id") ?: o.int("conversation_id"),
+        source = o.str("source")?.takeIf { it.isNotEmpty() },
+        isOpen = o.bool("is_open") ?: TicketStatus.fromWire(o.str("status")).isActive,
+        lastAgentReplyAt = o.long("last_agent_reply_at"),
     )
 
     fun contactInfo(o: JsonObject, previous: ContactInfo? = null): ContactInfo = ContactInfo(

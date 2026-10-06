@@ -24,6 +24,13 @@ public interface HodhodRepository {
     /** Visitor's tickets, newest first (loaded by [refresh] / [loadTickets]). */
     public val tickets: StateFlow<List<TicketSummary>>
 
+    /**
+     * Open / total ticket counters of the visitor (all tickets, in every contact mode). [TicketSummaryCounts.NONE] until known;
+     * refreshed on foreground, after creating a ticket / replying / ending a conversation and on websocket ticket activity.
+     * A failed refresh keeps the last value. Servers without `/tickets/summary` are counted from the ticket list.
+     */
+    public val ticketSummary: StateFlow<TicketSummaryCounts>
+
     /** Websocket state. */
     public val connection: StateFlow<ConnectionState>
 
@@ -97,6 +104,13 @@ public interface HodhodRepository {
 
     /** Reload [tickets]. */
     public suspend fun loadTickets(): Result<List<TicketSummary>>
+
+    /**
+     * One page of the visitor's tickets for [status] (newest first) with the open/closed/total counters; works for tickets created in the
+     * app and for chats converted into tickets. Also refreshes [ticketSummary]. [page] starts at 1; [perPage] is clamped to 1..50.
+     * Older servers (no pagination / counters) are handled on the client.
+     */
+    public suspend fun loadTickets(status: TicketFilter, page: Int = 1, perPage: Int = 20): Result<TicketList>
 
     /** Ticket with its messages. */
     public suspend fun loadTicket(number: Int): Result<TicketThread>

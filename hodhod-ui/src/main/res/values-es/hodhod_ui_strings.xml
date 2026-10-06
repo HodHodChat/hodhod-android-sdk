@@ -9,4 +9,18 @@
     <string name="hodhod_ui_attach_camera">Hacer una foto</string>
     <string name="hodhod_ui_attach_file">Archivo</string>
     <string name="hodhod_ui_scroll_bottom">Ir a los últimos mensajes</string>
+    <string name="hodhod_ui_tickets_filter_open">Abiertos</string>
+    <string name="hodhod_ui_tickets_filter_closed">Cerrados</string>
+    <string name="hodhod_ui_tickets_filter_all">Todos</string>
+    <string name="hodhod_ui_tickets_filter_label">Filtrar tickets</string>
+    <string name="hodhod_ui_tickets_open_count">%1$s abiertos</string>
+    <string name="hodhod_ui_tickets_total_count">%1$s en total</string>
+    <string name="hodhod_ui_tickets_new">Nuevo ticket</string>
+    <string name="hodhod_ui_tickets_from_chat">Del chat</string>
+    <string name="hodhod_ui_tickets_empty_open">No tienes tickets abiertos.</string>
+    <string name="hodhod_ui_tickets_empty_closed">Aún no hay tickets cerrados.</string>
+    <string name="hodhod_ui_tickets_load_more">Cargar más</string>
+    <string name="hodhod_ui_tickets_updated">Actualizado %1$s</string>
+    <string name="hodhod_ui_tickets_open_chat_hint">Abre tu chat actual</string>
+    <string name="hodhod_ui_tickets_now">ahora mismo</string>
 </resources>

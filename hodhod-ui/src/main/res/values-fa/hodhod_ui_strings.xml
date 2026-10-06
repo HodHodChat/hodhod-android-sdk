@@ -9,4 +9,18 @@
     <string name="hodhod_ui_attach_camera">گرفتن عکس</string>
     <string name="hodhod_ui_attach_file">فایل</string>
     <string name="hodhod_ui_scroll_bottom">رفتن به آخرین پیام‌ها</string>
+    <string name="hodhod_ui_tickets_filter_open">باز</string>
+    <string name="hodhod_ui_tickets_filter_closed">بسته</string>
+    <string name="hodhod_ui_tickets_filter_all">همه</string>
+    <string name="hodhod_ui_tickets_filter_label">فیلتر تیکت‌ها</string>
+    <string name="hodhod_ui_tickets_open_count">%1$s باز</string>
+    <string name="hodhod_ui_tickets_total_count">%1$s مورد در مجموع</string>
+    <string name="hodhod_ui_tickets_new">تیکت جدید</string>
+    <string name="hodhod_ui_tickets_from_chat">از گفت‌وگو</string>
+    <string name="hodhod_ui_tickets_empty_open">تیکت بازی ندارید.</string>
+    <string name="hodhod_ui_tickets_empty_closed">هنوز تیکت بسته‌ای ندارید.</string>
+    <string name="hodhod_ui_tickets_load_more">بارگذاری بیشتر</string>
+    <string name="hodhod_ui_tickets_updated">به‌روزرسانی %1$s</string>
+    <string name="hodhod_ui_tickets_open_chat_hint">گفت‌وگوی فعلی شما باز می‌شود</string>
+    <string name="hodhod_ui_tickets_now">همین الان</string>
 </resources>

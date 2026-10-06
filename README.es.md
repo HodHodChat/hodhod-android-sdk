@@ -22,11 +22,11 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta02") // brings hodhod-core
+    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta03") // brings hodhod-core
 }
 ```
 
-Código fuente: <https://github.com/HodHodChat/hodhod-android-sdk>. [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) compila el paquete a partir de la etiqueta git `1.0.0-beta02` (la etiqueta debe existir en el repositorio; véase `docs/RELEASING.md`). Solo el módulo core: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta02`.
+Código fuente: <https://github.com/HodHodChat/hodhod-android-sdk>. [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) compila el paquete a partir de la etiqueta git `1.0.0-beta03` (la etiqueta debe existir en el repositorio; véase `docs/RELEASING.md`). Solo el módulo core: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta03`.
 
 ## Configuración
 
@@ -65,6 +65,10 @@ fun Home() = Box(Modifier.fillMaxSize()) {
 ## Flujos de chatbot
 
 Si la bandeja tiene un [flujo de chatbot](https://hodhod.chat/features/chatbot-flows) activo, el SDK lo ejecuta de forma nativa en la pantalla de inicio, sin código adicional: los 17 tipos de nodo, variables y condiciones, validación de entradas, valoraciones y traspaso a un agente en vivo **o como ticket**, además de las mismas analíticas de flujo que el widget web. Si la opción `require_flow` del flujo está activada, la tarjeta directa «Iniciar conversación» permanece oculta mientras haya un flujo disponible (vuelve a mostrarse si el flujo no se puede cargar). El motor se comprobó contra el motor web con 40 escenarios de paridad (mismos pasos, variables y eventos); las pantallas se verificaron en un emulador en persa (RTL) e inglés.
+
+## Mis tickets
+
+Los visitantes siempre ven **todos** sus tickets, abiertos y cerrados, sea cual sea el modo de contacto de la bandeja (chat, ticket, ambos, ticket fuera de horario). La pantalla de inicio muestra una fila compacta «Mis tickets» con el número de tickets abiertos cuando hay al menos un ticket, también durante un chat en vivo. La lista tiene los filtros Abiertos / Cerrados / Todos con contadores (por defecto Abiertos si hay alguno, si no Todos), estados vacíos por filtro, insignias de estado, tiempos relativos, tirar para actualizar y cargar más. Los tickets que un agente convirtió desde un chat llevan la etiqueta «Del chat»; si es el chat en vivo actual, al tocarlo se abre el chat. En bandejas solo de tickets la lista es la pantalla de inicio con un botón destacado «Nuevo ticket»; en bandejas solo de chat el botón se oculta pero la lista sigue accesible. Requiere un servidor con `GET /api/v1/widget/tickets?status=&page=&per_page=` y `/tickets/summary`; los servidores antiguos se cuentan y filtran en el cliente.
 
 ## Identificar al usuario
 

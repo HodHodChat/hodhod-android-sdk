@@ -22,11 +22,11 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta02") // brings hodhod-core
+    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta03") // brings hodhod-core
 }
 ```
 
-Source: <https://github.com/HodHodChat/hodhod-android-sdk>. Built by [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) from the git tag `1.0.0-beta02` (the tag must exist in the repository; see `docs/RELEASING.md`). The core module alone: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta02`.
+Source: <https://github.com/HodHodChat/hodhod-android-sdk>. Built by [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) from the git tag `1.0.0-beta03` (the tag must exist in the repository; see `docs/RELEASING.md`). The core module alone: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta03`.
 
 ## Configure
 
@@ -65,6 +65,12 @@ fun Home() = Box(Modifier.fillMaxSize()) {
 ## Chatbot flows
 
 If the inbox has an active [chatbot flow](https://hodhod.chat/features/chatbot-flows), the SDK runs it natively on the start screen, with no extra code: all 17 node kinds, variables and conditions, input validation, ratings, and handoff to a live agent **or as a ticket**, plus the same flow analytics as the web widget. If the flow setting `require_flow` is on, the direct "start conversation" card is hidden while a flow is available (it comes back if the flow cannot load). The engine is checked against the web engine with 40 parity scenarios (identical steps, variables and events); the screens were verified on an emulator in Persian (RTL) and English.
+
+## My tickets
+
+Visitors can always see **all** their tickets, open and closed, whatever the inbox contact mode (chat, ticket, both, ticket when offline). Home shows a compact "My tickets" row with the open-count badge whenever the visitor has at least one ticket, also during a live chat. The list has Open / Closed / All filters with counts (default: Open if any ticket is open, else All), per-filter empty states, status badges, relative times, pull-to-refresh and load-more pagination. Tickets that an agent converted from a chat are tagged "From chat"; if the ticket is the current live chat, tapping it opens the chat screen. Ticket-only inboxes use the list as Home with a prominent "New ticket" button; chat-only inboxes hide the button but keep the list. Replies work in every mode. Needs a server with `GET /api/v1/widget/tickets?status=&page=&per_page=` and `/tickets/summary`; older servers are counted and filtered on the client.
+
+For custom UIs: `repository.ticketSummary` (open/total, hot `StateFlow`) and `repository.loadTickets(TicketFilter.OPEN, page)`.
 
 ## Identify the user
 

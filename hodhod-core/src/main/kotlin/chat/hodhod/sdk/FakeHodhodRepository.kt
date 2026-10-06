@@ -25,6 +25,7 @@ public class FakeHodhodRepository(
         else ConversationState.Active(1, ConversationStatus.OPEN, null, hasMore = false, unreadCount = 0, agentTyping = false),
     )
     private val _tickets = MutableStateFlow(initialTickets)
+    private val _summary = MutableStateFlow(summaryOf(initialTickets))
     private val _connection = MutableStateFlow(ConnectionState.CONNECTED)
     private val _state = MutableStateFlow(startState)
     private val _agents = MutableStateFlow(initialAgents)
@@ -38,6 +39,9 @@ public class FakeHodhodRepository(
     /** When true the next [sendMessage] fails (status FAILED, retryable). */
     public var failNextSend: Boolean = false
 
+    /** When true the next ticket list / summary load fails (`network`). */
+    public var failNextTicketLoad: Boolean = false
+
     /** Artificial latency applied to suspend calls. */
     public var latencyMs: Long = 0
 
@@ -45,6 +49,7 @@ public class FakeHodhodRepository(
     override val conversation: StateFlow<ConversationState> = _conversation.asStateFlow()
     override val messages: StateFlow<List<Message>> = _messages.asStateFlow()
     override val tickets: StateFlow<List<TicketSummary>> = _tickets.asStateFlow()
+    override val ticketSummary: StateFlow<TicketSummaryCounts> = _summary.asStateFlow()
     override val connection: StateFlow<ConnectionState> = _connection.asStateFlow()
     override val state: StateFlow<HodhodState> = _state.asStateFlow()
     override val agents: StateFlow<List<Agent>> = _agents.asStateFlow()
@@ -131,10 +136,29 @@ public class FakeHodhodRepository(
         val now = System.currentTimeMillis() / 1000
         val t = TicketSummary(++ticketNo, form.subject, TicketStatus.OPEN, _config.value?.ticketCategories?.firstOrNull { it.id == form.categoryId }, now, now, null, 100 + ticketNo)
         _tickets.update { listOf(t) + it }
+        _summary.value = summaryOf(_tickets.value)
         return Result.success(t)
     }
 
     override suspend fun loadTickets(): Result<List<TicketSummary>> = Result.success(_tickets.value)
+
+    override suspend fun loadTickets(status: TicketFilter, page: Int, perPage: Int): Result<TicketList> {
+        delayIfNeeded()
+        if (failNextTicketLoad) { failNextTicketLoad = false; return Result.failure(HodhodException("network")) }
+        val all = _tickets.value
+        val counts = TicketCounts(all.count { it.isOpen }, all.count { !it.isOpen }, all.size)
+        val filtered = when (status) { TicketFilter.OPEN -> all.filter { it.isOpen }; TicketFilter.CLOSED -> all.filter { !it.isOpen }; TicketFilter.ALL -> all }
+        val from = (page - 1).coerceAtLeast(0) * perPage
+        _summary.value = TicketSummaryCounts(counts.open, counts.total)
+        return Result.success(TicketList(status, filtered.drop(from).take(perPage), counts, page, perPage, hasMore = from + perPage < filtered.size))
+    }
+
+    /** Test helper: replace the visitor's tickets (updates [ticketSummary]). */
+    public fun setTickets(list: List<TicketSummary>) {
+        _tickets.value = list
+        _summary.value = summaryOf(list)
+        ticketNo = maxOf(ticketNo, list.maxOfOrNull { it.number } ?: 0)
+    }
 
     override suspend fun loadTicket(number: Int): Result<TicketThread> {
         val t = _tickets.value.firstOrNull { it.number == number } ?: return Result.failure(HodhodException("not_found"))
@@ -175,6 +199,7 @@ public class FakeHodhodRepository(
     // ---- test/preview helpers ----
 
     private val ticketMessages = mutableMapOf<Int, List<Message>>()
+    private fun summaryOf(list: List<TicketSummary>) = TicketSummaryCounts(list.count { it.isOpen }, list.size)
 
     /** Deliver an agent message as if it arrived over the websocket. */
     public fun simulateAgentMessage(text: String, sender: Sender = Sender(1, "Sara", null, "user")) {

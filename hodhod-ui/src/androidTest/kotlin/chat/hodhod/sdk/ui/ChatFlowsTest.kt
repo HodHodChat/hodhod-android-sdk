@@ -7,6 +7,8 @@ import chat.hodhod.sdk.ContactMode
 import chat.hodhod.sdk.DarkMode
 import chat.hodhod.sdk.FakeHodhodRepository
 import chat.hodhod.sdk.HodhodConfig
+import chat.hodhod.sdk.TicketStatus
+import chat.hodhod.sdk.TicketSummary
 import org.junit.Rule
 import org.junit.Test
 
@@ -74,5 +76,52 @@ class ChatFlowsTest {
         rule.waitUntil(5_000) { rule.onAllNodesWithText("This conversation has ended.").fetchSemanticsNodes().isNotEmpty() }
         rule.onNodeWithText("Start a new conversation").performClick()
         rule.waitUntil(5_000) { rule.onAllNodesWithText("Start Conversation").fetchSemanticsNodes().isNotEmpty() }
+    }
+
+    private fun tickets() = listOf(
+        TicketSummary(7, "Refund pending", TicketStatus.OPEN, null, 100, 200, null, 11),
+        TicketSummary(6, "Old problem", TicketStatus.CLOSED, null, 90, 150, null, 12, source = "conversation"),
+    )
+
+    @Test fun myTicketsRow_isVisibleInChatOnlyInboxAndOpensFilterList() {
+        val repo = FakeHodhodRepository(FakeHodhodRepository.sampleConfig(ContactMode.CHAT), initialTickets = tickets())
+        show(repo)
+        rule.onNodeWithText("Start Conversation").assertIsDisplayed()
+        rule.onNode(hasText("My tickets") and hasClickAction()).assertIsDisplayed()
+        rule.onNode(hasText("My tickets") and hasClickAction()).performClick()
+        rule.waitUntil(5_000) { rule.onAllNodesWithText("Refund pending").fetchSemanticsNodes().isNotEmpty() }
+        // default filter = Open (there is an open ticket): the closed one is hidden until the chip is selected
+        rule.onNodeWithText("Old problem").assertDoesNotExist()
+        rule.onNodeWithText("Open · 1").assertIsSelected()
+        rule.onNodeWithText("Closed · 1").performClick()
+        rule.waitUntil(5_000) { rule.onAllNodesWithText("Old problem").fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithText("From chat").assertExists()
+        rule.onNodeWithText("Refund pending").assertDoesNotExist()
+        rule.onNodeWithText("All · 2").performClick()
+        rule.waitUntil(5_000) { rule.onAllNodesWithText("Refund pending").fetchSemanticsNodes().isNotEmpty() }
+        // chat-only inbox: no way to create a ticket
+        rule.onNodeWithText("New ticket").assertDoesNotExist()
+    }
+
+    @Test fun myTicketsRow_isHiddenWithoutTicketsAndShownDuringLiveChatInBothMode() {
+        val repo = FakeHodhodRepository(FakeHodhodRepository.sampleConfig(ContactMode.BOTH))
+        show(repo)
+        rule.onNode(hasText("My tickets") and hasClickAction()).assertDoesNotExist()
+        repo.setTickets(tickets())
+        rule.waitUntil(5_000) { rule.onAllNodesWithText("My tickets").fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithText("Start Conversation").performClick()
+        rule.onNodeWithText("Type your message").performTextInput("hi")
+        rule.onNodeWithContentDescription("Send message").performClick()
+        rule.waitUntil(5_000) { rule.onAllNodesWithText("hi").fetchSemanticsNodes().isNotEmpty() }
+        rule.activityRule.scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }
+        rule.waitUntil(5_000) { rule.onAllNodesWithText("Continue", substring = true).fetchSemanticsNodes().isNotEmpty() }
+        rule.onNode(hasText("My tickets") and hasClickAction()).assertIsDisplayed() // visible while a chat is active
+    }
+
+    @Test fun ticketOnlyInbox_showsListFirstWithNewTicketButton() {
+        val repo = FakeHodhodRepository(FakeHodhodRepository.sampleConfig(ContactMode.TICKET), initialTickets = tickets())
+        show(repo)
+        rule.waitUntil(5_000) { rule.onAllNodesWithText("Refund pending").fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithText("New ticket").assertExists()
     }
 }

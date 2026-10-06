@@ -144,6 +144,9 @@ public class TicketForm(
 public enum class TicketStatus(public val wire: String) {
     OPEN("open"), IN_PROGRESS("in_progress"), WAITING("waiting_on_customer"), RESOLVED("resolved"), CLOSED("closed"), UNKNOWN("");
 
+    /** Open, in progress or waiting for the visitor (the server's "open" filter). */
+    public val isActive: Boolean get() = this == OPEN || this == IN_PROGRESS || this == WAITING || this == UNKNOWN
+
     public companion object {
         public fun fromWire(s: String?): TicketStatus = entries.firstOrNull { it.wire == s && s != "" } ?: UNKNOWN
     }
@@ -159,7 +162,44 @@ public data class TicketSummary(
     val createdAt: Long,
     val updatedAt: Long,
     val resolvedAt: Long?,
+    /** Display id of the ticket's conversation (`conversation_display_id`, older servers: `conversation_id`). */
     val conversationId: Int?,
+    /** Where the ticket came from: `widget` (created by the visitor in the app/widget) or e.g. `conversation` (converted from a chat by an agent). Null on older servers. */
+    val source: String? = null,
+    /** Server's open/closed verdict (`is_open`); older servers: derived from [status] (open, in progress, waiting = open). */
+    val isOpen: Boolean = status.isActive,
+    /** Time of the last public agent reply (epoch seconds), when the server reports it. */
+    val lastAgentReplyAt: Long? = null,
+) {
+    /** Same as [conversationId]; named like the server field. */
+    val conversationDisplayId: Int? get() = conversationId
+
+    /** True when an agent converted a chat into this ticket (it was not created through the ticket form). */
+    val isFromConversation: Boolean get() = source != null && source != "widget"
+}
+
+/** Ticket list filter (`status=open|closed|all`). Open = open / in progress / waiting for the visitor; closed = resolved / closed / merged. */
+public enum class TicketFilter(public val wire: String) { OPEN("open"), CLOSED("closed"), ALL("all") }
+
+/** Ticket counters of the visitor (list `meta`). */
+public data class TicketCounts(val open: Int, val closed: Int, val total: Int)
+
+/** Light counters for the Home badge (`/tickets/summary`); [TicketSummaryCounts.NONE] until known. */
+public data class TicketSummaryCounts(val open: Int, val total: Int) {
+    public companion object {
+        public val NONE: TicketSummaryCounts = TicketSummaryCounts(0, 0)
+    }
+}
+
+/** One page of the visitor's tickets for a [TicketFilter] (newest first) with the counters of all filters. */
+public data class TicketList(
+    val filter: TicketFilter,
+    val tickets: List<TicketSummary>,
+    val counts: TicketCounts,
+    val page: Int,
+    val perPage: Int,
+    /** More pages may follow (`page * perPage < total of the filter`). */
+    val hasMore: Boolean,
 )
 
 public data class TicketThread(

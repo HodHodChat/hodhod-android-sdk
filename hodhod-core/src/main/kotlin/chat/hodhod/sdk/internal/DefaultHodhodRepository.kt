@@ -19,6 +19,10 @@ import chat.hodhod.sdk.MessageAttachment
 import chat.hodhod.sdk.MessageStatus
 import chat.hodhod.sdk.MessageType
 import chat.hodhod.sdk.TicketActivity
+import chat.hodhod.sdk.TicketCounts
+import chat.hodhod.sdk.TicketFilter
+import chat.hodhod.sdk.TicketList
+import chat.hodhod.sdk.TicketSummaryCounts
 import chat.hodhod.sdk.TicketForm
 import chat.hodhod.sdk.TicketSummary
 import chat.hodhod.sdk.TicketThread
@@ -60,6 +64,7 @@ internal class DefaultHodhodRepository(
     private val _conversation = MutableStateFlow<ConversationState>(ConversationState.None)
     private val _messages = MutableStateFlow<List<Message>>(emptyList())
     private val _tickets = MutableStateFlow<List<TicketSummary>>(emptyList())
+    private val _summary = MutableStateFlow(TicketSummaryCounts.NONE)
     private val _connection = MutableStateFlow(ConnectionState.IDLE)
     private val _state = MutableStateFlow<HodhodState>(HodhodState.Idle)
     private val _agents = MutableStateFlow<List<Agent>>(emptyList())
@@ -74,6 +79,7 @@ internal class DefaultHodhodRepository(
     override val conversation: StateFlow<ConversationState> = _conversation.asStateFlow()
     override val messages: StateFlow<List<Message>> = _messages.asStateFlow()
     override val tickets: StateFlow<List<TicketSummary>> = _tickets.asStateFlow()
+    override val ticketSummary: StateFlow<TicketSummaryCounts> = _summary.asStateFlow()
     override val connection: StateFlow<ConnectionState> = _connection.asStateFlow()
     override val state: StateFlow<HodhodState> = _state.asStateFlow()
     override val agents: StateFlow<List<Agent>> = _agents.asStateFlow()
@@ -103,6 +109,8 @@ internal class DefaultHodhodRepository(
     private var pendingConvAttrs: Map<String, Any?> = emptyMap()
     private var dismissed = setOf<Long>()
     private var ticketConvIds = setOf<Int>()
+    /** conversation display id -> ticket number of every ticket seen so far (all pages), to route websocket events. */
+    private var ticketByConv = mapOf<Int, Int>()
     private var pendingFlow: Map<String, Any?>? = null
 
     private val refreshMutex = Mutex()
@@ -158,7 +166,7 @@ internal class DefaultHodhodRepository(
                 scope.async { runCatching { loadContact() } },
                 scope.async { runCatching { loadAgents() } },
                 scope.async { runCatching { loadNotices() } },
-                scope.async { runCatching { loadTicketsInternal() } },
+                scope.async { runCatching { loadTicketsInternal() }.recoverCatching { loadSummaryInternal() } },
             ).awaitAll()
             ensureCable()
             return Result.success(Unit)
@@ -187,12 +195,65 @@ internal class DefaultHodhodRepository(
         _notices.value = all.filter { it.id !in dismissed && it.message.isNotBlank() }
     }
 
+    /** First page of all tickets (feeds [tickets] and the summary counters). */
     private suspend fun loadTicketsInternal(): List<TicketSummary> {
-        val arr = api.get("api/v1/widget/tickets").json.obj()?.list("payload") ?: return emptyList()
-        val list = arr.mapNotNull { (it as? JsonObject)?.let(Parsers::ticket) }
-        synchronized(lock) { ticketConvIds = list.mapNotNull { it.conversationId }.toSet() }
-        _tickets.value = list
-        return list
+        val page = fetchTickets(TicketFilter.ALL, 1, TICKET_PAGE_SIZE)
+        _tickets.value = page.tickets
+        return page.tickets
+    }
+
+    /**
+     * One page of the visitor's tickets. Newer servers answer with `meta` counters and honour `status`/`page`; an older server returns
+     * every ticket without `meta`: then filter, paginate and count on the client. Also refreshes [ticketSummary] and the event routing tables.
+     */
+    private suspend fun fetchTickets(filter: TicketFilter, page: Int, perPage: Int): TicketList {
+        val o = api.get(
+            "api/v1/widget/tickets",
+            mapOf("status" to filter.wire, "page" to page.toString(), "per_page" to perPage.toString()),
+        ).json.obj() ?: throw HodhodException("server")
+        val parsed = o.list("payload")?.mapNotNull { (it as? JsonObject)?.let(Parsers::ticket) }.orEmpty()
+        val meta = o.sub("meta")
+        val open = meta?.int("open_count")
+        val total = meta?.int("total")
+        val result = if (meta != null && open != null && total != null) {
+            val counts = TicketCounts(open, meta.int("closed_count") ?: (total - open).coerceAtLeast(0), total)
+            val serverPage = meta.int("page") ?: page
+            val serverPer = meta.int("per_page")?.takeIf { it > 0 } ?: perPage
+            val inFilter = when (filter) { TicketFilter.OPEN -> counts.open; TicketFilter.CLOSED -> counts.closed; TicketFilter.ALL -> counts.total }
+            TicketList(filter, parsed, counts, serverPage, serverPer, hasMore = serverPage * serverPer < inFilter)
+        } else {
+            val counts = TicketCounts(parsed.count { it.isOpen }, parsed.count { !it.isOpen }, parsed.size)
+            val filtered = when (filter) { TicketFilter.OPEN -> parsed.filter { it.isOpen }; TicketFilter.CLOSED -> parsed.filter { !it.isOpen }; TicketFilter.ALL -> parsed }
+            val from = (page - 1).coerceAtLeast(0) * perPage
+            TicketList(filter, filtered.drop(from).take(perPage), counts, page, perPage, hasMore = from + perPage < filtered.size)
+        }
+        synchronized(lock) {
+            ticketByConv = ticketByConv + result.tickets.mapNotNull { t -> t.conversationId?.let { it to t.number } }
+            ticketConvIds = ticketByConv.keys
+        }
+        _summary.value = TicketSummaryCounts(result.counts.open, result.counts.total)
+        return result
+    }
+
+    /** Light counters for the Home badge; servers without `/tickets/summary` fall back to the list. Failures keep the last value. */
+    private suspend fun loadSummaryInternal() {
+        try {
+            val o = api.get("api/v1/widget/tickets/summary").json.obj()
+            val open = o?.int("open_count")
+            val total = o?.int("total")
+            if (open != null && total != null) {
+                _summary.value = TicketSummaryCounts(open, total)
+                return
+            }
+        } catch (e: HodhodException) {
+            if (e.httpStatus != 404 && e.code != "not_found") throw e
+        }
+        loadTicketsInternal()
+    }
+
+    private fun refreshSummaryAsync() {
+        if (authToken == null) return
+        scope.launch { runCatching { loadSummaryInternal() } }
     }
 
     /** Load conversation attributes + latest messages (web: conversationAttributes/getAttributes + conversation/fetchOldConversations). */
@@ -268,6 +329,8 @@ internal class DefaultHodhodRepository(
                 store.put(SessionStore.AUTH_TOKEN, newToken)
                 synchronized(lock) { clearConversationLocked(); endedId = null }
                 _tickets.value = emptyList()
+                _summary.value = TicketSummaryCounts.NONE
+                synchronized(lock) { ticketByConv = emptyMap(); ticketConvIds = emptySet() }
                 publish()
                 stopCable()
                 refresh().onFailure { return Result.failure(it) }
@@ -292,8 +355,9 @@ internal class DefaultHodhodRepository(
     /** Local sign-out (session store cleared by the runtime). */
     fun resetSession() {
         stopCable()
-        synchronized(lock) { clearConversationLocked(); endedId = null; pendingConvAttrs = emptyMap(); ticketConvIds = emptySet() }
+        synchronized(lock) { clearConversationLocked(); endedId = null; pendingConvAttrs = emptyMap(); ticketConvIds = emptySet(); ticketByConv = emptyMap() }
         _tickets.value = emptyList()
+        _summary.value = TicketSummaryCounts.NONE
         _contact.value = ContactInfo(null, null, hasName = false, hasEmail = false, hasPhone = false)
         pendingFlow = null
         if (flowCreated) flowEngine.reset()
@@ -320,6 +384,7 @@ internal class DefaultHodhodRepository(
             return
         }
         if (_state.value != HodhodState.Ready) return
+        refreshSummaryAsync()
         scope.launch {
             runCatching { resync() }
             ensureCable()
@@ -533,6 +598,7 @@ internal class DefaultHodhodRepository(
         }
         synchronized(lock) { status = ConversationStatus.RESOLVED }
         publish()
+        refreshSummaryAsync() // the chat may have been converted into a ticket
         return Result.success(Unit)
     }
 
@@ -635,6 +701,9 @@ internal class DefaultHodhodRepository(
                 (ticket.conversationId != null && convId == ticket.conversationId).also { if (it) clearConversationLocked() }
             }
             _tickets.value = listOf(ticket) + _tickets.value.filterNot { it.number == ticket.number }
+            synchronized(lock) { ticket.conversationId?.let { ticketByConv = ticketByConv + (it to ticket.number) } }
+            _summary.value = _summary.value.let { TicketSummaryCounts(it.open + 1, it.total + 1) }
+            refreshSummaryAsync()
             if (phantom) publish()
             Result.success(ticket)
         } catch (e: CancellationException) {
@@ -647,6 +716,15 @@ internal class DefaultHodhodRepository(
     override suspend fun loadTickets(): Result<List<TicketSummary>> {
         if (authToken == null) refresh().onFailure { return Result.failure(it) }
         return call { loadTicketsInternal() }
+    }
+
+    override suspend fun loadTickets(status: TicketFilter, page: Int, perPage: Int): Result<TicketList> {
+        if (authToken == null) refresh().onFailure { return Result.failure(it) }
+        return call {
+            val list = fetchTickets(status, page.coerceAtLeast(1), perPage.coerceIn(1, 50))
+            if (status == TicketFilter.ALL && list.page == 1) _tickets.value = list.tickets
+            list
+        }
     }
 
     override suspend fun loadTicket(number: Int): Result<TicketThread> = call {
@@ -667,6 +745,7 @@ internal class DefaultHodhodRepository(
             val o = api.postMultipart("api/v1/widget/tickets/$number/reply", parts).json.obj() ?: throw HodhodException("server")
             val ticket = o.sub("ticket")?.let(Parsers::ticket)
             if (ticket != null) _tickets.value = _tickets.value.map { if (it.number == number) ticket else it }
+            refreshSummaryAsync() // a reply can reopen a resolved ticket
             Parsers.message(o, ticket?.conversationId).copy(clientId = null)
         }
     }
@@ -748,13 +827,14 @@ internal class DefaultHodhodRepository(
         val accept = synchronized(lock) {
             when {
                 cid != null && cid == endedId -> false // late event of a conversation the widget already left
-                cid != null && cid in ticketConvIds -> { isTicket = true; false }
+                // A chat an agent converted into a ticket stays the live chat while it is the current conversation.
+                cid != null && cid in ticketConvIds && cid != convId -> { isTicket = true; false }
                 convId != null && cid != null && cid != convId -> false // another conversation
                 else -> true
             }
         }
         if (isTicket) {
-            val number = _tickets.value.firstOrNull { it.conversationId == cid }?.number
+            val number = synchronized(lock) { ticketByConv[cid] }
             if (number != null) _ticketActivity.tryEmit(TicketActivity(number, msg))
             scope.launch { runCatching { loadTicketsInternal() } }
             return
@@ -817,6 +897,7 @@ internal class DefaultHodhodRepository(
         }
         publish()
         if (reopen) scope.launch { runCatching { loadConversation(initial = false) } }
+        if (synchronized(lock) { id in ticketConvIds }) refreshSummaryAsync() // ticket closed / reopened by an agent
     }
 
     private fun onPresence(data: JsonObject) {
@@ -958,6 +1039,7 @@ internal class DefaultHodhodRepository(
 
     companion object {
         const val PAGE_SIZE = 20
+        const val TICKET_PAGE_SIZE = 20
         const val TYPING_IDLE_MS = 5_000L
         const val TYPING_REPEAT_MS = 4_000L
         const val REMOTE_TYPING_TIMEOUT_MS = 30_000L

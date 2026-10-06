@@ -22,11 +22,11 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta02") // brings hodhod-core
+    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta03") // brings hodhod-core
 }
 ```
 
-Quellcode: <https://github.com/HodHodChat/hodhod-android-sdk>. [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) baut das Paket aus dem Git-Tag `1.0.0-beta02` (der Tag muss im Repository existieren; siehe `docs/RELEASING.md`). Nur das Core-Modul: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta02`.
+Quellcode: <https://github.com/HodHodChat/hodhod-android-sdk>. [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) baut das Paket aus dem Git-Tag `1.0.0-beta03` (der Tag muss im Repository existieren; siehe `docs/RELEASING.md`). Nur das Core-Modul: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta03`.
 
 ## Konfiguration
 
@@ -65,6 +65,10 @@ fun Home() = Box(Modifier.fillMaxSize()) {
 ## Chatbot-Abläufe (Flows)
 
 Hat der Posteingang einen aktiven [Chatbot-Ablauf](https://hodhod.chat/features/chatbot-flows), führt das SDK ihn auf dem Startbildschirm nativ aus, ganz ohne zusätzlichen Code: alle 17 Knotentypen, Variablen und Bedingungen, Eingabeprüfung, Bewertungen sowie die Übergabe an einen Live-Mitarbeiter **oder als Ticket**, dazu dieselben Flow-Analysen wie im Web-Widget. Ist die Flow-Einstellung `require_flow` aktiv, bleibt die direkte Karte „Unterhaltung starten“ verborgen, solange ein Ablauf verfügbar ist (sie erscheint wieder, wenn der Ablauf nicht geladen werden kann). Die Engine wurde mit 40 Paritätsszenarien gegen die Web-Engine geprüft (gleiche Schritte, Variablen und Ereignisse); die Bildschirme wurden im Emulator auf Persisch (RTL) und Englisch verifiziert.
+
+## Meine Tickets
+
+Besucher sehen immer **alle** ihre Tickets, offene und geschlossene, unabhängig vom Kontaktmodus des Posteingangs (Chat, Ticket, beides, Ticket außerhalb der Geschäftszeiten). Der Startbildschirm zeigt eine kompakte Zeile „Meine Tickets“ mit der Anzahl offener Tickets, sobald es mindestens ein Ticket gibt, auch während eines Live-Chats. Die Liste hat die Filter Offen / Geschlossen / Alle mit Zählern (Standard: Offen, wenn es offene gibt, sonst Alle), leere Zustände je Filter, Statusabzeichen, relative Zeiten, Pull-to-Refresh und Nachladen. Von einem Agenten aus einem Chat erstellte Tickets sind mit „Aus dem Chat“ markiert; ist es der aktuelle Live-Chat, öffnet ein Tipp den Chat. In reinen Ticket-Postfächern ist die Liste der Startbildschirm mit prominentem Button „Neues Ticket“; in reinen Chat-Postfächern ist der Button ausgeblendet, die Liste bleibt erreichbar. Benötigt einen Server mit `GET /api/v1/widget/tickets?status=&page=&per_page=` und `/tickets/summary`; ältere Server werden clientseitig gezählt und gefiltert.
 
 ## Benutzer identifizieren
 

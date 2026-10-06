@@ -31,10 +31,12 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-/** Offline UI demo: `--es fake chat|ticket|both|offline|messages` swaps the real repository for the in-memory fake. */
+/**
+ * Offline UI demo: `--es fake chat|ticket|both|offline|messages` (add `-tickets`, e.g. `chat-tickets`, `ticket-tickets`: a visitor with open, closed and
+ * chat-converted tickets, 25 in total so pagination shows) swaps the real repository for the in-memory fake. */
 internal var lastFake: chat.hodhod.sdk.FakeHodhodRepository? = null
 private fun installFake(kind: String) {
-    val mode = when (kind) { "ticket" -> chat.hodhod.sdk.ContactMode.TICKET; "both" -> chat.hodhod.sdk.ContactMode.BOTH; else -> chat.hodhod.sdk.ContactMode.CHAT }
+    val mode = when (kind) { "ticket", "ticket-tickets" -> chat.hodhod.sdk.ContactMode.TICKET; "both", "both-tickets" -> chat.hodhod.sdk.ContactMode.BOTH; else -> chat.hodhod.sdk.ContactMode.CHAT }
     val now = System.currentTimeMillis() / 1000
     fun msg(id: Int, text: String, mine: Boolean, ago: Long, sender: chat.hodhod.sdk.Sender? = chat.hodhod.sdk.Sender(1, "Sara", null, "user")) = chat.hodhod.sdk.Message(
         id.toString(), id.toLong(), null, 1, text, if (mine) chat.hodhod.sdk.MessageType.INCOMING else chat.hodhod.sdk.MessageType.OUTGOING, null, emptyMap(), now - ago, emptyList(),
@@ -42,13 +44,21 @@ private fun installFake(kind: String) {
     val msgs = if (kind == "messages") listOf(msg(1, "سلام، سفارشم هنوز نرسیده", true, 90000), msg(2, "سلام! وقت بخیر 👋 شماره سفارش را بفرمایید؟", false, 89000),
         msg(3, "**ORD-1234** — https://example.com/track", true, 300), msg(4, "پیگیری می‌کنم، چند لحظه لطفا", false, 120), msg(5, "Thanks, take your time", true, 60), msg(6, "Sure.", false, 30)) else emptyList()
     val repo = chat.hodhod.sdk.FakeHodhodRepository(chat.hodhod.sdk.FakeHodhodRepository.sampleConfig(mode), msgs)
+    if (kind.endsWith("-tickets")) {
+        val subjects = listOf("Refund for order 1042", "App crashes on login", "درخواست فاکتور", "Change my plan", "Delivery address wrong")
+        repo.setTickets((1..25).map { n ->
+            val status = when { n <= 3 -> chat.hodhod.sdk.TicketStatus.OPEN; n == 4 -> chat.hodhod.sdk.TicketStatus.WAITING; n % 2 == 0 -> chat.hodhod.sdk.TicketStatus.CLOSED; else -> chat.hodhod.sdk.TicketStatus.RESOLVED }
+            chat.hodhod.sdk.TicketSummary(100 - n, subjects[n % subjects.size], status, null, now - n * 7200L, now - n * 3600L, null, 200 + n,
+                source = if (n == 2) "conversation" else "widget")
+        })
+    }
     lastFake = repo
     chat.hodhod.sdk.Hodhod.installRepository(repo)
 }
 
 /**
  * Test/automation hook: `adb shell am start -n chat.hodhod.sample/.MainActivity --es token XXX [--es baseUrl ..] [--es locale fa]
- * [--es dark DARK] [--es identifier u1 --es name Ali --es email a@b.c] [--ez open true]` configures (and optionally opens) without typing.
+ * [--es dark DARK] [--es identifier u1 --es hash <hmac> --es name Ali --es email a@b.c] [--ez open true]` configures (and optionally opens) without typing.
  */
 private fun MainActivity.applyLaunchExtras() {
     val x = intent?.extras ?: return
@@ -57,10 +67,10 @@ private fun MainActivity.applyLaunchExtras() {
     if (x.getString("conn") == "down") lastFake?.setConnection(chat.hodhod.sdk.ConnectionState.RECONNECTING)
     val old = Settings.load(this)
     val s = Settings(x.getString("baseUrl") ?: old?.baseUrl ?: Settings.DEFAULT_BASE_URL, token, x.getString("locale") ?: "", x.getString("dark") ?: "AUTO", x.getString("accent") ?: "",
-        x.getString("identifier") ?: "", "", x.getString("name") ?: "", x.getString("email") ?: "", old?.phone ?: "")
+        x.getString("identifier") ?: "", x.getString("hash") ?: "", x.getString("name") ?: "", x.getString("email") ?: "", old?.phone ?: "")
     if (x.getBoolean("logout")) Hodhod.logout()
     Settings.save(this, s); Settings.apply(this, s); Hodhod.start()
-    if (s.identifier.isNotBlank()) Hodhod.identify(HodhodUser(s.identifier, null, s.name.ifBlank { null }, s.email.ifBlank { null }))
+    if (s.identifier.isNotBlank()) Hodhod.identify(HodhodUser(s.identifier, s.identifierHash.ifBlank { null }, s.name.ifBlank { null }, s.email.ifBlank { null }))
     if (x.getBoolean("open")) Hodhod.open(this)
 }
 
@@ -83,6 +93,7 @@ private fun SampleScreen() {
     var configured by remember { mutableStateOf(saved?.token?.isNotBlank() == true) }
     val form = { Settings(baseUrl, token, locale, dark, accent, identifier, hash, name, email, phone) }
     val unread by Hodhod.unreadCount.collectAsState()
+    val tickets by Hodhod.repository.ticketSummary.collectAsState()
     val state by Hodhod.state.collectAsState()
 
     Scaffold(Modifier.fillMaxSize(), topBar = { TopAppBar(title = { Text("Hodhod SDK sample") }) }) { pad ->
@@ -126,7 +137,7 @@ private fun SampleScreen() {
 
                 HorizontalDivider()
                 Text("3. Chat", style = MaterialTheme.typography.titleMedium)
-                Button({ Settings.save(ctx, form()); Settings.apply(ctx, form()); Hodhod.open(ctx) }, Modifier.fillMaxWidth().testTag("open"), enabled = token.isNotBlank()) { Text("Open chat" + if (unread > 0) " ($unread unread)" else "") }
+                Button({ Settings.save(ctx, form()); Settings.apply(ctx, form()); Hodhod.open(ctx) }, Modifier.fillMaxWidth().testTag("open"), enabled = token.isNotBlank()) { Text("Open chat" + (if (unread > 0) " ($unread unread)" else "") + (if (tickets.total > 0) " · ${tickets.open} open / ${tickets.total} tickets" else "")) }
 
                 Text("State: $state   ${if (status.isNotEmpty()) "· $status" else ""}", style = MaterialTheme.typography.bodySmall, modifier = Modifier.testTag("status"))
             }
