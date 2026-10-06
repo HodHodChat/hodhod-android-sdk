@@ -24,11 +24,11 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta01") // brings hodhod-core
+    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta02") // brings hodhod-core
 }
 ```
 
-الشيفرة المصدرية: <https://github.com/HodHodChat/hodhod-android-sdk>. تبني [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) الحزمة من وسم git ‏`1.0.0-beta01` (يجب أن يكون الوسم موجودًا في المستودع؛ راجع `docs/RELEASING.md`). وحدة النواة وحدها: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta01`.
+الشيفرة المصدرية: <https://github.com/HodHodChat/hodhod-android-sdk>. تبني [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) الحزمة من وسم git ‏`1.0.0-beta02` (يجب أن يكون الوسم موجودًا في المستودع؛ راجع `docs/RELEASING.md`). وحدة النواة وحدها: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta02`.
 
 ## الإعداد
 
