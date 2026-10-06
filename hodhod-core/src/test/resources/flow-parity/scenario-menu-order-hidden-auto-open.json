@@ -1,0 +1,2117 @@
+{
+ "name": "menu-order-hidden-auto-open",
+ "description": "menu_order, inMenu=false, single auto-open child, topic with no children, choice without options, question without answer",
+ "flow": {
+  "schema": 2,
+  "nodes": [
+   {
+    "id": "t1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "اول"
+    }
+   },
+   {
+    "id": "t2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "دوم"
+    }
+   },
+   {
+    "id": "t3",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "پنهان",
+     "inMenu": false
+    }
+   },
+   {
+    "id": "t4",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "خالی"
+    }
+   },
+   {
+    "id": "t5",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "بدون گزینه"
+    }
+   },
+   {
+    "id": "c5",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "choice",
+     "label": "گزینه؟",
+     "options": []
+    }
+   },
+   {
+    "id": "t6",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "سؤال بی‌جواب"
+    }
+   },
+   {
+    "id": "q6",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "question",
+     "label": "Q"
+    }
+   },
+   {
+    "id": "m2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "تک فرزند"
+    }
+   },
+   {
+    "id": "s1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "subtopic",
+     "label": "زیر"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t2_m2",
+    "source": "t2",
+    "target": "m2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_t5_c5",
+    "source": "t5",
+    "target": "c5",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_t6_q6",
+    "source": "t6",
+    "target": "q6",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_t1_s1",
+    "source": "t1",
+    "target": "s1",
+    "sourceHandle": null
+   }
+  ],
+  "require_flow": false,
+  "menu_order": [
+   "t2",
+   "ghost",
+   "t1"
+  ],
+  "settings": {},
+  "revision": 3
+ },
+ "options": {
+  "context": {
+   "now": "2026-10-03T10:00:00Z",
+   "utcOffset": "+00:00",
+   "businessOpen": true,
+   "agentsOnline": true,
+   "locale": "fa",
+   "pageUrl": "https://shop.test/pricing?x=1",
+   "device": "desktop",
+   "returning": false,
+   "contact": {
+    "name": "",
+    "email": "",
+    "phone": ""
+   },
+   "inboxId": 3,
+   "botId": 7,
+   "referrerHost": ""
+  },
+  "flowId": 7,
+  "revision": 3,
+  "bot": null,
+  "instant": true,
+  "persist": false,
+  "sessionId": "s-1",
+  "agent": [
+   "none"
+  ],
+  "webhooks": {}
+ },
+ "doc": {
+  "nodes": [
+   {
+    "id": "t1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "اول",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "t2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "دوم",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "t3",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "پنهان",
+     "inMenu": false
+    }
+   },
+   {
+    "id": "t4",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "خالی",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "t5",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "بدون گزینه",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "c5",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "choice",
+     "label": "گزینه؟",
+     "options": [],
+     "multiple": false,
+     "style": "list",
+     "allowOther": false
+    }
+   },
+   {
+    "id": "t6",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "سؤال بی‌جواب",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "q6",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "question",
+     "label": "Q"
+    }
+   },
+   {
+    "id": "m2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "تک فرزند",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "s1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "subtopic",
+     "label": "زیر"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t2_m2",
+    "source": "t2",
+    "target": "m2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_t5_c5",
+    "source": "t5",
+    "target": "c5",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_t6_q6",
+    "source": "t6",
+    "target": "q6",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_t1_s1",
+    "source": "t1",
+    "target": "s1",
+    "sourceHandle": null
+   }
+  ],
+  "menu_order": [
+   "t2",
+   "ghost",
+   "t1"
+  ],
+  "require_flow": false,
+  "revision": 3
+ },
+ "actions": [
+  {
+   "action": {
+    "op": "start"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t2",
+        "label": "دوم",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       },
+       {
+        "id": "t1",
+        "label": "اول",
+        "emoji": "",
+        "index": 2,
+        "kind": "topic"
+       },
+       {
+        "id": "t4",
+        "label": "خالی",
+        "emoji": "",
+        "index": 3,
+        "kind": "topic"
+       },
+       {
+        "id": "t5",
+        "label": "بدون گزینه",
+        "emoji": "",
+        "index": 4,
+        "kind": "topic"
+       },
+       {
+        "id": "t6",
+        "label": "سؤال بی‌جواب",
+        "emoji": "",
+        "index": 5,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f0"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "default"
+      }
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "open"
+     },
+     {
+      "seq": 2,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t3"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t2",
+        "label": "دوم",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       },
+       {
+        "id": "t1",
+        "label": "اول",
+        "emoji": "",
+        "index": 2,
+        "kind": "topic"
+       },
+       {
+        "id": "t4",
+        "label": "خالی",
+        "emoji": "",
+        "index": 3,
+        "kind": "topic"
+       },
+       {
+        "id": "t5",
+        "label": "بدون گزینه",
+        "emoji": "",
+        "index": 4,
+        "kind": "topic"
+       },
+       {
+        "id": "t6",
+        "label": "سؤال بی‌جواب",
+        "emoji": "",
+        "index": 5,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f0"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t2"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "دوم",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "m2",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تک فرزند"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "terminal",
+      "variant": "info",
+      "primaryRestart": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": true
+     },
+     "announce": "تک فرزند",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t2",
+     "m2"
+    ],
+    "handoffState": null,
+    "flowPath": "دوم",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 3,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t2",
+       "index": 1,
+       "label": "دوم"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 4,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t2",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 5,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t2",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "m2",
+      "kind": "message"
+     },
+     {
+      "name": "flow_resolved",
+      "ts": 1790000000000,
+      "seq": 6,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "via": "implicit_end"
+      },
+      "node_id": "m2",
+      "kind": "message"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 3,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t2"
+     },
+     {
+      "seq": 4,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t2",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 5,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "m2",
+      "from": "t2",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     },
+     {
+      "seq": 6,
+      "type": "flow_resolved",
+      "t": 1790000000000,
+      "node": "m2",
+      "ref": "implicit_end",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "goBack"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t2",
+        "label": "دوم",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       },
+       {
+        "id": "t1",
+        "label": "اول",
+        "emoji": "",
+        "index": 2,
+        "kind": "topic"
+       },
+       {
+        "id": "t4",
+        "label": "خالی",
+        "emoji": "",
+        "index": 3,
+        "kind": "topic"
+       },
+       {
+        "id": "t5",
+        "label": "بدون گزینه",
+        "emoji": "",
+        "index": 4,
+        "kind": "topic"
+       },
+       {
+        "id": "t6",
+        "label": "سؤال بی‌جواب",
+        "emoji": "",
+        "index": 5,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "restart"
+      }
+     },
+     {
+      "name": "back",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "m2",
+       "to_node_id": null
+      },
+      "node_id": "m2",
+      "kind": "message"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 3,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "m2",
+       "handle": "next",
+       "via": "back",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "restart"
+     },
+     {
+      "seq": 2,
+      "type": "back",
+      "t": 1790000000000,
+      "node": "m2",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t4"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "خالی",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "deadend",
+      "text": "DEAD_END_TEXT"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t4"
+    ],
+    "handoffState": null,
+    "flowPath": "خالی",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 4,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t4",
+       "index": 3,
+       "label": "خالی"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 5,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t4",
+      "kind": "topic"
+     },
+     {
+      "name": "dead_end",
+      "ts": 1790000000000,
+      "seq": 6,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "handle": "next"
+      },
+      "node_id": "t4",
+      "kind": "topic"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 4,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t4"
+     },
+     {
+      "seq": 5,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t4",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 6,
+      "type": "dead_end",
+      "t": 1790000000000,
+      "node": "t4",
+      "ref": "next"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "goBack"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t2",
+        "label": "دوم",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       },
+       {
+        "id": "t1",
+        "label": "اول",
+        "emoji": "",
+        "index": 2,
+        "kind": "topic"
+       },
+       {
+        "id": "t4",
+        "label": "خالی",
+        "emoji": "",
+        "index": 3,
+        "kind": "topic"
+       },
+       {
+        "id": "t5",
+        "label": "بدون گزینه",
+        "emoji": "",
+        "index": 4,
+        "kind": "topic"
+       },
+       {
+        "id": "t6",
+        "label": "سؤال بی‌جواب",
+        "emoji": "",
+        "index": 5,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "back",
+      "ts": 1790000000000,
+      "seq": 7,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t4",
+       "to_node_id": null
+      },
+      "node_id": "t4",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 8,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t4",
+       "handle": "next",
+       "via": "back",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 7,
+      "type": "back",
+      "t": 1790000000000,
+      "node": "t4",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t5"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "بدون گزینه  ›  گزینه؟",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "c5",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "گزینه؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "deadend",
+      "text": "DEAD_END_TEXT"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "گزینه؟",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t5",
+     "c5"
+    ],
+    "handoffState": null,
+    "flowPath": "بدون گزینه > گزینه؟",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 9,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t5",
+       "index": 4,
+       "label": "بدون گزینه"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 10,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t5",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 11,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t5",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "c5",
+      "kind": "choice"
+     },
+     {
+      "name": "dead_end",
+      "ts": 1790000000000,
+      "seq": 12,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "handle": "next"
+      },
+      "node_id": "c5",
+      "kind": "choice"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 9,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t5"
+     },
+     {
+      "seq": 10,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t5",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 11,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "c5",
+      "from": "t5",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     },
+     {
+      "seq": 12,
+      "type": "dead_end",
+      "t": 1790000000000,
+      "node": "c5",
+      "ref": "next"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "goBack"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t2",
+        "label": "دوم",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       },
+       {
+        "id": "t1",
+        "label": "اول",
+        "emoji": "",
+        "index": 2,
+        "kind": "topic"
+       },
+       {
+        "id": "t4",
+        "label": "خالی",
+        "emoji": "",
+        "index": 3,
+        "kind": "topic"
+       },
+       {
+        "id": "t5",
+        "label": "بدون گزینه",
+        "emoji": "",
+        "index": 4,
+        "kind": "topic"
+       },
+       {
+        "id": "t6",
+        "label": "سؤال بی‌جواب",
+        "emoji": "",
+        "index": 5,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f6"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "back",
+      "ts": 1790000000000,
+      "seq": 13,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "c5",
+       "to_node_id": null
+      },
+      "node_id": "c5",
+      "kind": "choice"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 14,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "c5",
+       "handle": "next",
+       "via": "back",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 13,
+      "type": "back",
+      "t": 1790000000000,
+      "node": "c5",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t6"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "سؤال بی‌جواب",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "q6",
+        "label": "Q",
+        "emoji": "",
+        "index": 1,
+        "kind": "question"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f7"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t6"
+    ],
+    "handoffState": null,
+    "flowPath": "سؤال بی‌جواب",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 15,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t6",
+       "index": 5,
+       "label": "سؤال بی‌جواب"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 16,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t6",
+      "kind": "topic"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 15,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t6"
+     },
+     {
+      "seq": 16,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t6",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "goBack"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t2",
+        "label": "دوم",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       },
+       {
+        "id": "t1",
+        "label": "اول",
+        "emoji": "",
+        "index": 2,
+        "kind": "topic"
+       },
+       {
+        "id": "t4",
+        "label": "خالی",
+        "emoji": "",
+        "index": 3,
+        "kind": "topic"
+       },
+       {
+        "id": "t5",
+        "label": "بدون گزینه",
+        "emoji": "",
+        "index": 4,
+        "kind": "topic"
+       },
+       {
+        "id": "t6",
+        "label": "سؤال بی‌جواب",
+        "emoji": "",
+        "index": 5,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f8"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "back",
+      "ts": 1790000000000,
+      "seq": 17,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t6",
+       "to_node_id": null
+      },
+      "node_id": "t6",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 18,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t6",
+       "handle": "next",
+       "via": "back",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 17,
+      "type": "back",
+      "t": 1790000000000,
+      "node": "t6",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t1"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "اول",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "s1",
+        "label": "زیر",
+        "emoji": "",
+        "index": 1,
+        "kind": "subtopic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f9"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t1"
+    ],
+    "handoffState": null,
+    "flowPath": "اول",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 19,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t1",
+       "index": 2,
+       "label": "اول"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 20,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t1",
+      "kind": "topic"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 19,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t1"
+     },
+     {
+      "seq": 20,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t1",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "s1"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "اول  ›  زیر",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "deadend",
+      "text": "DEAD_END_TEXT"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f10"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t1",
+     "s1"
+    ],
+    "handoffState": null,
+    "flowPath": "اول > زیر",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 21,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "subtopic",
+       "option_id": "s1",
+       "index": 1,
+       "label": "زیر"
+      },
+      "node_id": "t1",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 22,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t1",
+       "handle": "next",
+       "via": "menu",
+       "depth": 2,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "s1",
+      "kind": "subtopic"
+     },
+     {
+      "name": "dead_end",
+      "ts": 1790000000000,
+      "seq": 23,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "handle": "next"
+      },
+      "node_id": "s1",
+      "kind": "subtopic"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 21,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "t1",
+      "ref": "s1"
+     },
+     {
+      "seq": 22,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "s1",
+      "from": "t1",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 23,
+      "type": "dead_end",
+      "t": 1790000000000,
+      "node": "s1",
+      "ref": "next"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  }
+ ]
+}

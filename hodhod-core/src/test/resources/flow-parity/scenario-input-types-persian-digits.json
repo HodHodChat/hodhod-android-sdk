@@ -1,0 +1,4718 @@
+{
+ "name": "input-types-persian-digits",
+ "description": "email/phone/number/date/url/longtext validation with Persian digits, ranges and failures",
+ "flow": {
+  "schema": 2,
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T"
+    }
+   },
+   {
+    "id": "e1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "ایمیل",
+     "inputType": "email",
+     "variable": "em"
+    }
+   },
+   {
+    "id": "p1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "تلفن",
+     "inputType": "phone",
+     "variable": "ph",
+     "saveTo": "contact_phone"
+    }
+   },
+   {
+    "id": "n1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "تعداد",
+     "inputType": "number",
+     "min": 1,
+     "max": 100,
+     "variable": "cnt"
+    }
+   },
+   {
+    "id": "d1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "تاریخ",
+     "inputType": "date",
+     "min": "2026-01-01",
+     "max": "2026-12-31",
+     "variable": "dt"
+    }
+   },
+   {
+    "id": "u1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "سایت",
+     "inputType": "url",
+     "variable": "site"
+    }
+   },
+   {
+    "id": "l1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "توضیح",
+     "inputType": "longtext",
+     "maxLength": 30,
+     "variable": "desc"
+    }
+   },
+   {
+    "id": "m",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "{{em}}|{{ph}}|{{cnt}}|{{dt}}|{{site}}|{{desc}}"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_e1",
+    "source": "t",
+    "target": "e1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_e1_p1",
+    "source": "e1",
+    "target": "p1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_p1_n1",
+    "source": "p1",
+    "target": "n1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_n1_d1",
+    "source": "n1",
+    "target": "d1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_d1_u1",
+    "source": "d1",
+    "target": "u1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_u1_l1",
+    "source": "u1",
+    "target": "l1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_l1_m",
+    "source": "l1",
+    "target": "m",
+    "sourceHandle": null
+   }
+  ],
+  "require_flow": false,
+  "menu_order": [],
+  "settings": {},
+  "revision": 3
+ },
+ "options": {
+  "context": {
+   "now": "2026-10-03T10:00:00Z",
+   "utcOffset": "+00:00",
+   "businessOpen": true,
+   "agentsOnline": true,
+   "locale": "fa",
+   "pageUrl": "https://shop.test/pricing?x=1",
+   "device": "desktop",
+   "returning": false,
+   "contact": {
+    "name": "",
+    "email": "",
+    "phone": ""
+   },
+   "inboxId": 3,
+   "botId": 7,
+   "referrerHost": ""
+  },
+  "flowId": 7,
+  "revision": 3,
+  "bot": null,
+  "instant": true,
+  "persist": false,
+  "sessionId": "s-1",
+  "agent": [
+   "ok"
+  ],
+  "webhooks": {}
+ },
+ "doc": {
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "e1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "ایمیل",
+     "inputType": "email",
+     "variable": "em",
+     "required": true,
+     "confirm": false,
+     "saveTo": "conversation_attribute"
+    }
+   },
+   {
+    "id": "p1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "تلفن",
+     "inputType": "phone",
+     "variable": "ph",
+     "saveTo": "contact_phone",
+     "required": true,
+     "confirm": false
+    }
+   },
+   {
+    "id": "n1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "تعداد",
+     "inputType": "number",
+     "min": 1,
+     "max": 100,
+     "variable": "cnt",
+     "required": true,
+     "confirm": false,
+     "saveTo": "conversation_attribute"
+    }
+   },
+   {
+    "id": "d1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "تاریخ",
+     "inputType": "date",
+     "min": "2026-01-01",
+     "max": "2026-12-31",
+     "variable": "dt",
+     "required": true,
+     "confirm": false,
+     "saveTo": "conversation_attribute"
+    }
+   },
+   {
+    "id": "u1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "سایت",
+     "inputType": "url",
+     "variable": "site",
+     "required": true,
+     "confirm": false,
+     "saveTo": "conversation_attribute"
+    }
+   },
+   {
+    "id": "l1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "توضیح",
+     "inputType": "longtext",
+     "maxLength": 30,
+     "variable": "desc",
+     "required": true,
+     "confirm": false,
+     "saveTo": "conversation_attribute"
+    }
+   },
+   {
+    "id": "m",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "{{em}}|{{ph}}|{{cnt}}|{{dt}}|{{site}}|{{desc}}",
+     "autoContinue": false
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_e1",
+    "source": "t",
+    "target": "e1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_e1_p1",
+    "source": "e1",
+    "target": "p1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_p1_n1",
+    "source": "p1",
+    "target": "n1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_n1_d1",
+    "source": "n1",
+    "target": "d1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_d1_u1",
+    "source": "d1",
+    "target": "u1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_u1_l1",
+    "source": "u1",
+    "target": "l1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_l1_m",
+    "source": "l1",
+    "target": "m",
+    "sourceHandle": null
+   }
+  ],
+  "menu_order": [],
+  "require_flow": false,
+  "revision": 3
+ },
+ "actions": [
+  {
+   "action": {
+    "op": "start"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t",
+        "label": "T",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f0"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "default"
+      }
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "open"
+     },
+     {
+      "seq": 2,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "e1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "ایمیل"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "e1",
+      "stage": "typing",
+      "inputType": "email",
+      "label": "ایمیل",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "ایمیل",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 3,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t",
+       "index": 1,
+       "label": "T"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 4,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 5,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "e1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 3,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t"
+     },
+     {
+      "seq": 4,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 5,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "e1",
+      "from": "t",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "bad@"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "e1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "ایمیل"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "e1",
+      "stage": "typing",
+      "inputType": "email",
+      "label": "ایمیل",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "bad@",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "ایمیل",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "e1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "ایمیل"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "e1",
+      "stage": "typing",
+      "inputType": "email",
+      "label": "ایمیل",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "bad@",
+      "pendingValue": null,
+      "error": "INPUT.ERROR_EMAIL"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "ایمیل",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_invalid",
+      "ts": 1790000000000,
+      "seq": 6,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "email",
+       "reason": "format"
+      },
+      "node_id": "e1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 6,
+      "type": "input_invalid",
+      "t": 1790000000000,
+      "node": "e1",
+      "ref": "type"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "  Ali@Example.COM "
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "e1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "ایمیل"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "e1",
+      "stage": "typing",
+      "inputType": "email",
+      "label": "ایمیل",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "  Ali@Example.COM ",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "ایمیل",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "p1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تلفن"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "p1",
+      "stage": "typing",
+      "inputType": "phone",
+      "label": "تلفن",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تلفن",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000000,
+      "seq": 7,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "email",
+       "length": 15,
+       "confirmed": false,
+       "saved_to": "conversation_attribute"
+      },
+      "node_id": "e1",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 8,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "e1",
+       "handle": "next",
+       "via": "next",
+       "depth": 3,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "p1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 7,
+      "type": "input_submit",
+      "t": 1790000000000,
+      "node": "e1"
+     },
+     {
+      "seq": 8,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "p1",
+      "from": "e1",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "0912"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "p1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تلفن"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "p1",
+      "stage": "typing",
+      "inputType": "phone",
+      "label": "تلفن",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "0912",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تلفن",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "p1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تلفن"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "p1",
+      "stage": "typing",
+      "inputType": "phone",
+      "label": "تلفن",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "0912",
+      "pendingValue": null,
+      "error": "INPUT.ERROR_PHONE"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تلفن",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_invalid",
+      "ts": 1790000000000,
+      "seq": 9,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "phone",
+       "reason": "format"
+      },
+      "node_id": "p1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 9,
+      "type": "input_invalid",
+      "t": 1790000000000,
+      "node": "p1",
+      "ref": "type"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "۰۹۱۲-۳۴۵ ۶۷۸۹"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "p1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تلفن"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "p1",
+      "stage": "typing",
+      "inputType": "phone",
+      "label": "تلفن",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "۰۹۱۲-۳۴۵ ۶۷۸۹",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تلفن",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "n1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تعداد"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "n1",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "تعداد",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": 1,
+      "max": 100,
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تعداد",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000000,
+      "seq": 10,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "phone",
+       "length": 11,
+       "confirmed": false,
+       "saved_to": "contact_phone"
+      },
+      "node_id": "p1",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 11,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "p1",
+       "handle": "next",
+       "via": "next",
+       "depth": 4,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "n1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 10,
+      "type": "input_submit",
+      "t": 1790000000000,
+      "node": "p1"
+     },
+     {
+      "seq": 11,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "n1",
+      "from": "p1",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "abc"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "n1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تعداد"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "n1",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "تعداد",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": 1,
+      "max": 100,
+      "value": "abc",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تعداد",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "n1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تعداد"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "n1",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "تعداد",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": 1,
+      "max": 100,
+      "value": "abc",
+      "pendingValue": null,
+      "error": "INPUT.ERROR_NUMBER"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تعداد",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_invalid",
+      "ts": 1790000000000,
+      "seq": 12,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "number",
+       "reason": "format"
+      },
+      "node_id": "n1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 12,
+      "type": "input_invalid",
+      "t": 1790000000000,
+      "node": "n1",
+      "ref": "type"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "۰"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "n1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تعداد"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "n1",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "تعداد",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": 1,
+      "max": 100,
+      "value": "۰",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تعداد",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "n1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تعداد"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "n1",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "تعداد",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": 1,
+      "max": 100,
+      "value": "۰",
+      "pendingValue": null,
+      "error": "INPUT.ERROR_NUMBER_MIN:{\"min\":1}"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تعداد",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_invalid",
+      "ts": 1790000000000,
+      "seq": 13,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "number",
+       "reason": "min"
+      },
+      "node_id": "n1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 13,
+      "type": "input_invalid",
+      "t": 1790000000000,
+      "node": "n1",
+      "ref": "range"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "۱۰۱"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "n1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تعداد"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "n1",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "تعداد",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": 1,
+      "max": 100,
+      "value": "۱۰۱",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تعداد",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "n1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تعداد"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "n1",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "تعداد",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": 1,
+      "max": 100,
+      "value": "۱۰۱",
+      "pendingValue": null,
+      "error": "INPUT.ERROR_NUMBER_MAX:{\"max\":100}"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تعداد",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_invalid",
+      "ts": 1790000000000,
+      "seq": 14,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "number",
+       "reason": "max"
+      },
+      "node_id": "n1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 14,
+      "type": "input_invalid",
+      "t": 1790000000000,
+      "node": "n1",
+      "ref": "range"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "۴۲"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "n1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تعداد"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "n1",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "تعداد",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": 1,
+      "max": 100,
+      "value": "۴۲",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تعداد",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "d1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تاریخ"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "d1",
+      "stage": "typing",
+      "inputType": "date",
+      "label": "تاریخ",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": "2026-01-01",
+      "max": "2026-12-31",
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تاریخ",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000000,
+      "seq": 15,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "number",
+       "length": 2,
+       "confirmed": false,
+       "saved_to": "conversation_attribute"
+      },
+      "node_id": "n1",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 16,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "n1",
+       "handle": "next",
+       "via": "next",
+       "depth": 5,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "d1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 15,
+      "type": "input_submit",
+      "t": 1790000000000,
+      "node": "n1"
+     },
+     {
+      "seq": 16,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "d1",
+      "from": "n1",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "2025-13-01"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "d1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تاریخ"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "d1",
+      "stage": "typing",
+      "inputType": "date",
+      "label": "تاریخ",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": "2026-01-01",
+      "max": "2026-12-31",
+      "value": "2025-13-01",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تاریخ",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "d1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تاریخ"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "d1",
+      "stage": "typing",
+      "inputType": "date",
+      "label": "تاریخ",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": "2026-01-01",
+      "max": "2026-12-31",
+      "value": "2025-13-01",
+      "pendingValue": null,
+      "error": "INPUT.ERROR_DATE"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تاریخ",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_invalid",
+      "ts": 1790000000000,
+      "seq": 17,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "date",
+       "reason": "format"
+      },
+      "node_id": "d1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 17,
+      "type": "input_invalid",
+      "t": 1790000000000,
+      "node": "d1",
+      "ref": "type"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "2025-12-31"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "d1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تاریخ"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "d1",
+      "stage": "typing",
+      "inputType": "date",
+      "label": "تاریخ",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": "2026-01-01",
+      "max": "2026-12-31",
+      "value": "2025-12-31",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تاریخ",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "d1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تاریخ"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "d1",
+      "stage": "typing",
+      "inputType": "date",
+      "label": "تاریخ",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": "2026-01-01",
+      "max": "2026-12-31",
+      "value": "2025-12-31",
+      "pendingValue": null,
+      "error": "INPUT.ERROR_DATE"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تاریخ",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_invalid",
+      "ts": 1790000000000,
+      "seq": 18,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "date",
+       "reason": "min"
+      },
+      "node_id": "d1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 18,
+      "type": "input_invalid",
+      "t": 1790000000000,
+      "node": "d1",
+      "ref": "range"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "۲۰۲۶-۰۲-۳۰"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "d1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تاریخ"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "d1",
+      "stage": "typing",
+      "inputType": "date",
+      "label": "تاریخ",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": "2026-01-01",
+      "max": "2026-12-31",
+      "value": "۲۰۲۶-۰۲-۳۰",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تاریخ",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "d1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تاریخ"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "d1",
+      "stage": "typing",
+      "inputType": "date",
+      "label": "تاریخ",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": "2026-01-01",
+      "max": "2026-12-31",
+      "value": "۲۰۲۶-۰۲-۳۰",
+      "pendingValue": null,
+      "error": "INPUT.ERROR_DATE"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تاریخ",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_invalid",
+      "ts": 1790000000000,
+      "seq": 19,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "date",
+       "reason": "format"
+      },
+      "node_id": "d1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 19,
+      "type": "input_invalid",
+      "t": 1790000000000,
+      "node": "d1",
+      "ref": "type"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "2026-06-15"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "d1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "تاریخ"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "d1",
+      "stage": "typing",
+      "inputType": "date",
+      "label": "تاریخ",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": "2026-01-01",
+      "max": "2026-12-31",
+      "value": "2026-06-15",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "تاریخ",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ  ›  سایت",
+     "blocks": [
+      {
+       "key": "6:0",
+       "nodeId": "u1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "سایت"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "u1",
+      "stage": "typing",
+      "inputType": "url",
+      "label": "سایت",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "سایت",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "dt": "2026-06-15",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1",
+     "u1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ > سایت",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      },
+      "d1": {
+       "variable": "dt",
+       "label": "تاریخ",
+       "value": "2026-06-15",
+       "display": "2026-06-15",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000000,
+      "seq": 20,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "date",
+       "length": 10,
+       "confirmed": false,
+       "saved_to": "conversation_attribute"
+      },
+      "node_id": "d1",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 21,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "d1",
+       "handle": "next",
+       "via": "next",
+       "depth": 6,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "u1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 20,
+      "type": "input_submit",
+      "t": 1790000000000,
+      "node": "d1"
+     },
+     {
+      "seq": 21,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "u1",
+      "from": "d1",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "ftp://x"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ  ›  سایت",
+     "blocks": [
+      {
+       "key": "6:0",
+       "nodeId": "u1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "سایت"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "u1",
+      "stage": "typing",
+      "inputType": "url",
+      "label": "سایت",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "ftp://x",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "سایت",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "dt": "2026-06-15",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1",
+     "u1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ > سایت",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      },
+      "d1": {
+       "variable": "dt",
+       "label": "تاریخ",
+       "value": "2026-06-15",
+       "display": "2026-06-15",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ  ›  سایت",
+     "blocks": [
+      {
+       "key": "6:0",
+       "nodeId": "u1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "سایت"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "u1",
+      "stage": "typing",
+      "inputType": "url",
+      "label": "سایت",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "ftp://x",
+      "pendingValue": null,
+      "error": "INPUT.ERROR_URL"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "سایت",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "dt": "2026-06-15",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1",
+     "u1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ > سایت",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      },
+      "d1": {
+       "variable": "dt",
+       "label": "تاریخ",
+       "value": "2026-06-15",
+       "display": "2026-06-15",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_invalid",
+      "ts": 1790000000000,
+      "seq": 22,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "url",
+       "reason": "format"
+      },
+      "node_id": "u1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 22,
+      "type": "input_invalid",
+      "t": 1790000000000,
+      "node": "u1",
+      "ref": "type"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "https://هدهد.test/path"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ  ›  سایت",
+     "blocks": [
+      {
+       "key": "6:0",
+       "nodeId": "u1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "سایت"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "u1",
+      "stage": "typing",
+      "inputType": "url",
+      "label": "سایت",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "https://هدهد.test/path",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "سایت",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "dt": "2026-06-15",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1",
+     "u1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ > سایت",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      },
+      "d1": {
+       "variable": "dt",
+       "label": "تاریخ",
+       "value": "2026-06-15",
+       "display": "2026-06-15",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ  ›  سایت  ›  توضیح",
+     "blocks": [
+      {
+       "key": "7:0",
+       "nodeId": "l1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "توضیح"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "l1",
+      "stage": "typing",
+      "inputType": "longtext",
+      "label": "توضیح",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "maxLength": 30,
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "توضیح",
+     "focusKey": "f6"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "dt": "2026-06-15",
+     "site": "https://هدهد.test/path",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1",
+     "u1",
+     "l1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ > سایت > توضیح",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      },
+      "d1": {
+       "variable": "dt",
+       "label": "تاریخ",
+       "value": "2026-06-15",
+       "display": "2026-06-15",
+       "saveTo": "conversation_attribute"
+      },
+      "u1": {
+       "variable": "site",
+       "label": "سایت",
+       "value": "https://هدهد.test/path",
+       "display": "https://هدهد.test/path",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000000,
+      "seq": 23,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "url",
+       "length": 22,
+       "confirmed": false,
+       "saved_to": "conversation_attribute"
+      },
+      "node_id": "u1",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 24,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "u1",
+       "handle": "next",
+       "via": "next",
+       "depth": 7,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "l1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 23,
+      "type": "input_submit",
+      "t": 1790000000000,
+      "node": "u1"
+     },
+     {
+      "seq": 24,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "l1",
+      "from": "u1",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "سلام\nدنیا"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ  ›  سایت  ›  توضیح",
+     "blocks": [
+      {
+       "key": "7:0",
+       "nodeId": "l1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "توضیح"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "l1",
+      "stage": "typing",
+      "inputType": "longtext",
+      "label": "توضیح",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "maxLength": 30,
+      "value": "سلام\nدنیا",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "توضیح",
+     "focusKey": "f6"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "dt": "2026-06-15",
+     "site": "https://هدهد.test/path",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1",
+     "u1",
+     "l1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ > سایت > توضیح",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      },
+      "d1": {
+       "variable": "dt",
+       "label": "تاریخ",
+       "value": "2026-06-15",
+       "display": "2026-06-15",
+       "saveTo": "conversation_attribute"
+      },
+      "u1": {
+       "variable": "site",
+       "label": "سایت",
+       "value": "https://هدهد.test/path",
+       "display": "https://هدهد.test/path",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ایمیل  ›  تلفن  ›  تعداد  ›  تاریخ  ›  سایت  ›  توضیح",
+     "blocks": [
+      {
+       "key": "8:0",
+       "nodeId": "m",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "ali@example.com|09123456789|42|2026-06-15|https://هدهد.test/path|سلام\nدنیا"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "terminal",
+      "variant": "info",
+      "primaryRestart": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": true
+     },
+     "announce": "ali@example.com|09123456789|42|2026-06-15|https://هدهد.test/path|سلام دنیا",
+     "focusKey": "f7"
+    },
+    "variables": {
+     "em": "ali@example.com",
+     "ph": "09123456789",
+     "cnt": "42",
+     "dt": "2026-06-15",
+     "site": "https://هدهد.test/path",
+     "desc": "سلام\nدنیا",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "e1",
+     "p1",
+     "n1",
+     "d1",
+     "u1",
+     "l1",
+     "m"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ایمیل > تلفن > تعداد > تاریخ > سایت > توضیح",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "e1": {
+       "variable": "em",
+       "label": "ایمیل",
+       "value": "ali@example.com",
+       "display": "ali@example.com",
+       "saveTo": "conversation_attribute"
+      },
+      "p1": {
+       "variable": "ph",
+       "label": "تلفن",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "contact_phone"
+      },
+      "n1": {
+       "variable": "cnt",
+       "label": "تعداد",
+       "value": "42",
+       "display": "42",
+       "saveTo": "conversation_attribute"
+      },
+      "d1": {
+       "variable": "dt",
+       "label": "تاریخ",
+       "value": "2026-06-15",
+       "display": "2026-06-15",
+       "saveTo": "conversation_attribute"
+      },
+      "u1": {
+       "variable": "site",
+       "label": "سایت",
+       "value": "https://هدهد.test/path",
+       "display": "https://هدهد.test/path",
+       "saveTo": "conversation_attribute"
+      },
+      "l1": {
+       "variable": "desc",
+       "label": "توضیح",
+       "value": "سلام\nدنیا",
+       "display": "سلام\nدنیا",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000000,
+      "seq": 25,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "longtext",
+       "length": 9,
+       "confirmed": false,
+       "saved_to": "conversation_attribute"
+      },
+      "node_id": "l1",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 26,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "l1",
+       "handle": "next",
+       "via": "next",
+       "depth": 8,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "m",
+      "kind": "message"
+     },
+     {
+      "name": "flow_resolved",
+      "ts": 1790000000000,
+      "seq": 27,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "via": "implicit_end"
+      },
+      "node_id": "m",
+      "kind": "message"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 25,
+      "type": "input_submit",
+      "t": 1790000000000,
+      "node": "l1"
+     },
+     {
+      "seq": 26,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "m",
+      "from": "l1",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 27,
+      "type": "flow_resolved",
+      "t": 1790000000000,
+      "node": "m",
+      "ref": "implicit_end",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  }
+ ]
+}

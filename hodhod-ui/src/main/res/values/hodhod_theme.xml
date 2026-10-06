@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Isolated from the host app theme; day/night is decided in Compose (HodhodConfig.darkMode). -->
+    <style name="Theme.Hodhod" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/hodhod_window_bg</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+    <!-- Keep generated widget strings looked up by name at runtime (R8 resource shrinking). -->
+</resources>

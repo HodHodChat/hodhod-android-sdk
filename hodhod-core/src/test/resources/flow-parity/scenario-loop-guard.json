@@ -1,0 +1,4190 @@
+{
+ "name": "loop-guard",
+ "description": "goto cycle between pass-through nodes trips the chain guard into a dead end",
+ "flow": {
+  "schema": 2,
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T"
+    }
+   },
+   {
+    "id": "a",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "action",
+     "actions": []
+    }
+   },
+   {
+    "id": "g",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "goto",
+     "targetId": "a"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_a",
+    "source": "t",
+    "target": "a",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_a_g",
+    "source": "a",
+    "target": "g",
+    "sourceHandle": null
+   }
+  ],
+  "require_flow": false,
+  "menu_order": [],
+  "settings": {},
+  "revision": 3
+ },
+ "options": {
+  "context": {
+   "now": "2026-10-03T10:00:00Z",
+   "utcOffset": "+00:00",
+   "businessOpen": true,
+   "agentsOnline": true,
+   "locale": "fa",
+   "pageUrl": "https://shop.test/pricing?x=1",
+   "device": "desktop",
+   "returning": false,
+   "contact": {
+    "name": "",
+    "email": "",
+    "phone": ""
+   },
+   "inboxId": 3,
+   "botId": 7,
+   "referrerHost": ""
+  },
+  "flowId": 7,
+  "revision": 3,
+  "bot": null,
+  "instant": true,
+  "persist": false,
+  "sessionId": "s-1",
+  "agent": [
+   "ok"
+  ],
+  "webhooks": {}
+ },
+ "doc": {
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "a",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "action",
+     "actions": []
+    }
+   },
+   {
+    "id": "g",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "goto",
+     "targetId": "a"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_a",
+    "source": "t",
+    "target": "a",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_a_g",
+    "source": "a",
+    "target": "g",
+    "sourceHandle": null
+   }
+  ],
+  "menu_order": [],
+  "require_flow": false,
+  "revision": 3
+ },
+ "actions": [
+  {
+   "action": {
+    "op": "start"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t",
+        "label": "T",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f0"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "default"
+      }
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "open"
+     },
+     {
+      "seq": 2,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "deadend",
+      "text": "DEAD_END_TEXT"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a",
+     "g",
+     "a"
+    ],
+    "handoffState": null,
+    "flowPath": "T",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 3,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t",
+       "index": 1,
+       "label": "T"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 4,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 5,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": true,
+       "revisit": false
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 6,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 7,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 3,
+       "passthrough": true,
+       "revisit": false
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 8,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 4,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 9,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 10,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 5,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 11,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 6,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 12,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 13,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 7,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 14,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 8,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 15,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 16,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 9,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 17,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 10,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 18,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 19,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 11,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 20,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 12,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 21,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 22,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 13,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 23,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 14,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 24,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 25,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 15,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 26,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 16,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 27,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 28,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 17,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 29,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 18,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 30,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 31,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 19,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 32,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 20,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 33,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 34,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 21,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 35,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 22,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 36,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 37,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 23,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 38,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 24,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 39,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 40,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 25,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 41,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 26,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 42,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 43,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 27,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 44,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 28,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 45,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 46,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 29,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 47,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 30,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 48,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 49,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 31,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 50,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 32,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 51,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 52,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 33,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 53,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 34,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 54,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 55,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 35,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 56,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 36,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 57,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 58,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 37,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 59,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 38,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 60,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 61,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 39,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 62,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 40,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 63,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 64,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 41,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 65,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 42,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 66,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 67,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 43,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 68,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 44,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 69,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 70,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 45,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 71,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 46,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 72,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 73,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 47,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 74,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 48,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 75,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 76,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 49,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 77,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 50,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 78,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 79,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 51,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 80,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 52,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 81,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 82,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 53,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 83,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 54,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 84,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 85,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 55,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 86,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 56,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 87,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 88,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 57,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 89,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 58,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 90,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 91,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 59,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 92,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 60,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 93,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 94,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 61,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 95,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 62,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 96,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 97,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 63,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 98,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 64,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 99,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 100,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 65,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 101,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 66,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 102,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 103,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 67,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 104,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 68,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 105,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 106,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 69,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 107,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 70,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 108,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 109,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 71,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 110,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 72,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 111,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 112,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 73,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 113,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 74,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 114,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 115,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 75,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 116,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 76,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 117,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 118,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 77,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 119,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 78,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 120,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 121,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 79,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 122,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 80,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 123,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 124,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 81,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 125,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 82,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 126,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 127,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 83,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 128,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 84,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 129,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 130,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 85,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 131,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 86,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 132,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 133,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 87,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 134,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 88,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 135,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 136,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 89,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 137,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 90,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 138,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 139,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 91,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 140,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 92,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 141,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 142,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 93,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 143,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 94,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 144,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 145,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 95,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 146,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 96,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 147,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 148,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 97,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 149,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 98,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 150,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 151,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a",
+       "handle": "next",
+       "via": "auto",
+       "depth": 99,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "g",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 152,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g",
+       "handle": "next",
+       "via": "goto",
+       "depth": 100,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "action_applied",
+      "ts": 1790000000000,
+      "seq": 153,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "action_types": [],
+       "deferred": true
+      },
+      "node_id": "a",
+      "kind": "action"
+     },
+     {
+      "name": "dead_end",
+      "ts": 1790000000000,
+      "seq": 154,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "handle": "next"
+      },
+      "node_id": "a",
+      "kind": "action"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 3,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t"
+     },
+     {
+      "seq": 4,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 5,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "t",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     },
+     {
+      "seq": 7,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 8,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 10,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 11,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 13,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 14,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 16,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 17,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 19,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 20,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 22,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 23,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 25,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 26,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 28,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 29,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 31,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 32,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 34,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 35,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 37,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 38,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 40,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 41,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 43,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 44,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 46,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 47,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 49,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 50,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 52,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 53,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 55,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 56,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 58,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 59,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 61,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 62,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 64,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 65,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 67,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 68,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 70,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 71,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 73,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 74,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 76,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 77,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 79,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 80,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 82,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 83,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 85,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 86,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 88,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 89,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 91,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 92,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 94,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 95,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 97,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 98,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 100,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 101,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 103,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 104,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 106,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 107,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 109,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 110,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 112,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 113,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 115,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 116,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 118,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 119,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 121,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 122,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 124,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 125,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 127,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 128,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 130,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 131,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 133,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 134,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 136,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 137,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 139,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 140,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 142,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 143,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 145,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 146,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 148,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 149,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 151,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g",
+      "from": "a",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 152,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a",
+      "from": "g",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 154,
+      "type": "dead_end",
+      "t": 1790000000000,
+      "node": "a",
+      "ref": "next"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  }
+ ]
+}

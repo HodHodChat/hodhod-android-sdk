@@ -1,0 +1,1764 @@
+{
+ "name": "goto-targets",
+ "description": "goto to a node, to $menu, to a note (dead end) and a missing target",
+ "flow": {
+  "schema": 2,
+  "nodes": [
+   {
+    "id": "t1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "اول"
+    }
+   },
+   {
+    "id": "t2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "دوم"
+    }
+   },
+   {
+    "id": "t3",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "سوم"
+    }
+   },
+   {
+    "id": "t4",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "چهارم"
+    }
+   },
+   {
+    "id": "g1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "goto",
+     "targetId": "dest"
+    }
+   },
+   {
+    "id": "dest",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "مقصد"
+    }
+   },
+   {
+    "id": "g2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "goto",
+     "targetId": "$menu"
+    }
+   },
+   {
+    "id": "g3",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "goto",
+     "targetId": "note1"
+    }
+   },
+   {
+    "id": "note1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "note",
+     "label": "یادداشت",
+     "color": "amber"
+    }
+   },
+   {
+    "id": "g4",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "goto",
+     "targetId": "missing"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t1_g1",
+    "source": "t1",
+    "target": "g1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_t2_g2",
+    "source": "t2",
+    "target": "g2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_t3_g3",
+    "source": "t3",
+    "target": "g3",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_t4_g4",
+    "source": "t4",
+    "target": "g4",
+    "sourceHandle": null
+   }
+  ],
+  "require_flow": false,
+  "menu_order": [],
+  "settings": {
+   "welcome": "منو"
+  },
+  "revision": 3
+ },
+ "options": {
+  "context": {
+   "now": "2026-10-03T10:00:00Z",
+   "utcOffset": "+00:00",
+   "businessOpen": true,
+   "agentsOnline": true,
+   "locale": "fa",
+   "pageUrl": "https://shop.test/pricing?x=1",
+   "device": "desktop",
+   "returning": false,
+   "contact": {
+    "name": "",
+    "email": "",
+    "phone": ""
+   },
+   "inboxId": 3,
+   "botId": 7,
+   "referrerHost": ""
+  },
+  "flowId": 7,
+  "revision": 3,
+  "bot": null,
+  "instant": true,
+  "persist": false,
+  "sessionId": "s-1",
+  "agent": [
+   "none"
+  ],
+  "webhooks": {}
+ },
+ "doc": {
+  "nodes": [
+   {
+    "id": "t1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "اول",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "t2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "دوم",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "t3",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "سوم",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "t4",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "چهارم",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "g1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "goto",
+     "targetId": "dest"
+    }
+   },
+   {
+    "id": "dest",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "مقصد",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "g2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "goto",
+     "targetId": "$menu"
+    }
+   },
+   {
+    "id": "g3",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "goto",
+     "targetId": "note1"
+    }
+   },
+   {
+    "id": "note1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "note",
+     "label": "یادداشت",
+     "color": "amber"
+    }
+   },
+   {
+    "id": "g4",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "goto",
+     "targetId": "missing"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t1_g1",
+    "source": "t1",
+    "target": "g1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_t2_g2",
+    "source": "t2",
+    "target": "g2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_t3_g3",
+    "source": "t3",
+    "target": "g3",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_t4_g4",
+    "source": "t4",
+    "target": "g4",
+    "sourceHandle": null
+   }
+  ],
+  "menu_order": [],
+  "require_flow": false,
+  "revision": 3
+ },
+ "actions": [
+  {
+   "action": {
+    "op": "start"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [
+      {
+       "key": "welcome:1",
+       "nodeId": "$menu",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "منو"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t1",
+        "label": "اول",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       },
+       {
+        "id": "t2",
+        "label": "دوم",
+        "emoji": "",
+        "index": 2,
+        "kind": "topic"
+       },
+       {
+        "id": "t3",
+        "label": "سوم",
+        "emoji": "",
+        "index": 3,
+        "kind": "topic"
+       },
+       {
+        "id": "t4",
+        "label": "چهارم",
+        "emoji": "",
+        "index": 4,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "منو",
+     "focusKey": "f0"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "default"
+      }
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "open"
+     },
+     {
+      "seq": 2,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t1"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "اول",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "dest",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "مقصد"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "terminal",
+      "variant": "info",
+      "primaryRestart": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": true
+     },
+     "announce": "مقصد",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t1",
+     "g1",
+     "dest"
+    ],
+    "handoffState": null,
+    "flowPath": "اول",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 3,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t1",
+       "index": 1,
+       "label": "اول"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 4,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t1",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 5,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t1",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": true,
+       "revisit": false
+      },
+      "node_id": "g1",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 6,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g1",
+       "handle": "next",
+       "via": "goto",
+       "depth": 3,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "dest",
+      "kind": "message"
+     },
+     {
+      "name": "flow_resolved",
+      "ts": 1790000000000,
+      "seq": 7,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "via": "implicit_end"
+      },
+      "node_id": "dest",
+      "kind": "message"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 3,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t1"
+     },
+     {
+      "seq": 4,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t1",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 5,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g1",
+      "from": "t1",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     },
+     {
+      "seq": 6,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "dest",
+      "from": "g1",
+      "ref": "next",
+      "auto": true
+     },
+     {
+      "seq": 7,
+      "type": "flow_resolved",
+      "t": 1790000000000,
+      "node": "dest",
+      "ref": "implicit_end",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "restart"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [
+      {
+       "key": "welcome:2",
+       "nodeId": "$menu",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "منو"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t1",
+        "label": "اول",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       },
+       {
+        "id": "t2",
+        "label": "دوم",
+        "emoji": "",
+        "index": 2,
+        "kind": "topic"
+       },
+       {
+        "id": "t3",
+        "label": "سوم",
+        "emoji": "",
+        "index": 3,
+        "kind": "topic"
+       },
+       {
+        "id": "t4",
+        "label": "چهارم",
+        "emoji": "",
+        "index": 4,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "منو",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "restart",
+      "ts": 1790000000000,
+      "seq": 8,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "dest",
+       "via": "nav"
+      },
+      "node_id": "dest",
+      "kind": "message"
+     },
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "restart"
+      }
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "dest",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 8,
+      "type": "restart",
+      "t": 1790000000000,
+      "node": "dest",
+      "ref": "nav",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "restart"
+     },
+     {
+      "seq": 2,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "from": "dest",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t2"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [
+      {
+       "key": "welcome:3",
+       "nodeId": "$menu",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "منو"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t1",
+        "label": "اول",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       },
+       {
+        "id": "t2",
+        "label": "دوم",
+        "emoji": "",
+        "index": 2,
+        "kind": "topic"
+       },
+       {
+        "id": "t3",
+        "label": "سوم",
+        "emoji": "",
+        "index": 3,
+        "kind": "topic"
+       },
+       {
+        "id": "t4",
+        "label": "چهارم",
+        "emoji": "",
+        "index": 4,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "منو",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 3,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t2",
+       "index": 2,
+       "label": "دوم"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 4,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t2",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 5,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t2",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": true,
+       "revisit": false
+      },
+      "node_id": "g2",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 6,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g2",
+       "handle": "next",
+       "via": "goto",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 3,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t2"
+     },
+     {
+      "seq": 4,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t2",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 5,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g2",
+      "from": "t2",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     },
+     {
+      "seq": 6,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "from": "g2",
+      "ref": "next",
+      "auto": true
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t3"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "سوم",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "deadend",
+      "text": "DEAD_END_TEXT"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t3",
+     "g3"
+    ],
+    "handoffState": null,
+    "flowPath": "سوم",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 7,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t3",
+       "index": 3,
+       "label": "سوم"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 8,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t3",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 9,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t3",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": true,
+       "revisit": false
+      },
+      "node_id": "g3",
+      "kind": "goto"
+     },
+     {
+      "name": "dead_end",
+      "ts": 1790000000000,
+      "seq": 10,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "handle": "next"
+      },
+      "node_id": "g3",
+      "kind": "goto"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 7,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t3"
+     },
+     {
+      "seq": 8,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t3",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 9,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g3",
+      "from": "t3",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     },
+     {
+      "seq": 10,
+      "type": "dead_end",
+      "t": 1790000000000,
+      "node": "g3",
+      "ref": "next"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "restart"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [
+      {
+       "key": "welcome:4",
+       "nodeId": "$menu",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "منو"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t1",
+        "label": "اول",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       },
+       {
+        "id": "t2",
+        "label": "دوم",
+        "emoji": "",
+        "index": 2,
+        "kind": "topic"
+       },
+       {
+        "id": "t3",
+        "label": "سوم",
+        "emoji": "",
+        "index": 3,
+        "kind": "topic"
+       },
+       {
+        "id": "t4",
+        "label": "چهارم",
+        "emoji": "",
+        "index": 4,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "منو",
+     "focusKey": "f6"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "restart",
+      "ts": 1790000000000,
+      "seq": 11,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g3",
+       "via": "nav"
+      },
+      "node_id": "g3",
+      "kind": "goto"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 12,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "g3",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 11,
+      "type": "restart",
+      "t": 1790000000000,
+      "node": "g3",
+      "ref": "nav"
+     },
+     {
+      "seq": 12,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "from": "g3",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t4"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "چهارم",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "deadend",
+      "text": "DEAD_END_TEXT"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f7"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t4",
+     "g4"
+    ],
+    "handoffState": null,
+    "flowPath": "چهارم",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 13,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t4",
+       "index": 4,
+       "label": "چهارم"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 14,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t4",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 15,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t4",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": true,
+       "revisit": false
+      },
+      "node_id": "g4",
+      "kind": "goto"
+     },
+     {
+      "name": "dead_end",
+      "ts": 1790000000000,
+      "seq": 16,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "handle": "next"
+      },
+      "node_id": "g4",
+      "kind": "goto"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 13,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t4"
+     },
+     {
+      "seq": 14,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t4",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 15,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "g4",
+      "from": "t4",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     },
+     {
+      "seq": 16,
+      "type": "dead_end",
+      "t": 1790000000000,
+      "node": "g4",
+      "ref": "next"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "requestAgent",
+    "reason": "dead_end"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "چهارم",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "agent",
+      "variant": "connecting",
+      "label": "",
+      "ticket": false
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f7"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "00000000-0000-4000-8000-000000000001",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t4",
+     "g4"
+    ],
+    "handoffState": "requested",
+    "flowPath": "چهارم",
+    "session": {
+     "id": "00000000-0000-4000-8000-000000000001",
+     "restarts": 1
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "handoff_request",
+      "ts": 1790000000000,
+      "seq": 17,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "reason": "dead_end"
+      },
+      "node_id": "g4",
+      "kind": "goto"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 17,
+      "type": "handoff_request",
+      "t": 1790000000000,
+      "node": "g4",
+      "ref": "dead_end"
+     }
+    ],
+    "agentCalls": [
+     {
+      "reason": "dead_end",
+      "teamId": null,
+      "ticket": false,
+      "flowPath": "چهارم",
+      "summary": {
+       "steps": [
+        {
+         "id": "t4",
+         "k": "topic",
+         "l": "چهارم"
+        }
+       ]
+      },
+      "trace": [
+       {
+        "n": "t4"
+       },
+       {
+        "n": "g4"
+       }
+      ],
+      "vars": {},
+      "sessionId": "00000000-0000-4000-8000-000000000001",
+      "revision": 3
+     }
+    ],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  }
+ ]
+}

@@ -1,0 +1,1244 @@
+{
+ "name": "e2e-greeting-choice-input-condition-live",
+ "description": "same flow, big amount goes to the live agent branch",
+ "flow": {
+  "schema": 2,
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "مشکل دارم",
+     "prompt": "سلام! مشکل شما چیست؟"
+    }
+   },
+   {
+    "id": "c",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "choice",
+     "label": "کدام بخش؟",
+     "variable": "area",
+     "options": [
+      {
+       "id": "pay",
+       "label": "پرداخت",
+       "value": "payment"
+      },
+      {
+       "id": "acc",
+       "label": "حساب"
+      }
+     ]
+    }
+   },
+   {
+    "id": "i",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "مبلغ را وارد کنید",
+     "inputType": "number",
+     "variable": "amount",
+     "min": 0
+    }
+   },
+   {
+    "id": "cond",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "condition",
+     "rules": [
+      {
+       "id": "big",
+       "type": "variable",
+       "variable": "amount",
+       "operator": "gt",
+       "value": "1000"
+      }
+     ]
+    }
+   },
+   {
+    "id": "live",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "agent",
+     "teamId": 2
+    }
+   },
+   {
+    "id": "tk",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "agent",
+     "mode": "ticket",
+     "ticketMessage": "تیکت شما ثبت شد",
+     "ticketSubject": "{{area}} {{amount}}"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_c",
+    "source": "t",
+    "target": "c",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c_i_pay",
+    "source": "c",
+    "target": "i",
+    "sourceHandle": "pay"
+   },
+   {
+    "id": "e_c_i_acc",
+    "source": "c",
+    "target": "i",
+    "sourceHandle": "acc"
+   },
+   {
+    "id": "e_i_cond",
+    "source": "i",
+    "target": "cond",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_cond_live_big",
+    "source": "cond",
+    "target": "live",
+    "sourceHandle": "big"
+   },
+   {
+    "id": "e_cond_tk_else",
+    "source": "cond",
+    "target": "tk",
+    "sourceHandle": "else"
+   }
+  ],
+  "require_flow": false,
+  "menu_order": [],
+  "settings": {
+   "welcome": "به هدهد خوش آمدید",
+   "botName": "هدهد"
+  },
+  "revision": 3
+ },
+ "options": {
+  "context": {
+   "now": "2026-10-03T10:00:00Z",
+   "utcOffset": "+00:00",
+   "businessOpen": true,
+   "agentsOnline": true,
+   "locale": "fa",
+   "pageUrl": "https://shop.test/pricing?x=1",
+   "device": "desktop",
+   "returning": false,
+   "contact": {
+    "name": "",
+    "email": "",
+    "phone": ""
+   },
+   "inboxId": 3,
+   "botId": 7,
+   "referrerHost": ""
+  },
+  "flowId": 7,
+  "revision": 3,
+  "bot": null,
+  "instant": true,
+  "persist": false,
+  "sessionId": "s-1",
+  "agent": [
+   "ok"
+  ],
+  "webhooks": {}
+ },
+ "doc": {
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "مشکل دارم",
+     "prompt": "سلام! مشکل شما چیست؟",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "c",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "choice",
+     "label": "کدام بخش؟",
+     "variable": "area",
+     "options": [
+      {
+       "id": "pay",
+       "label": "پرداخت",
+       "value": "payment"
+      },
+      {
+       "id": "acc",
+       "label": "حساب"
+      }
+     ],
+     "multiple": false,
+     "style": "list",
+     "allowOther": false
+    }
+   },
+   {
+    "id": "i",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "مبلغ را وارد کنید",
+     "inputType": "number",
+     "variable": "amount",
+     "min": 0,
+     "required": true,
+     "confirm": false,
+     "saveTo": "conversation_attribute"
+    }
+   },
+   {
+    "id": "cond",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "condition",
+     "rules": [
+      {
+       "id": "big",
+       "type": "variable",
+       "variable": "amount",
+       "operator": "gt",
+       "value": "1000"
+      }
+     ]
+    }
+   },
+   {
+    "id": "live",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "agent",
+     "teamId": 2
+    }
+   },
+   {
+    "id": "tk",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "agent",
+     "mode": "ticket",
+     "ticketMessage": "تیکت شما ثبت شد",
+     "ticketSubject": "{{area}} {{amount}}"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_c",
+    "source": "t",
+    "target": "c",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c_i_pay",
+    "source": "c",
+    "target": "i",
+    "sourceHandle": "pay"
+   },
+   {
+    "id": "e_c_i_acc",
+    "source": "c",
+    "target": "i",
+    "sourceHandle": "acc"
+   },
+   {
+    "id": "e_i_cond",
+    "source": "i",
+    "target": "cond",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_cond_live_big",
+    "source": "cond",
+    "target": "live",
+    "sourceHandle": "big"
+   },
+   {
+    "id": "e_cond_tk_else",
+    "source": "cond",
+    "target": "tk",
+    "sourceHandle": "else"
+   }
+  ],
+  "menu_order": [],
+  "require_flow": false,
+  "revision": 3
+ },
+ "actions": [
+  {
+   "action": {
+    "op": "start"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": null
+     },
+     "breadcrumb": "",
+     "blocks": [
+      {
+       "key": "welcome:1",
+       "nodeId": "$menu",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "به هدهد خوش آمدید"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t",
+        "label": "مشکل دارم",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "به هدهد خوش آمدید",
+     "focusKey": "f0"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "default"
+      }
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "open"
+     },
+     {
+      "seq": 2,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": null
+     },
+     "breadcrumb": "مشکل دارم  ›  کدام بخش؟",
+     "blocks": [
+      {
+       "key": "1:0",
+       "nodeId": "t",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "سلام! مشکل شما چیست؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      },
+      {
+       "key": "2:0",
+       "nodeId": "c",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "کدام بخش؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "choice",
+      "nodeId": "c",
+      "style": "list",
+      "allowOther": false,
+      "otherLabel": "OTHER",
+      "otherValue": "",
+      "options": [
+       {
+        "id": "pay",
+        "label": "پرداخت",
+        "index": 1
+       },
+       {
+        "id": "acc",
+        "label": "حساب",
+        "index": 2
+       }
+      ],
+      "otherOpen": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "کدام بخش؟",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c"
+    ],
+    "handoffState": null,
+    "flowPath": "مشکل دارم > کدام بخش؟",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 3,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t",
+       "index": 1,
+       "label": "مشکل دارم"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 4,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 5,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "c",
+      "kind": "choice"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 3,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t"
+     },
+     {
+      "seq": 4,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 5,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "c",
+      "from": "t",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "chooseOption",
+    "id": "acc"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": null
+     },
+     "breadcrumb": "مشکل دارم  ›  کدام بخش؟  ›  حساب  ›  مبلغ را وارد کنید",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "i",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "مبلغ را وارد کنید"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "مبلغ را وارد کنید",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": 0,
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "مبلغ را وارد کنید",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "area": "حساب",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c",
+     "i"
+    ],
+    "handoffState": null,
+    "flowPath": "مشکل دارم > کدام بخش؟ > حساب > مبلغ را وارد کنید",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "c": {
+       "variable": "area",
+       "label": "کدام بخش؟",
+       "value": "حساب",
+       "display": "حساب",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {
+      "c": "حساب"
+     },
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 6,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "choice",
+       "option_id": "acc",
+       "index": 2,
+       "label": "حساب"
+      },
+      "node_id": "c",
+      "kind": "choice"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 7,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "c",
+       "handle": "acc",
+       "via": "next",
+       "depth": 3,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "i",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 6,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "c",
+      "ref": "acc"
+     },
+     {
+      "seq": 7,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "i",
+      "from": "c",
+      "ref": "acc",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "۲۵۰۰۰"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": null
+     },
+     "breadcrumb": "مشکل دارم  ›  کدام بخش؟  ›  حساب  ›  مبلغ را وارد کنید",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "i",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "مبلغ را وارد کنید"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "مبلغ را وارد کنید",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "min": 0,
+      "value": "۲۵۰۰۰",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "مبلغ را وارد کنید",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "area": "حساب",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c",
+     "i"
+    ],
+    "handoffState": null,
+    "flowPath": "مشکل دارم > کدام بخش؟ > حساب > مبلغ را وارد کنید",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "c": {
+       "variable": "area",
+       "label": "کدام بخش؟",
+       "value": "حساب",
+       "display": "حساب",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {
+      "c": "حساب"
+     },
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": null
+     },
+     "breadcrumb": "مشکل دارم  ›  کدام بخش؟  ›  حساب  ›  مبلغ را وارد کنید",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "agent",
+      "variant": "connecting",
+      "label": "",
+      "ticket": false
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "area": "حساب",
+     "amount": "25000",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c",
+     "i",
+     "cond",
+     "live"
+    ],
+    "handoffState": "created",
+    "flowPath": "مشکل دارم > کدام بخش؟ > حساب > مبلغ را وارد کنید",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "c": {
+       "variable": "area",
+       "label": "کدام بخش؟",
+       "value": "حساب",
+       "display": "حساب",
+       "saveTo": "conversation_attribute"
+      },
+      "i": {
+       "variable": "amount",
+       "label": "مبلغ را وارد کنید",
+       "value": "25000",
+       "display": "25000",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {
+      "c": "حساب"
+     },
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000000,
+      "seq": 8,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "number",
+       "length": 5,
+       "confirmed": false,
+       "saved_to": "conversation_attribute"
+      },
+      "node_id": "i",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 9,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "i",
+       "handle": "next",
+       "via": "next",
+       "depth": 4,
+       "passthrough": true,
+       "revisit": false
+      },
+      "node_id": "cond",
+      "kind": "condition"
+     },
+     {
+      "name": "condition_eval",
+      "ts": 1790000000000,
+      "seq": 10,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "matched": "big",
+       "rule_type": "variable"
+      },
+      "node_id": "cond",
+      "kind": "condition"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 11,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "cond",
+       "handle": "big",
+       "via": "auto",
+       "depth": 5,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "live",
+      "kind": "agent"
+     },
+     {
+      "name": "handoff_request",
+      "ts": 1790000000000,
+      "seq": 12,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "reason": "agent_node"
+      },
+      "node_id": "live",
+      "kind": "agent"
+     },
+     {
+      "name": "handoff_created",
+      "ts": 1790000000000,
+      "seq": 13,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "conversation_id": 42,
+       "reason": "agent_node",
+       "kind": "live",
+       "elapsed_ms": 0
+      },
+      "node_id": "live",
+      "kind": "agent"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 8,
+      "type": "input_submit",
+      "t": 1790000000000,
+      "node": "i"
+     },
+     {
+      "seq": 9,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "cond",
+      "from": "i",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     },
+     {
+      "seq": 10,
+      "type": "condition_eval",
+      "t": 1790000000000,
+      "node": "cond",
+      "ref": "big"
+     },
+     {
+      "seq": 11,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "live",
+      "from": "cond",
+      "ref": "big",
+      "auto": true
+     },
+     {
+      "seq": 12,
+      "type": "handoff_request",
+      "t": 1790000000000,
+      "node": "live",
+      "ref": "agent_node",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [
+     {
+      "reason": "agent_node",
+      "teamId": 2,
+      "ticket": false,
+      "flowPath": "مشکل دارم > کدام بخش؟ > حساب > مبلغ را وارد کنید",
+      "summary": {
+       "steps": [
+        {
+         "id": "t",
+         "k": "topic",
+         "l": "مشکل دارم"
+        },
+        {
+         "id": "c",
+         "k": "choice",
+         "l": "کدام بخش؟",
+         "pick": "حساب"
+        },
+        {
+         "id": "i",
+         "k": "input",
+         "l": "مبلغ را وارد کنید",
+         "pick": "25000"
+        }
+       ]
+      },
+      "trace": [
+       {
+        "n": "t"
+       },
+       {
+        "n": "c",
+        "h": "acc"
+       },
+       {
+        "n": "i"
+       },
+       {
+        "n": "cond",
+        "h": "big"
+       },
+       {
+        "n": "live"
+       }
+      ],
+      "vars": {
+       "area": "حساب",
+       "amount": "25000"
+      },
+      "sessionId": "s-1",
+      "revision": 3
+     }
+    ],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  }
+ ]
+}

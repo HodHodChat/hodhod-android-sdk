@@ -1,0 +1,712 @@
+{
+ "cases": [
+  {
+   "triggers": {},
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": true,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "visitor": "new"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "visitor": "returning"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": true,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "hours": "open"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": true,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "hours": "closed"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "locales": [
+     "fa"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": true,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "locales": [
+     "en",
+     "de"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "locales": [
+     "fa_ir"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": true,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "contains",
+      "value": "/pricing",
+      "mode": "show",
+      "startTopicId": "tp"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": true,
+   "startTopicId": "tp",
+   "via": "url_rule",
+   "ruleId": "u1"
+  },
+  {
+   "triggers": {
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "contains",
+      "value": "/nope",
+      "mode": "show"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "starts_with",
+      "value": "https://shop",
+      "mode": "hide"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "regex",
+      "value": "/plans\\?x=1$/",
+      "mode": "show",
+      "startTopicId": "rx"
+     },
+     {
+      "id": "u2",
+      "match": "ends_with",
+      "value": "#h",
+      "mode": "show",
+      "startTopicId": "z"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": true,
+   "startTopicId": "z",
+   "via": "url_rule",
+   "ruleId": "u2"
+  },
+  {
+   "triggers": {
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "equals",
+      "value": "https://SHOP.test/pricing/plans?x=1#h",
+      "mode": "show"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": true,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "contains",
+      "value": "",
+      "mode": "show"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "visitor": "returning",
+    "hours": "open",
+    "locales": [
+     "fa"
+    ],
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "contains",
+      "value": "plans",
+      "mode": "show",
+      "startTopicId": "go"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "show": true,
+   "startTopicId": "go",
+   "via": "url_rule",
+   "ruleId": "u1"
+  },
+  {
+   "triggers": {},
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": true,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "visitor": "new"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": true,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "visitor": "returning"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "hours": "open"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "hours": "closed"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": true,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "locales": [
+     "fa"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "locales": [
+     "en",
+     "de"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": true,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "locales": [
+     "fa_ir"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "contains",
+      "value": "/pricing",
+      "mode": "show",
+      "startTopicId": "tp"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "contains",
+      "value": "/nope",
+      "mode": "show"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "starts_with",
+      "value": "https://shop",
+      "mode": "hide"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": true,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "regex",
+      "value": "/plans\\?x=1$/",
+      "mode": "show",
+      "startTopicId": "rx"
+     },
+     {
+      "id": "u2",
+      "match": "ends_with",
+      "value": "#h",
+      "mode": "show",
+      "startTopicId": "z"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "equals",
+      "value": "https://SHOP.test/pricing/plans?x=1#h",
+      "mode": "show"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "contains",
+      "value": "",
+      "mode": "show"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  },
+  {
+   "triggers": {
+    "visitor": "returning",
+    "hours": "open",
+    "locales": [
+     "fa"
+    ],
+    "urlRules": [
+     {
+      "id": "u1",
+      "match": "contains",
+      "value": "plans",
+      "mode": "show",
+      "startTopicId": "go"
+     }
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": false,
+    "agentsOnline": false,
+    "locale": "en",
+    "pageUrl": "https://other.test/",
+    "device": "desktop",
+    "returning": false
+   },
+   "show": false,
+   "startTopicId": null,
+   "via": "default",
+   "ruleId": null
+  }
+ ]
+}

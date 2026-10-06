@@ -1,0 +1,882 @@
+{
+ "name": "webhook-error-branches",
+ "description": "webhook failure reasons (timeout) -> error branch with default/custom message; network rejection -> config",
+ "flow": {
+  "schema": 2,
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T"
+    }
+   },
+   {
+    "id": "w1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "webhook",
+     "label": "صبر کنید"
+    }
+   },
+   {
+    "id": "w2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "webhook",
+     "errorMessage": "خطای سفارشی"
+    }
+   },
+   {
+    "id": "ok",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "ok"
+    }
+   },
+   {
+    "id": "bad",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "bad1"
+    }
+   },
+   {
+    "id": "bad2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "bad2"
+    }
+   },
+   {
+    "id": "fin",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "end",
+     "label": "fin"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_w1",
+    "source": "t",
+    "target": "w1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_w1_ok_success",
+    "source": "w1",
+    "target": "ok",
+    "sourceHandle": "success"
+   },
+   {
+    "id": "e_w1_w2_error",
+    "source": "w1",
+    "target": "w2",
+    "sourceHandle": "error"
+   },
+   {
+    "id": "e_w2_bad2_error",
+    "source": "w2",
+    "target": "bad2",
+    "sourceHandle": "error"
+   },
+   {
+    "id": "e_w2_ok_success",
+    "source": "w2",
+    "target": "ok",
+    "sourceHandle": "success"
+   },
+   {
+    "id": "e_bad2_fin",
+    "source": "bad2",
+    "target": "fin",
+    "sourceHandle": null
+   }
+  ],
+  "require_flow": false,
+  "menu_order": [],
+  "settings": {},
+  "revision": 3
+ },
+ "options": {
+  "context": {
+   "now": "2026-10-03T10:00:00Z",
+   "utcOffset": "+00:00",
+   "businessOpen": true,
+   "agentsOnline": true,
+   "locale": "fa",
+   "pageUrl": "https://shop.test/pricing?x=1",
+   "device": "desktop",
+   "returning": false,
+   "contact": {
+    "name": "",
+    "email": "",
+    "phone": ""
+   },
+   "inboxId": 3,
+   "botId": 7,
+   "referrerHost": ""
+  },
+  "flowId": 7,
+  "revision": 3,
+  "bot": null,
+  "instant": true,
+  "persist": false,
+  "sessionId": "s-1",
+  "agent": [
+   "ok"
+  ],
+  "webhooks": {
+   "w1": [
+    {
+     "ok": false,
+     "status": "error",
+     "reason": "timeout"
+    }
+   ],
+   "w2": [
+    "reject"
+   ]
+  }
+ },
+ "doc": {
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "w1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "webhook",
+     "label": "صبر کنید",
+     "method": "GET",
+     "headers": [],
+     "mappings": [],
+     "timeoutMs": 5000,
+     "cacheSeconds": 0
+    }
+   },
+   {
+    "id": "w2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "webhook",
+     "errorMessage": "خطای سفارشی",
+     "method": "GET",
+     "headers": [],
+     "mappings": [],
+     "timeoutMs": 5000,
+     "cacheSeconds": 0
+    }
+   },
+   {
+    "id": "ok",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "ok",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "bad",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "bad1",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "bad2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "bad2",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "fin",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "end",
+     "label": "fin",
+     "then": "stay"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_w1",
+    "source": "t",
+    "target": "w1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_w1_ok_success",
+    "source": "w1",
+    "target": "ok",
+    "sourceHandle": "success"
+   },
+   {
+    "id": "e_w1_w2_error",
+    "source": "w1",
+    "target": "w2",
+    "sourceHandle": "error"
+   },
+   {
+    "id": "e_w2_bad2_error",
+    "source": "w2",
+    "target": "bad2",
+    "sourceHandle": "error"
+   },
+   {
+    "id": "e_w2_ok_success",
+    "source": "w2",
+    "target": "ok",
+    "sourceHandle": "success"
+   },
+   {
+    "id": "e_bad2_fin",
+    "source": "bad2",
+    "target": "fin",
+    "sourceHandle": null
+   }
+  ],
+  "menu_order": [],
+  "require_flow": false,
+  "revision": 3
+ },
+ "actions": [
+  {
+   "action": {
+    "op": "start"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t",
+        "label": "T",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f0"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "default"
+      }
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "open"
+     },
+     {
+      "seq": 2,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "w1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "WEBHOOK.ERROR"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      },
+      {
+       "key": "3:0",
+       "nodeId": "w2",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "خطای سفارشی"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      },
+      {
+       "key": "4:0",
+       "nodeId": "bad2",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "bad2"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "continue",
+      "nodeId": "bad2",
+      "label": "CONTINUE"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "bad2",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "w1",
+     "w2",
+     "bad2"
+    ],
+    "handoffState": null,
+    "flowPath": "T",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 3,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t",
+       "index": 1,
+       "label": "T"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 4,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 5,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": true,
+       "revisit": false
+      },
+      "node_id": "w1",
+      "kind": "webhook"
+     },
+     {
+      "name": "webhook_call",
+      "ts": 1790000000000,
+      "seq": 6,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "status": "error",
+       "reason": "timeout",
+       "duration_ms": 0,
+       "cached": false
+      },
+      "node_id": "w1",
+      "kind": "webhook"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 7,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "w1",
+       "handle": "error",
+       "via": "auto",
+       "depth": 3,
+       "passthrough": true,
+       "revisit": false
+      },
+      "node_id": "w2",
+      "kind": "webhook"
+     },
+     {
+      "name": "webhook_call",
+      "ts": 1790000000000,
+      "seq": 8,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "status": "error",
+       "reason": "config",
+       "duration_ms": 0,
+       "cached": false
+      },
+      "node_id": "w2",
+      "kind": "webhook"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 9,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "w2",
+       "handle": "error",
+       "via": "auto",
+       "depth": 4,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "bad2",
+      "kind": "message"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 3,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t"
+     },
+     {
+      "seq": 4,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 5,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "w1",
+      "from": "t",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     },
+     {
+      "seq": 6,
+      "type": "webhook_call",
+      "t": 1790000000000,
+      "node": "w1",
+      "ok": false,
+      "ref": "timeout",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 7,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "w2",
+      "from": "w1",
+      "ref": "error",
+      "auto": true
+     },
+     {
+      "seq": 8,
+      "type": "webhook_call",
+      "t": 1790000000000,
+      "node": "w2",
+      "ok": false,
+      "ref": "other",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 9,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "bad2",
+      "from": "w2",
+      "ref": "error",
+      "auto": true
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [
+     {
+      "nodeId": "w1",
+      "vars": {}
+     },
+     {
+      "nodeId": "w2",
+      "vars": {}
+     }
+    ],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "goBack"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t",
+        "label": "T",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "back",
+      "ts": 1790000000000,
+      "seq": 10,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "bad2",
+       "to_node_id": null
+      },
+      "node_id": "bad2",
+      "kind": "message"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 11,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "bad2",
+       "handle": "next",
+       "via": "back",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 10,
+      "type": "back",
+      "t": 1790000000000,
+      "node": "bad2",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  }
+ ]
+}

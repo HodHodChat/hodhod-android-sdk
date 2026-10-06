@@ -1,0 +1,1842 @@
+{
+ "name": "menu-basic",
+ "description": "welcome + topics + subtopic + question/answer, back and start over",
+ "flow": {
+  "schema": 2,
+  "nodes": [
+   {
+    "id": "t1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "پرداخت",
+     "prompt": "کدام مورد؟",
+     "emoji": "💳"
+    }
+   },
+   {
+    "id": "t2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "حساب > کاربری"
+    }
+   },
+   {
+    "id": "s1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "subtopic",
+     "label": "کارمزد",
+     "prompt": "درباره کارمزد"
+    }
+   },
+   {
+    "id": "q1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "question",
+     "label": "کارمزد چقدر است؟"
+    }
+   },
+   {
+    "id": "a1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "answer",
+     "label": "کارمزد **۰٫۲ درصد** است.",
+     "feedback": "off"
+    }
+   },
+   {
+    "id": "q2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "question",
+     "label": "چطور واریز کنم؟"
+    }
+   },
+   {
+    "id": "a2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "answer",
+     "label": "از بخش واریز.",
+     "feedback": "off"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t1_s1",
+    "source": "t1",
+    "target": "s1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_s1_q1",
+    "source": "s1",
+    "target": "q1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_s1_q2",
+    "source": "s1",
+    "target": "q2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_q1_a1",
+    "source": "q1",
+    "target": "a1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_q2_a2",
+    "source": "q2",
+    "target": "a2",
+    "sourceHandle": null
+   }
+  ],
+  "require_flow": false,
+  "menu_order": [],
+  "settings": {
+   "welcome": "سلام! چه کمکی می‌خواهید؟",
+   "botName": "هدهد"
+  },
+  "revision": 3
+ },
+ "options": {
+  "context": {
+   "now": "2026-10-03T10:00:00Z",
+   "utcOffset": "+00:00",
+   "businessOpen": true,
+   "agentsOnline": true,
+   "locale": "fa",
+   "pageUrl": "https://shop.test/pricing?x=1",
+   "device": "desktop",
+   "returning": false,
+   "contact": {
+    "name": "",
+    "email": "",
+    "phone": ""
+   },
+   "inboxId": 3,
+   "botId": 7,
+   "referrerHost": ""
+  },
+  "flowId": 7,
+  "revision": 3,
+  "bot": {
+   "name": "Bot",
+   "avatar_url": "https://cdn.test/a.png"
+  },
+  "instant": true,
+  "persist": false,
+  "sessionId": "s-1",
+  "agent": [
+   "ok"
+  ],
+  "webhooks": {}
+ },
+ "doc": {
+  "nodes": [
+   {
+    "id": "t1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "پرداخت",
+     "prompt": "کدام مورد؟",
+     "emoji": "💳",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "t2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "حساب > کاربری",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "s1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "subtopic",
+     "label": "کارمزد",
+     "prompt": "درباره کارمزد"
+    }
+   },
+   {
+    "id": "q1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "question",
+     "label": "کارمزد چقدر است؟"
+    }
+   },
+   {
+    "id": "a1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "answer",
+     "label": "کارمزد **۰٫۲ درصد** است.",
+     "feedback": "off"
+    }
+   },
+   {
+    "id": "q2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "question",
+     "label": "چطور واریز کنم؟"
+    }
+   },
+   {
+    "id": "a2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "answer",
+     "label": "از بخش واریز.",
+     "feedback": "off"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t1_s1",
+    "source": "t1",
+    "target": "s1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_s1_q1",
+    "source": "s1",
+    "target": "q1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_s1_q2",
+    "source": "s1",
+    "target": "q2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_q1_a1",
+    "source": "q1",
+    "target": "a1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_q2_a2",
+    "source": "q2",
+    "target": "a2",
+    "sourceHandle": null
+   }
+  ],
+  "menu_order": [],
+  "require_flow": false,
+  "revision": 3
+ },
+ "actions": [
+  {
+   "action": {
+    "op": "start"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": "https://cdn.test/a.png"
+     },
+     "breadcrumb": "",
+     "blocks": [
+      {
+       "key": "welcome:1",
+       "nodeId": "$menu",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "سلام! چه کمکی می‌خواهید؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t1",
+        "label": "پرداخت",
+        "emoji": "💳",
+        "index": 1,
+        "kind": "topic"
+       },
+       {
+        "id": "t2",
+        "label": "حساب > کاربری",
+        "emoji": "",
+        "index": 2,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "سلام! چه کمکی می‌خواهید؟",
+     "focusKey": "f0"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "default"
+      }
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "open"
+     },
+     {
+      "seq": 2,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t1"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": "https://cdn.test/a.png"
+     },
+     "breadcrumb": "پرداخت",
+     "blocks": [
+      {
+       "key": "1:0",
+       "nodeId": "t1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "کدام مورد؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "s1",
+        "label": "کارمزد",
+        "emoji": "",
+        "index": 1,
+        "kind": "subtopic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "کدام مورد؟",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t1"
+    ],
+    "handoffState": null,
+    "flowPath": "پرداخت",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 3,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t1",
+       "index": 1,
+       "label": "پرداخت"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 4,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t1",
+      "kind": "topic"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 3,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t1"
+     },
+     {
+      "seq": 4,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t1",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "s1"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": "https://cdn.test/a.png"
+     },
+     "breadcrumb": "پرداخت  ›  کارمزد",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "s1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "درباره کارمزد"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "q1",
+        "label": "کارمزد چقدر است؟",
+        "emoji": "",
+        "index": 1,
+        "kind": "question"
+       },
+       {
+        "id": "q2",
+        "label": "چطور واریز کنم؟",
+        "emoji": "",
+        "index": 2,
+        "kind": "question"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "درباره کارمزد",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t1",
+     "s1"
+    ],
+    "handoffState": null,
+    "flowPath": "پرداخت > کارمزد",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 5,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "subtopic",
+       "option_id": "s1",
+       "index": 1,
+       "label": "کارمزد"
+      },
+      "node_id": "t1",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 6,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t1",
+       "handle": "next",
+       "via": "menu",
+       "depth": 2,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "s1",
+      "kind": "subtopic"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 5,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "t1",
+      "ref": "s1"
+     },
+     {
+      "seq": 6,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "s1",
+      "from": "t1",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "q1"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": "https://cdn.test/a.png"
+     },
+     "breadcrumb": "پرداخت  ›  کارمزد  ›  کارمزد چقدر است؟",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "a1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "کارمزد "
+          },
+          {
+           "type": "strong",
+           "children": [
+            {
+             "type": "text",
+             "value": "۰٫۲ درصد"
+            }
+           ]
+          },
+          {
+           "type": "text",
+           "value": " است."
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "terminal",
+      "variant": "info",
+      "primaryRestart": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": true
+     },
+     "announce": "کارمزد ۰٫۲ درصد است.",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t1",
+     "s1",
+     "q1",
+     "a1"
+    ],
+    "handoffState": null,
+    "flowPath": "پرداخت > کارمزد > کارمزد چقدر است؟",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 7,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "question",
+       "option_id": "q1",
+       "index": 1,
+       "label": "کارمزد چقدر است؟"
+      },
+      "node_id": "s1",
+      "kind": "subtopic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 8,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "s1",
+       "handle": "next",
+       "via": "menu",
+       "depth": 3,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "q1",
+      "kind": "question"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 9,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "q1",
+       "handle": "next",
+       "via": "auto",
+       "depth": 4,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "a1",
+      "kind": "answer"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 7,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "s1",
+      "ref": "q1"
+     },
+     {
+      "seq": 8,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "q1",
+      "from": "s1",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 9,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a1",
+      "from": "q1",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "goBack"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": "https://cdn.test/a.png"
+     },
+     "breadcrumb": "پرداخت  ›  کارمزد",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "s1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "درباره کارمزد"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "q1",
+        "label": "کارمزد چقدر است؟",
+        "emoji": "",
+        "index": 1,
+        "kind": "question"
+       },
+       {
+        "id": "q2",
+        "label": "چطور واریز کنم؟",
+        "emoji": "",
+        "index": 2,
+        "kind": "question"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "درباره کارمزد",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t1",
+     "s1"
+    ],
+    "handoffState": null,
+    "flowPath": "پرداخت > کارمزد",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "back",
+      "ts": 1790000000000,
+      "seq": 10,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a1",
+       "to_node_id": "s1"
+      },
+      "node_id": "a1",
+      "kind": "answer"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 11,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a1",
+       "handle": "next",
+       "via": "back",
+       "depth": 2,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "s1",
+      "kind": "subtopic"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 10,
+      "type": "back",
+      "t": 1790000000000,
+      "node": "a1",
+      "ref": "s1",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "goBack"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": "https://cdn.test/a.png"
+     },
+     "breadcrumb": "پرداخت",
+     "blocks": [
+      {
+       "key": "1:0",
+       "nodeId": "t1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "کدام مورد؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "s1",
+        "label": "کارمزد",
+        "emoji": "",
+        "index": 1,
+        "kind": "subtopic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "کدام مورد؟",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t1"
+    ],
+    "handoffState": null,
+    "flowPath": "پرداخت",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "back",
+      "ts": 1790000000000,
+      "seq": 12,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "s1",
+       "to_node_id": "t1"
+      },
+      "node_id": "s1",
+      "kind": "subtopic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 13,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "s1",
+       "handle": "next",
+       "via": "back",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "t1",
+      "kind": "topic"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 12,
+      "type": "back",
+      "t": 1790000000000,
+      "node": "s1",
+      "ref": "t1",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "s1"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": "https://cdn.test/a.png"
+     },
+     "breadcrumb": "پرداخت  ›  کارمزد",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "s1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "درباره کارمزد"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "q1",
+        "label": "کارمزد چقدر است؟",
+        "emoji": "",
+        "index": 1,
+        "kind": "question"
+       },
+       {
+        "id": "q2",
+        "label": "چطور واریز کنم؟",
+        "emoji": "",
+        "index": 2,
+        "kind": "question"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "درباره کارمزد",
+     "focusKey": "f6"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t1",
+     "s1"
+    ],
+    "handoffState": null,
+    "flowPath": "پرداخت > کارمزد",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 14,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "subtopic",
+       "option_id": "s1",
+       "index": 1,
+       "label": "کارمزد"
+      },
+      "node_id": "t1",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 15,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t1",
+       "handle": "next",
+       "via": "menu",
+       "depth": 2,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "s1",
+      "kind": "subtopic"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 14,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "t1",
+      "ref": "s1"
+     },
+     {
+      "seq": 15,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "s1",
+      "from": "t1",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "q2"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": "https://cdn.test/a.png"
+     },
+     "breadcrumb": "پرداخت  ›  کارمزد  ›  چطور واریز کنم؟",
+     "blocks": [
+      {
+       "key": "7:0",
+       "nodeId": "a2",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "از بخش واریز."
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "terminal",
+      "variant": "info",
+      "primaryRestart": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": true
+     },
+     "announce": "از بخش واریز.",
+     "focusKey": "f7"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t1",
+     "s1",
+     "q2",
+     "a2"
+    ],
+    "handoffState": null,
+    "flowPath": "پرداخت > کارمزد > چطور واریز کنم؟",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 16,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "question",
+       "option_id": "q2",
+       "index": 2,
+       "label": "چطور واریز کنم؟"
+      },
+      "node_id": "s1",
+      "kind": "subtopic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 17,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "s1",
+       "handle": "next",
+       "via": "menu",
+       "depth": 3,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "q2",
+      "kind": "question"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 18,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "q2",
+       "handle": "next",
+       "via": "auto",
+       "depth": 4,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "a2",
+      "kind": "answer"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 16,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "s1",
+      "ref": "q2"
+     },
+     {
+      "seq": 17,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "q2",
+      "from": "s1",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 18,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "a2",
+      "from": "q2",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "restart"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": "https://cdn.test/a.png"
+     },
+     "breadcrumb": "",
+     "blocks": [
+      {
+       "key": "welcome:2",
+       "nodeId": "$menu",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "سلام! چه کمکی می‌خواهید؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t1",
+        "label": "پرداخت",
+        "emoji": "💳",
+        "index": 1,
+        "kind": "topic"
+       },
+       {
+        "id": "t2",
+        "label": "حساب > کاربری",
+        "emoji": "",
+        "index": 2,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "سلام! چه کمکی می‌خواهید؟",
+     "focusKey": "f8"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "restart",
+      "ts": 1790000000000,
+      "seq": 19,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a2",
+       "via": "nav"
+      },
+      "node_id": "a2",
+      "kind": "answer"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 20,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "a2",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 19,
+      "type": "restart",
+      "t": 1790000000000,
+      "node": "a2",
+      "ref": "nav",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 20,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "from": "a2",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t2"
+   },
+   "expect": {
+    "view": {
+     "identity": {
+      "name": "هدهد",
+      "avatarUrl": "https://cdn.test/a.png"
+     },
+     "breadcrumb": "حساب › کاربری",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "deadend",
+      "text": "DEAD_END_TEXT"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f9"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "هدهد",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t2"
+    ],
+    "handoffState": null,
+    "flowPath": "حساب › کاربری",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 21,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t2",
+       "index": 2,
+       "label": "حساب > کاربری"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 22,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t2",
+      "kind": "topic"
+     },
+     {
+      "name": "dead_end",
+      "ts": 1790000000000,
+      "seq": 23,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "handle": "next"
+      },
+      "node_id": "t2",
+      "kind": "topic"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 21,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t2"
+     },
+     {
+      "seq": 22,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t2",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 23,
+      "type": "dead_end",
+      "t": 1790000000000,
+      "node": "t2",
+      "ref": "next"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  }
+ ]
+}

@@ -1,0 +1,1576 @@
+{
+ "name": "choice-single-other",
+ "description": "single choice (value vs label), other option with free text, chips style, unknown option ignored",
+ "flow": {
+  "schema": 2,
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T"
+    }
+   },
+   {
+    "id": "c1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "choice",
+     "label": "ارز؟",
+     "variable": "coin",
+     "allowOther": true,
+     "otherLabel": "دیگر",
+     "options": [
+      {
+       "id": "o1",
+       "label": "تتر",
+       "value": "USDT"
+      },
+      {
+       "id": "o2",
+       "label": "بیت‌کوین"
+      }
+     ]
+    }
+   },
+   {
+    "id": "c2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "choice",
+     "label": "سبک؟",
+     "style": "chips",
+     "options": [
+      {
+       "id": "x1",
+       "label": "الف"
+      },
+      {
+       "id": "x2",
+       "label": "ب"
+      }
+     ]
+    }
+   },
+   {
+    "id": "m",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "coin={{coin}}"
+    }
+   },
+   {
+    "id": "m2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "chosen b"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_c1",
+    "source": "t",
+    "target": "c1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c1_c2_o1",
+    "source": "c1",
+    "target": "c2",
+    "sourceHandle": "o1"
+   },
+   {
+    "id": "e_c1_c2_o2",
+    "source": "c1",
+    "target": "c2",
+    "sourceHandle": "o2"
+   },
+   {
+    "id": "e_c1_c2_other",
+    "source": "c1",
+    "target": "c2",
+    "sourceHandle": "other"
+   },
+   {
+    "id": "e_c2_m_x1",
+    "source": "c2",
+    "target": "m",
+    "sourceHandle": "x1"
+   },
+   {
+    "id": "e_c2_m2_x2",
+    "source": "c2",
+    "target": "m2",
+    "sourceHandle": "x2"
+   },
+   {
+    "id": "e_m_m2",
+    "source": "m",
+    "target": "m2",
+    "sourceHandle": null
+   }
+  ],
+  "require_flow": false,
+  "menu_order": [],
+  "settings": {},
+  "revision": 3
+ },
+ "options": {
+  "context": {
+   "now": "2026-10-03T10:00:00Z",
+   "utcOffset": "+00:00",
+   "businessOpen": true,
+   "agentsOnline": true,
+   "locale": "fa",
+   "pageUrl": "https://shop.test/pricing?x=1",
+   "device": "desktop",
+   "returning": false,
+   "contact": {
+    "name": "",
+    "email": "",
+    "phone": ""
+   },
+   "inboxId": 3,
+   "botId": 7,
+   "referrerHost": ""
+  },
+  "flowId": 7,
+  "revision": 3,
+  "bot": null,
+  "instant": true,
+  "persist": false,
+  "sessionId": "s-1",
+  "agent": [
+   "ok"
+  ],
+  "webhooks": {}
+ },
+ "doc": {
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "c1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "choice",
+     "label": "ارز؟",
+     "variable": "coin",
+     "allowOther": true,
+     "otherLabel": "دیگر",
+     "options": [
+      {
+       "id": "o1",
+       "label": "تتر",
+       "value": "USDT"
+      },
+      {
+       "id": "o2",
+       "label": "بیت‌کوین"
+      }
+     ],
+     "multiple": false,
+     "style": "list"
+    }
+   },
+   {
+    "id": "c2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "choice",
+     "label": "سبک؟",
+     "style": "chips",
+     "options": [
+      {
+       "id": "x1",
+       "label": "الف"
+      },
+      {
+       "id": "x2",
+       "label": "ب"
+      }
+     ],
+     "multiple": false,
+     "allowOther": false
+    }
+   },
+   {
+    "id": "m",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "coin={{coin}}",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "chosen b",
+     "autoContinue": false
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_c1",
+    "source": "t",
+    "target": "c1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c1_c2_o1",
+    "source": "c1",
+    "target": "c2",
+    "sourceHandle": "o1"
+   },
+   {
+    "id": "e_c1_c2_o2",
+    "source": "c1",
+    "target": "c2",
+    "sourceHandle": "o2"
+   },
+   {
+    "id": "e_c1_c2_other",
+    "source": "c1",
+    "target": "c2",
+    "sourceHandle": "other"
+   },
+   {
+    "id": "e_c2_m_x1",
+    "source": "c2",
+    "target": "m",
+    "sourceHandle": "x1"
+   },
+   {
+    "id": "e_c2_m2_x2",
+    "source": "c2",
+    "target": "m2",
+    "sourceHandle": "x2"
+   },
+   {
+    "id": "e_m_m2",
+    "source": "m",
+    "target": "m2",
+    "sourceHandle": null
+   }
+  ],
+  "menu_order": [],
+  "require_flow": false,
+  "revision": 3
+ },
+ "actions": [
+  {
+   "action": {
+    "op": "start"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t",
+        "label": "T",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f0"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "default"
+      }
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "open"
+     },
+     {
+      "seq": 2,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ارز؟",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "c1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "ارز؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "choice",
+      "nodeId": "c1",
+      "style": "list",
+      "allowOther": true,
+      "otherLabel": "دیگر",
+      "otherValue": "",
+      "options": [
+       {
+        "id": "o1",
+        "label": "تتر",
+        "index": 1
+       },
+       {
+        "id": "o2",
+        "label": "بیت‌کوین",
+        "index": 2
+       }
+      ],
+      "otherOpen": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "ارز؟",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ارز؟",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 3,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t",
+       "index": 1,
+       "label": "T"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 4,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 5,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "c1",
+      "kind": "choice"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 3,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t"
+     },
+     {
+      "seq": 4,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 5,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "c1",
+      "from": "t",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "chooseOption",
+    "id": "nope"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ارز؟",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "c1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "ارز؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "choice",
+      "nodeId": "c1",
+      "style": "list",
+      "allowOther": true,
+      "otherLabel": "دیگر",
+      "otherValue": "",
+      "options": [
+       {
+        "id": "o1",
+        "label": "تتر",
+        "index": 1
+       },
+       {
+        "id": "o2",
+        "label": "بیت‌کوین",
+        "index": 2
+       }
+      ],
+      "otherOpen": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "ارز؟",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ارز؟",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "chooseOption",
+    "id": "other"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ارز؟",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "c1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "ارز؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "choice",
+      "nodeId": "c1",
+      "style": "list",
+      "allowOther": true,
+      "otherLabel": "دیگر",
+      "otherValue": "",
+      "options": [
+       {
+        "id": "o1",
+        "label": "تتر",
+        "index": 1
+       },
+       {
+        "id": "o2",
+        "label": "بیت‌کوین",
+        "index": 2
+       }
+      ],
+      "otherOpen": true
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "ارز؟",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ارز؟",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setOtherText",
+    "text": "  لایت‌کوین  "
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ارز؟",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "c1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "ارز؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "choice",
+      "nodeId": "c1",
+      "style": "list",
+      "allowOther": true,
+      "otherLabel": "دیگر",
+      "otherValue": "  لایت‌کوین  ",
+      "options": [
+       {
+        "id": "o1",
+        "label": "تتر",
+        "index": 1
+       },
+       {
+        "id": "o2",
+        "label": "بیت‌کوین",
+        "index": 2
+       }
+      ],
+      "otherOpen": true
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "ارز؟",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ارز؟",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitOther"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ارز؟  ›  دیگر  ›  سبک؟",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "c2",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "سبک؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "choice",
+      "nodeId": "c2",
+      "style": "chips",
+      "allowOther": false,
+      "otherLabel": "OTHER",
+      "otherValue": "",
+      "options": [
+       {
+        "id": "x1",
+        "label": "الف",
+        "index": 1
+       },
+       {
+        "id": "x2",
+        "label": "ب",
+        "index": 2
+       }
+      ],
+      "otherOpen": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "سبک؟",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "coin": "لایت‌کوین",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1",
+     "c2"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ارز؟ > دیگر > سبک؟",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "c1": {
+       "variable": "coin",
+       "label": "ارز؟",
+       "value": "لایت‌کوین",
+       "display": "لایت‌کوین",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {
+      "c1": "دیگر"
+     },
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 6,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "other",
+       "option_id": "other",
+       "index": 0,
+       "label": "دیگر"
+      },
+      "node_id": "c1",
+      "kind": "choice"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 7,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "c1",
+       "handle": "other",
+       "via": "next",
+       "depth": 3,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "c2",
+      "kind": "choice"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 6,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "c1",
+      "ref": "other"
+     },
+     {
+      "seq": 7,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "c2",
+      "from": "c1",
+      "ref": "other",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "goBack"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ارز؟",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "c1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "ارز؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "choice",
+      "nodeId": "c1",
+      "style": "list",
+      "allowOther": true,
+      "otherLabel": "دیگر",
+      "otherValue": "",
+      "options": [
+       {
+        "id": "o1",
+        "label": "تتر",
+        "index": 1
+       },
+       {
+        "id": "o2",
+        "label": "بیت‌کوین",
+        "index": 2
+       }
+      ],
+      "otherOpen": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "ارز؟",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ارز؟",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "back",
+      "ts": 1790000000000,
+      "seq": 8,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "c2",
+       "to_node_id": "c1"
+      },
+      "node_id": "c2",
+      "kind": "choice"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 9,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "c2",
+       "handle": "next",
+       "via": "back",
+       "depth": 2,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "c1",
+      "kind": "choice"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 8,
+      "type": "back",
+      "t": 1790000000000,
+      "node": "c2",
+      "ref": "c1",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "chooseOption",
+    "id": "o1"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ارز؟  ›  تتر  ›  سبک؟",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "c2",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "سبک؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "choice",
+      "nodeId": "c2",
+      "style": "chips",
+      "allowOther": false,
+      "otherLabel": "OTHER",
+      "otherValue": "",
+      "options": [
+       {
+        "id": "x1",
+        "label": "الف",
+        "index": 1
+       },
+       {
+        "id": "x2",
+        "label": "ب",
+        "index": 2
+       }
+      ],
+      "otherOpen": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "سبک؟",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "coin": "USDT",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1",
+     "c2"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ارز؟ > تتر > سبک؟",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "c1": {
+       "variable": "coin",
+       "label": "ارز؟",
+       "value": "USDT",
+       "display": "تتر",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {
+      "c1": "تتر"
+     },
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 10,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "choice",
+       "option_id": "o1",
+       "index": 1,
+       "label": "تتر"
+      },
+      "node_id": "c1",
+      "kind": "choice"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 11,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "c1",
+       "handle": "o1",
+       "via": "next",
+       "depth": 3,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "c2",
+      "kind": "choice"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 10,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "c1",
+      "ref": "o1"
+     },
+     {
+      "seq": 11,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "c2",
+      "from": "c1",
+      "ref": "o1",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "chooseOption",
+    "id": "x2"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  ارز؟  ›  تتر  ›  سبک؟  ›  ب",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "m2",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "chosen b"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "terminal",
+      "variant": "info",
+      "primaryRestart": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": true
+     },
+     "announce": "chosen b",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "coin": "USDT",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1",
+     "c2",
+     "m2"
+    ],
+    "handoffState": null,
+    "flowPath": "T > ارز؟ > تتر > سبک؟ > ب",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "c1": {
+       "variable": "coin",
+       "label": "ارز؟",
+       "value": "USDT",
+       "display": "تتر",
+       "saveTo": "conversation_attribute"
+      },
+      "c2": {
+       "variable": null,
+       "label": "سبک؟",
+       "value": "ب",
+       "display": "ب",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {
+      "c1": "تتر",
+      "c2": "ب"
+     },
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 12,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "choice",
+       "option_id": "x2",
+       "index": 2,
+       "label": "ب"
+      },
+      "node_id": "c2",
+      "kind": "choice"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 13,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "c2",
+       "handle": "x2",
+       "via": "next",
+       "depth": 4,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "m2",
+      "kind": "message"
+     },
+     {
+      "name": "flow_resolved",
+      "ts": 1790000000000,
+      "seq": 14,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "via": "implicit_end"
+      },
+      "node_id": "m2",
+      "kind": "message"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 12,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "c2",
+      "ref": "x2"
+     },
+     {
+      "seq": 13,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "m2",
+      "from": "c2",
+      "ref": "x2",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 14,
+      "type": "flow_resolved",
+      "t": 1790000000000,
+      "node": "m2",
+      "ref": "implicit_end",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  }
+ ]
+}

@@ -1,0 +1,3414 @@
+{
+ "cases": [
+  {
+   "rule": {
+    "type": "business_hours",
+    "operator": "is",
+    "value": "open"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "business_hours",
+    "value": "closed"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "agents_online",
+    "value": "no"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "agents_online",
+    "value": "yes"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "locale",
+    "operator": "is_one_of",
+    "value": [
+     "fa"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "locale",
+    "operator": "is_one_of",
+    "value": [
+     "en"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "locale",
+    "operator": "is_not_one_of",
+    "value": [
+     "en"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "locale",
+    "operator": "is_one_of",
+    "value": [
+     "f"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "locale",
+    "operator": "equals",
+    "value": [
+     "fa"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "contains",
+    "value": "PRICING"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "contains",
+    "value": "/pricing"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "equals",
+    "value": "/pricing/plans"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "starts_with",
+    "value": "https://shop"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "ends_with",
+    "value": "#h"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "not_contains",
+    "value": "nope"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "matches",
+    "value": "/plans\\?x=\\d/"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "matches",
+    "value": "/(a+)+$/"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "returning_visitor",
+    "value": "true"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "returning_visitor",
+    "value": true
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "returning_visitor",
+    "value": "false"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "device",
+    "value": [
+     "desktop"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "device",
+    "value": [
+     "mobile"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "weekday",
+    "value": [
+     "mon"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "weekday",
+    "value": [
+     "sat",
+     "sun"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "time_of_day",
+    "operator": "between",
+    "value": {
+     "from": "13:00",
+     "to": "14:30"
+    }
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "time_of_day",
+    "operator": "between",
+    "value": {
+     "from": "14:00",
+     "to": "14:01"
+    }
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "time_of_day",
+    "operator": "not_between",
+    "value": {
+     "from": "14:00",
+     "to": "15:00"
+    }
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "time_of_day",
+    "operator": "between",
+    "value": {
+     "from": "22:00",
+     "to": "06:00"
+    }
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "time_of_day",
+    "operator": "between",
+    "value": {
+     "from": "bad",
+     "to": "06:00"
+    }
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "gt",
+    "value": "5"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "gte",
+    "value": "۷"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "lt",
+    "value": "7"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "lte",
+    "value": "{{b}}"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "equals",
+    "value": "۷"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "s",
+    "operator": "equals",
+    "value": "علی"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "s",
+    "operator": "not_equals",
+    "value": "x"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "s",
+    "operator": "contains",
+    "value": "ل"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "s",
+    "operator": "not_contains",
+    "value": "ل"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "s",
+    "operator": "starts_with",
+    "value": "ع"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "s",
+    "operator": "ends_with",
+    "value": "ي"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "z",
+    "operator": "is_set"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "e",
+    "operator": "is_set"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "e",
+    "operator": "is_not_set"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "arr",
+    "operator": "contains",
+    "value": "b"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "arr",
+    "operator": "is_set"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "matches",
+    "value": "/^\\d$/"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "p",
+    "operator": "matches",
+    "value": "/^09\\d+$/"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "gt",
+    "value": ""
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "q",
+    "operator": "gt",
+    "value": "1"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "hex",
+    "operator": "gt",
+    "value": "10"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "unknown_op",
+    "value": "1"
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "nonsense",
+    "value": 1
+   },
+   "ctx": {
+    "now": "2026-10-05T10:30:00Z",
+    "utcOffset": "+03:30",
+    "businessOpen": true,
+    "agentsOnline": false,
+    "locale": "fa_IR",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "desktop",
+    "returning": true
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "business_hours",
+    "operator": "is",
+    "value": "open"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "business_hours",
+    "value": "closed"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "agents_online",
+    "value": "no"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "agents_online",
+    "value": "yes"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "locale",
+    "operator": "is_one_of",
+    "value": [
+     "fa"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "locale",
+    "operator": "is_one_of",
+    "value": [
+     "en"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "locale",
+    "operator": "is_not_one_of",
+    "value": [
+     "en"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "locale",
+    "operator": "is_one_of",
+    "value": [
+     "f"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "locale",
+    "operator": "equals",
+    "value": [
+     "fa"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "contains",
+    "value": "PRICING"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "contains",
+    "value": "/pricing"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "equals",
+    "value": "/pricing/plans"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "starts_with",
+    "value": "https://shop"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "ends_with",
+    "value": "#h"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "not_contains",
+    "value": "nope"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "matches",
+    "value": "/plans\\?x=\\d/"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "page_url",
+    "operator": "matches",
+    "value": "/(a+)+$/"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "returning_visitor",
+    "value": "true"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "returning_visitor",
+    "value": true
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "returning_visitor",
+    "value": "false"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "device",
+    "value": [
+     "desktop"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "device",
+    "value": [
+     "mobile"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "weekday",
+    "value": [
+     "mon"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "weekday",
+    "value": [
+     "sat",
+     "sun"
+    ]
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "time_of_day",
+    "operator": "between",
+    "value": {
+     "from": "13:00",
+     "to": "14:30"
+    }
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "time_of_day",
+    "operator": "between",
+    "value": {
+     "from": "14:00",
+     "to": "14:01"
+    }
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "time_of_day",
+    "operator": "not_between",
+    "value": {
+     "from": "14:00",
+     "to": "15:00"
+    }
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "time_of_day",
+    "operator": "between",
+    "value": {
+     "from": "22:00",
+     "to": "06:00"
+    }
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "time_of_day",
+    "operator": "between",
+    "value": {
+     "from": "bad",
+     "to": "06:00"
+    }
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "gt",
+    "value": "5"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "gte",
+    "value": "۷"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "lt",
+    "value": "7"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "lte",
+    "value": "{{b}}"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "equals",
+    "value": "۷"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "s",
+    "operator": "equals",
+    "value": "علی"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "s",
+    "operator": "not_equals",
+    "value": "x"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "s",
+    "operator": "contains",
+    "value": "ل"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "s",
+    "operator": "not_contains",
+    "value": "ل"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "s",
+    "operator": "starts_with",
+    "value": "ع"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "s",
+    "operator": "ends_with",
+    "value": "ي"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "z",
+    "operator": "is_set"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "e",
+    "operator": "is_set"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "e",
+    "operator": "is_not_set"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "arr",
+    "operator": "contains",
+    "value": "b"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "arr",
+    "operator": "is_set"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "matches",
+    "value": "/^\\d$/"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "p",
+    "operator": "matches",
+    "value": "/^09\\d+$/"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "gt",
+    "value": ""
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "q",
+    "operator": "gt",
+    "value": "1"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "hex",
+    "operator": "gt",
+    "value": "10"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": true
+  },
+  {
+   "rule": {
+    "type": "variable",
+    "variable": "a",
+    "operator": "unknown_op",
+    "value": "1"
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  },
+  {
+   "rule": {
+    "type": "nonsense",
+    "value": 1
+   },
+   "ctx": {
+    "now": "2026-10-03T22:30:00Z",
+    "utcOffset": "Asia/Tehran",
+    "businessOpen": false,
+    "agentsOnline": true,
+    "locale": "en",
+    "pageUrl": "https://shop.test/Pricing/plans?x=1#h",
+    "device": "mobile",
+    "returning": false
+   },
+   "vars": {
+    "a": "۷",
+    "b": "7",
+    "s": "علي",
+    "z": "v",
+    "e": "",
+    "arr": [
+     "a",
+     "b"
+    ],
+    "p": "۰۹۱۲۳",
+    "hex": "0x20",
+    "q": "abc"
+   },
+   "result": false
+  }
+ ]
+}

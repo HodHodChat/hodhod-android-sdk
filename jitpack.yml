@@ -1,0 +1,4 @@
+jdk:
+  - openjdk17
+install:
+  - ./gradlew -Pversion=$VERSION :hodhod-core:publishReleasePublicationToMavenLocal :hodhod-ui:publishReleasePublicationToMavenLocal -x test

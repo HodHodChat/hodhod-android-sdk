@@ -1,0 +1,233 @@
+{
+ "cases": [
+  {
+   "input": "/^\\d+$/",
+   "analysis": {
+    "ok": true
+   },
+   "compiles": true
+  },
+  {
+   "input": "/(a+)+$/",
+   "analysis": {
+    "ok": false,
+    "reason": "nested_quantifier"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/(a|aa)*$/",
+   "analysis": {
+    "ok": false,
+    "reason": "nested_quantifier"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/(?:ab|cd){1,3}/",
+   "analysis": {
+    "ok": false,
+    "reason": "nested_quantifier"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/(?=x)/",
+   "analysis": {
+    "ok": false,
+    "reason": "lookaround"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/(?<!x)y/",
+   "analysis": {
+    "ok": false,
+    "reason": "lookaround"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/(a)\\1/",
+   "analysis": {
+    "ok": false,
+    "reason": "backreference"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/a{2}{3}/",
+   "analysis": {
+    "ok": false,
+    "reason": "syntax"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/[/",
+   "analysis": {
+    "ok": false,
+    "reason": "syntax"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/(/",
+   "analysis": {
+    "ok": false,
+    "reason": "syntax"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/a)/",
+   "analysis": {
+    "ok": false,
+    "reason": "syntax"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/x/g",
+   "analysis": {
+    "ok": false,
+    "reason": "flags"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/x/iu",
+   "analysis": {
+    "ok": true
+   },
+   "compiles": true
+  },
+  {
+   "input": "/x/ii",
+   "analysis": {
+    "ok": false,
+    "reason": "flags"
+   },
+   "compiles": false
+  },
+  {
+   "input": "plain",
+   "analysis": {
+    "ok": true
+   },
+   "compiles": true
+  },
+  {
+   "input": "/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/",
+   "analysis": {
+    "ok": false,
+    "reason": "too_long"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/(?<n>a)+/",
+   "analysis": {
+    "ok": true
+   },
+   "compiles": true
+  },
+  {
+   "input": "/(a+)?/",
+   "analysis": {
+    "ok": true
+   },
+   "compiles": true
+  },
+  {
+   "input": "/(a{1,2})*/",
+   "analysis": {
+    "ok": false,
+    "reason": "nested_quantifier"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/([a-z]+\\d)+/",
+   "analysis": {
+    "ok": false,
+    "reason": "nested_quantifier"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/[a-z]*+/",
+   "analysis": {
+    "ok": false,
+    "reason": "syntax"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/^(\\d{3}-?){2}$/",
+   "analysis": {
+    "ok": false,
+    "reason": "nested_quantifier"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/\\k<n>(?<n>a)/",
+   "analysis": {
+    "ok": false,
+    "reason": "backreference"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/a|b|c/",
+   "analysis": {
+    "ok": true
+   },
+   "compiles": true
+  },
+  {
+   "input": "/(a|b)/",
+   "analysis": {
+    "ok": true
+   },
+   "compiles": true
+  },
+  {
+   "input": "/(a|b)?/",
+   "analysis": {
+    "ok": true
+   },
+   "compiles": true
+  },
+  {
+   "input": "/(?:a|b)+/",
+   "analysis": {
+    "ok": false,
+    "reason": "nested_quantifier"
+   },
+   "compiles": false
+  },
+  {
+   "input": "/\\(a+\\)+/",
+   "analysis": {
+    "ok": true
+   },
+   "compiles": true
+  },
+  {
+   "input": "/[(a+)]+/",
+   "analysis": {
+    "ok": true
+   },
+   "compiles": true
+  },
+  {
+   "input": "",
+   "analysis": {
+    "ok": true
+   },
+   "compiles": false
+  }
+ ]
+}

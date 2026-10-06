@@ -1,0 +1,565 @@
+{
+ "cases": [
+  {
+   "data": {
+    "inputType": "text"
+   },
+   "raw": "a",
+   "result": {
+    "ok": true,
+    "value": "a"
+   }
+  },
+  {
+   "data": {
+    "inputType": "text"
+   },
+   "raw": "  ",
+   "result": {
+    "ok": false,
+    "reason": "required",
+    "params": {}
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "required": false
+   },
+   "raw": "  ",
+   "result": {
+    "ok": true,
+    "value": ""
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "minLength": 3
+   },
+   "raw": "ab",
+   "result": {
+    "ok": false,
+    "reason": "minlength",
+    "params": {
+     "min": 3
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "maxLength": 2
+   },
+   "raw": "abc",
+   "result": {
+    "ok": false,
+    "reason": "maxlength",
+    "params": {
+     "max": 2
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "maxLength": 2
+   },
+   "raw": "😀😀😀",
+   "result": {
+    "ok": false,
+    "reason": "maxlength",
+    "params": {
+     "max": 2
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "text"
+   },
+   "raw": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "result": {
+    "ok": false,
+    "reason": "maxlength",
+    "params": {
+     "max": 500
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "longtext"
+   },
+   "raw": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "result": {
+    "ok": false,
+    "reason": "maxlength",
+    "params": {
+     "max": 2000
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "longtext",
+    "required": true
+   },
+   "raw": "a\nb",
+   "result": {
+    "ok": true,
+    "value": "a\nb"
+   }
+  },
+  {
+   "data": {
+    "inputType": "email"
+   },
+   "raw": "A@B.CO",
+   "result": {
+    "ok": true,
+    "value": "a@b.co"
+   }
+  },
+  {
+   "data": {
+    "inputType": "email"
+   },
+   "raw": "a@b",
+   "result": {
+    "ok": false,
+    "reason": "format",
+    "params": {}
+   }
+  },
+  {
+   "data": {
+    "inputType": "email"
+   },
+   "raw": "a b@c.de",
+   "result": {
+    "ok": false,
+    "reason": "format",
+    "params": {}
+   }
+  },
+  {
+   "data": {
+    "inputType": "email"
+   },
+   "raw": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@b.co",
+   "result": {
+    "ok": false,
+    "reason": "format",
+    "params": {}
+   }
+  },
+  {
+   "data": {
+    "inputType": "phone"
+   },
+   "raw": "+98 (912) 345-6789",
+   "result": {
+    "ok": true,
+    "value": "+989123456789"
+   }
+  },
+  {
+   "data": {
+    "inputType": "phone"
+   },
+   "raw": "۰۹۱۲۳۴۵۶۷۸۹",
+   "result": {
+    "ok": true,
+    "value": "09123456789"
+   }
+  },
+  {
+   "data": {
+    "inputType": "phone"
+   },
+   "raw": "١٢٣٤٥٦٧٨٩٠",
+   "result": {
+    "ok": true,
+    "value": "1234567890"
+   }
+  },
+  {
+   "data": {
+    "inputType": "phone"
+   },
+   "raw": "123",
+   "result": {
+    "ok": false,
+    "reason": "format",
+    "params": {}
+   }
+  },
+  {
+   "data": {
+    "inputType": "phone"
+   },
+   "raw": "0912345678901234",
+   "result": {
+    "ok": false,
+    "reason": "format",
+    "params": {}
+   }
+  },
+  {
+   "data": {
+    "inputType": "number"
+   },
+   "raw": "۱۲٫۵",
+   "result": {
+    "ok": false,
+    "reason": "format",
+    "params": {}
+   }
+  },
+  {
+   "data": {
+    "inputType": "number"
+   },
+   "raw": "12.5",
+   "result": {
+    "ok": true,
+    "value": "12.5"
+   }
+  },
+  {
+   "data": {
+    "inputType": "number"
+   },
+   "raw": "-3",
+   "result": {
+    "ok": true,
+    "value": "-3"
+   }
+  },
+  {
+   "data": {
+    "inputType": "number"
+   },
+   "raw": "1e3",
+   "result": {
+    "ok": false,
+    "reason": "format",
+    "params": {}
+   }
+  },
+  {
+   "data": {
+    "inputType": "number",
+    "min": 5
+   },
+   "raw": "4",
+   "result": {
+    "ok": false,
+    "reason": "min",
+    "params": {
+     "min": 5
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "number",
+    "max": 5
+   },
+   "raw": "6",
+   "result": {
+    "ok": false,
+    "reason": "max",
+    "params": {
+     "max": 5
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "number",
+    "min": 0,
+    "max": 10
+   },
+   "raw": "10",
+   "result": {
+    "ok": true,
+    "value": "10"
+   }
+  },
+  {
+   "data": {
+    "inputType": "date"
+   },
+   "raw": "2026-02-29",
+   "result": {
+    "ok": false,
+    "reason": "format",
+    "params": {}
+   }
+  },
+  {
+   "data": {
+    "inputType": "date"
+   },
+   "raw": "2024-02-29",
+   "result": {
+    "ok": true,
+    "value": "2024-02-29"
+   }
+  },
+  {
+   "data": {
+    "inputType": "date"
+   },
+   "raw": "۲۰۲۶-۰۱-۰۱",
+   "result": {
+    "ok": false,
+    "reason": "format",
+    "params": {}
+   }
+  },
+  {
+   "data": {
+    "inputType": "date",
+    "min": "2026-06-01"
+   },
+   "raw": "2026-05-31",
+   "result": {
+    "ok": false,
+    "reason": "min",
+    "params": {
+     "min": "2026-06-01"
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "date",
+    "max": "2026-06-01"
+   },
+   "raw": "2026-06-02",
+   "result": {
+    "ok": false,
+    "reason": "max",
+    "params": {
+     "max": "2026-06-01"
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "url"
+   },
+   "raw": "https://a.test/x",
+   "result": {
+    "ok": true,
+    "value": "https://a.test/x"
+   }
+  },
+  {
+   "data": {
+    "inputType": "url"
+   },
+   "raw": "ftp://a.test",
+   "result": {
+    "ok": false,
+    "reason": "format",
+    "params": {}
+   }
+  },
+  {
+   "data": {
+    "inputType": "url"
+   },
+   "raw": "http://",
+   "result": {
+    "ok": false,
+    "reason": "format",
+    "params": {}
+   }
+  },
+  {
+   "data": {
+    "inputType": "url"
+   },
+   "raw": "HTTP://A.TEST",
+   "result": {
+    "ok": true,
+    "value": "HTTP://A.TEST"
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "regexPattern": "/^\\d{3}$/",
+    "regexCue": "سه رقم"
+   },
+   "raw": "۱۲۳",
+   "result": {
+    "ok": true,
+    "value": "123"
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "regexPattern": "/^\\d{3}$/",
+    "regexCue": "سه رقم"
+   },
+   "raw": "12",
+   "result": {
+    "ok": false,
+    "reason": "regex",
+    "params": {
+     "cue": "سه رقم"
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "regexPattern": "/^[a-z]+$/i"
+   },
+   "raw": "ABC",
+   "result": {
+    "ok": true,
+    "value": "ABC"
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "regexPattern": "/^[a-z]+$/"
+   },
+   "raw": "ABC",
+   "result": {
+    "ok": false,
+    "reason": "regex",
+    "params": {
+     "cue": ""
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "regexPattern": "/^a.c$/"
+   },
+   "raw": "a c",
+   "result": {
+    "ok": false,
+    "reason": "regex",
+    "params": {
+     "cue": ""
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "regexPattern": "/^\\s+x$/"
+   },
+   "raw": "  x",
+   "result": {
+    "ok": false,
+    "reason": "regex",
+    "params": {
+     "cue": ""
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "longtext",
+    "regexPattern": "/^a/"
+   },
+   "raw": "a\nb",
+   "result": {
+    "ok": true,
+    "value": "a\nb"
+   }
+  },
+  {
+   "data": {
+    "inputType": "email",
+    "regexPattern": "/^a/"
+   },
+   "raw": "a@b.co",
+   "result": {
+    "ok": true,
+    "value": "a@b.co"
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "regexPattern": "^abc$"
+   },
+   "raw": "abc",
+   "result": {
+    "ok": true,
+    "value": "abc"
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "regexPattern": "/(a+)+$/"
+   },
+   "raw": "aaaa!",
+   "result": {
+    "ok": true,
+    "value": "aaaa!"
+   }
+  },
+  {
+   "data": {
+    "inputType": "number",
+    "regexPattern": "/^[1-9]/"
+   },
+   "raw": "۰۷",
+   "result": {
+    "ok": false,
+    "reason": "regex",
+    "params": {
+     "cue": ""
+    }
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "regexPattern": "/^\\p{L}+$/u"
+   },
+   "raw": "ab",
+   "result": {
+    "ok": true,
+    "value": "ab"
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "regexPattern": "/^\\w+@\\w+\\.com$/"
+   },
+   "raw": "a@b.com",
+   "result": {
+    "ok": true,
+    "value": "a@b.com"
+   }
+  },
+  {
+   "data": {
+    "inputType": "text",
+    "regexPattern": "/a{2,3}b?/"
+   },
+   "raw": "caab",
+   "result": {
+    "ok": true,
+    "value": "caab"
+   }
+  }
+ ]
+}

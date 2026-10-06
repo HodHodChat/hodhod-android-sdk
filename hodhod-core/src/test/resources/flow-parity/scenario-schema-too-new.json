@@ -1,0 +1,26 @@
+{
+ "name": "schema-too-new",
+ "description": "schema > 2: the loader refuses the flow",
+ "flow": {
+  "schema": 3,
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T"
+    }
+   }
+  ],
+  "edges": []
+ },
+ "options": {},
+ "doc": null,
+ "actions": [],
+ "tooNew": true
+}

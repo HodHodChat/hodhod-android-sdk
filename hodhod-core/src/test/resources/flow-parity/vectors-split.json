@@ -1,0 +1,220 @@
+{
+ "cases": [
+  {
+   "session": "s-1",
+   "node": "n1",
+   "fnv": 4248140791,
+   "bucket": 791,
+   "variant": "a",
+   "variant3": "c"
+  },
+  {
+   "session": "s-1",
+   "node": "split_2",
+   "fnv": 2796902759,
+   "bucket": 2759,
+   "variant": "a",
+   "variant3": "c"
+  },
+  {
+   "session": "s-1",
+   "node": "گره",
+   "fnv": 3589262410,
+   "bucket": 2410,
+   "variant": "a",
+   "variant3": "c"
+  },
+  {
+   "session": "session-alpha",
+   "node": "n1",
+   "fnv": 1806374301,
+   "bucket": 4301,
+   "variant": "b",
+   "variant3": "c"
+  },
+  {
+   "session": "session-alpha",
+   "node": "split_2",
+   "fnv": 1348659441,
+   "bucket": 9441,
+   "variant": "b",
+   "variant3": "c"
+  },
+  {
+   "session": "session-alpha",
+   "node": "گره",
+   "fnv": 924613880,
+   "bucket": 3880,
+   "variant": "b",
+   "variant3": "c"
+  },
+  {
+   "session": "00000000-0000-4000-8000-000000000001",
+   "node": "n1",
+   "fnv": 1815030873,
+   "bucket": 873,
+   "variant": "a",
+   "variant3": "c"
+  },
+  {
+   "session": "00000000-0000-4000-8000-000000000001",
+   "node": "split_2",
+   "fnv": 3026989781,
+   "bucket": 9781,
+   "variant": "b",
+   "variant3": "c"
+  },
+  {
+   "session": "00000000-0000-4000-8000-000000000001",
+   "node": "گره",
+   "fnv": 2864365724,
+   "bucket": 5724,
+   "variant": "b",
+   "variant3": "c"
+  },
+  {
+   "session": "جلسه",
+   "node": "n1",
+   "fnv": 10528908,
+   "bucket": 8908,
+   "variant": "b",
+   "variant3": "c"
+  },
+  {
+   "session": "جلسه",
+   "node": "split_2",
+   "fnv": 125379238,
+   "bucket": 9238,
+   "variant": "b",
+   "variant3": "c"
+  },
+  {
+   "session": "جلسه",
+   "node": "گره",
+   "fnv": 2211196641,
+   "bucket": 6641,
+   "variant": "b",
+   "variant3": "c"
+  },
+  {
+   "session": "",
+   "node": "n1",
+   "fnv": 2632882712,
+   "bucket": 2712,
+   "variant": "a",
+   "variant3": "c"
+  },
+  {
+   "session": "",
+   "node": "split_2",
+   "fnv": 2021234330,
+   "bucket": 4330,
+   "variant": "b",
+   "variant3": "c"
+  },
+  {
+   "session": "",
+   "node": "گره",
+   "fnv": 3904228405,
+   "bucket": 8405,
+   "variant": "b",
+   "variant3": "c"
+  },
+  {
+   "session": "",
+   "node": "",
+   "fnv": 0,
+   "bucket": 0,
+   "variants": [],
+   "variant": null,
+   "variant3": null
+  },
+  {
+   "session": "",
+   "node": "",
+   "fnv": 0,
+   "bucket": 4999,
+   "variants": [],
+   "variant": null,
+   "variant3": null
+  },
+  {
+   "session": "",
+   "node": "",
+   "fnv": 0,
+   "bucket": 9999,
+   "variants": [],
+   "variant": null,
+   "variant3": null
+  },
+  {
+   "session": "",
+   "node": "",
+   "fnv": 0,
+   "bucket": 0,
+   "variants": null,
+   "variant": null,
+   "variant3": null
+  },
+  {
+   "session": "",
+   "node": "",
+   "fnv": 0,
+   "bucket": 4999,
+   "variants": null,
+   "variant": null,
+   "variant3": null
+  },
+  {
+   "session": "",
+   "node": "",
+   "fnv": 0,
+   "bucket": 9999,
+   "variants": null,
+   "variant": null,
+   "variant3": null
+  },
+  {
+   "session": "",
+   "node": "",
+   "fnv": 0,
+   "bucket": 0,
+   "variants": [
+    {
+     "id": "only",
+     "weight": 5
+    }
+   ],
+   "variant": "only",
+   "variant3": null
+  },
+  {
+   "session": "",
+   "node": "",
+   "fnv": 0,
+   "bucket": 4999,
+   "variants": [
+    {
+     "id": "only",
+     "weight": 5
+    }
+   ],
+   "variant": "only",
+   "variant3": null
+  },
+  {
+   "session": "",
+   "node": "",
+   "fnv": 0,
+   "bucket": 9999,
+   "variants": [
+    {
+     "id": "only",
+     "weight": 5
+    }
+   ],
+   "variant": "only",
+   "variant3": null
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Crest dots, eye and wing strokes of the mark; tinted with the tile colour so they read as cut-outs. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp" android:height="96dp" android:viewportWidth="512" android:viewportHeight="512">
+    <group android:translateX="70" android:translateY="96" android:scaleX="5.2" android:scaleY="5.2">
+        <path android:fillColor="#FFFFFFFF" android:pathData="M27.15,12.13 a1.8,1.8 0 1,0 3.6,0 a1.8,1.8 0 1,0 -3.6,0 Z" />
+        <path android:fillColor="#FFFFFFFF" android:pathData="M29.16,5.85 a1.8,1.8 0 1,0 3.6,0 a1.8,1.8 0 1,0 -3.6,0 Z" />
+        <path android:fillColor="#FFFFFFFF" android:pathData="M34.79,1.62 a1.8,1.8 0 1,0 3.6,0 a1.8,1.8 0 1,0 -3.6,0 Z" />
+        <path android:fillColor="#FFFFFFFF" android:pathData="M41.8,2.23 a1.8,1.8 0 1,0 3.6,0 a1.8,1.8 0 1,0 -3.6,0 Z" />
+        <path android:fillColor="#FFFFFFFF" android:pathData="M46.47,6.22 a1.8,1.8 0 1,0 3.6,0 a1.8,1.8 0 1,0 -3.6,0 Z" />
+        <path android:fillColor="#FFFFFFFF" android:pathData="M49,23.5 a2.6,2.6 0 1,0 5.2,0 a2.6,2.6 0 1,0 -5.2,0 Z" />
+        <path android:pathData="M13,44 L19,40 M11,49 L18,45 M9.5,54 L17,50" android:strokeColor="#FFFFFFFF" android:strokeWidth="1.6" android:strokeLineCap="round" android:strokeAlpha="0.55" />
+    </group>
+</vector>

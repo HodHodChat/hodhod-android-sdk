@@ -1,0 +1,2135 @@
+{
+ "name": "condition-context-rules",
+ "description": "business_hours/agents_online/locale/page_url/returning/device/weekday/time_of_day with context changes",
+ "flow": {
+  "schema": 2,
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T"
+    }
+   },
+   {
+    "id": "c1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "condition",
+     "rules": [
+      {
+       "id": "r1",
+       "type": "business_hours",
+       "operator": "is",
+       "value": "closed"
+      },
+      {
+       "id": "r2",
+       "type": "agents_online",
+       "operator": "is",
+       "value": "no"
+      }
+     ]
+    }
+   },
+   {
+    "id": "c2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "condition",
+     "rules": [
+      {
+       "id": "l1",
+       "type": "locale",
+       "operator": "is_one_of",
+       "value": [
+        "en",
+        "ar"
+       ]
+      },
+      {
+       "id": "l2",
+       "type": "page_url",
+       "operator": "contains",
+       "value": "/pricing"
+      }
+     ]
+    }
+   },
+   {
+    "id": "c3",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "condition",
+     "rules": [
+      {
+       "id": "w1",
+       "type": "returning_visitor",
+       "operator": "is",
+       "value": "true"
+      },
+      {
+       "id": "w2",
+       "type": "device",
+       "operator": "is_one_of",
+       "value": [
+        "mobile",
+        "tablet"
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "id": "c4",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "condition",
+     "rules": [
+      {
+       "id": "k1",
+       "type": "weekday",
+       "operator": "is_one_of",
+       "value": [
+        "sat",
+        "sun"
+       ]
+      },
+      {
+       "id": "k2",
+       "type": "time_of_day",
+       "operator": "between",
+       "value": {
+        "from": "09:00",
+        "to": "12:00"
+       }
+      },
+      {
+       "id": "k3",
+       "type": "time_of_day",
+       "operator": "not_between",
+       "value": {
+        "from": "22:00",
+        "to": "06:00"
+       }
+      }
+     ]
+    }
+   },
+   {
+    "id": "m1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C1 closed"
+    }
+   },
+   {
+    "id": "m1b",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C1 no agents"
+    }
+   },
+   {
+    "id": "m1e",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C1 else"
+    }
+   },
+   {
+    "id": "m2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C2 locale"
+    }
+   },
+   {
+    "id": "m2b",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C2 page"
+    }
+   },
+   {
+    "id": "m2e",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C2 else"
+    }
+   },
+   {
+    "id": "m3",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C3 returning"
+    }
+   },
+   {
+    "id": "m3b",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C3 device"
+    }
+   },
+   {
+    "id": "m3e",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C3 else"
+    }
+   },
+   {
+    "id": "m4",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C4 weekend"
+    }
+   },
+   {
+    "id": "m4b",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C4 morning"
+    }
+   },
+   {
+    "id": "m4c",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C4 day"
+    }
+   },
+   {
+    "id": "m4e",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C4 else"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_c1",
+    "source": "t",
+    "target": "c1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c1_m1_r1",
+    "source": "c1",
+    "target": "m1",
+    "sourceHandle": "r1"
+   },
+   {
+    "id": "e_c1_m1b_r2",
+    "source": "c1",
+    "target": "m1b",
+    "sourceHandle": "r2"
+   },
+   {
+    "id": "e_c1_m1e_else",
+    "source": "c1",
+    "target": "m1e",
+    "sourceHandle": "else"
+   },
+   {
+    "id": "e_m1_c2",
+    "source": "m1",
+    "target": "c2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_m1b_c2",
+    "source": "m1b",
+    "target": "c2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_m1e_c2",
+    "source": "m1e",
+    "target": "c2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c2_m2_l1",
+    "source": "c2",
+    "target": "m2",
+    "sourceHandle": "l1"
+   },
+   {
+    "id": "e_c2_m2b_l2",
+    "source": "c2",
+    "target": "m2b",
+    "sourceHandle": "l2"
+   },
+   {
+    "id": "e_c2_m2e_else",
+    "source": "c2",
+    "target": "m2e",
+    "sourceHandle": "else"
+   },
+   {
+    "id": "e_m2_c3",
+    "source": "m2",
+    "target": "c3",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_m2b_c3",
+    "source": "m2b",
+    "target": "c3",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_m2e_c3",
+    "source": "m2e",
+    "target": "c3",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c3_m3_w1",
+    "source": "c3",
+    "target": "m3",
+    "sourceHandle": "w1"
+   },
+   {
+    "id": "e_c3_m3b_w2",
+    "source": "c3",
+    "target": "m3b",
+    "sourceHandle": "w2"
+   },
+   {
+    "id": "e_c3_m3e_else",
+    "source": "c3",
+    "target": "m3e",
+    "sourceHandle": "else"
+   },
+   {
+    "id": "e_m3_c4",
+    "source": "m3",
+    "target": "c4",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_m3b_c4",
+    "source": "m3b",
+    "target": "c4",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_m3e_c4",
+    "source": "m3e",
+    "target": "c4",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c4_m4_k1",
+    "source": "c4",
+    "target": "m4",
+    "sourceHandle": "k1"
+   },
+   {
+    "id": "e_c4_m4b_k2",
+    "source": "c4",
+    "target": "m4b",
+    "sourceHandle": "k2"
+   },
+   {
+    "id": "e_c4_m4c_k3",
+    "source": "c4",
+    "target": "m4c",
+    "sourceHandle": "k3"
+   },
+   {
+    "id": "e_c4_m4e_else",
+    "source": "c4",
+    "target": "m4e",
+    "sourceHandle": "else"
+   }
+  ],
+  "require_flow": false,
+  "menu_order": [],
+  "settings": {},
+  "revision": 3
+ },
+ "options": {
+  "context": {
+   "now": "2026-10-05T10:30:00Z",
+   "utcOffset": "+03:30",
+   "businessOpen": true,
+   "agentsOnline": true,
+   "locale": "fa",
+   "pageUrl": "https://shop.test/pricing?x=1",
+   "device": "desktop",
+   "returning": false,
+   "contact": {
+    "name": "",
+    "email": "",
+    "phone": ""
+   },
+   "inboxId": 3,
+   "botId": 7,
+   "referrerHost": ""
+  },
+  "flowId": 7,
+  "revision": 3,
+  "bot": null,
+  "instant": true,
+  "persist": false,
+  "sessionId": "s-1",
+  "agent": [
+   "ok"
+  ],
+  "webhooks": {}
+ },
+ "doc": {
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "c1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "condition",
+     "rules": [
+      {
+       "id": "r1",
+       "type": "business_hours",
+       "operator": "is",
+       "value": "closed"
+      },
+      {
+       "id": "r2",
+       "type": "agents_online",
+       "operator": "is",
+       "value": "no"
+      }
+     ]
+    }
+   },
+   {
+    "id": "c2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "condition",
+     "rules": [
+      {
+       "id": "l1",
+       "type": "locale",
+       "operator": "is_one_of",
+       "value": [
+        "en",
+        "ar"
+       ]
+      },
+      {
+       "id": "l2",
+       "type": "page_url",
+       "operator": "contains",
+       "value": "/pricing"
+      }
+     ]
+    }
+   },
+   {
+    "id": "c3",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "condition",
+     "rules": [
+      {
+       "id": "w1",
+       "type": "returning_visitor",
+       "operator": "is",
+       "value": "true"
+      },
+      {
+       "id": "w2",
+       "type": "device",
+       "operator": "is_one_of",
+       "value": [
+        "mobile",
+        "tablet"
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "id": "c4",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "condition",
+     "rules": [
+      {
+       "id": "k1",
+       "type": "weekday",
+       "operator": "is_one_of",
+       "value": [
+        "sat",
+        "sun"
+       ]
+      },
+      {
+       "id": "k2",
+       "type": "time_of_day",
+       "operator": "between",
+       "value": {
+        "from": "09:00",
+        "to": "12:00"
+       }
+      },
+      {
+       "id": "k3",
+       "type": "time_of_day",
+       "operator": "not_between",
+       "value": {
+        "from": "22:00",
+        "to": "06:00"
+       }
+      }
+     ]
+    }
+   },
+   {
+    "id": "m1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C1 closed",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m1b",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C1 no agents",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m1e",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C1 else",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C2 locale",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m2b",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C2 page",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m2e",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C2 else",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m3",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C3 returning",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m3b",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C3 device",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m3e",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C3 else",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m4",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C4 weekend",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m4b",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C4 morning",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m4c",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C4 day",
+     "autoContinue": false
+    }
+   },
+   {
+    "id": "m4e",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "C4 else",
+     "autoContinue": false
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_c1",
+    "source": "t",
+    "target": "c1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c1_m1_r1",
+    "source": "c1",
+    "target": "m1",
+    "sourceHandle": "r1"
+   },
+   {
+    "id": "e_c1_m1b_r2",
+    "source": "c1",
+    "target": "m1b",
+    "sourceHandle": "r2"
+   },
+   {
+    "id": "e_c1_m1e_else",
+    "source": "c1",
+    "target": "m1e",
+    "sourceHandle": "else"
+   },
+   {
+    "id": "e_m1_c2",
+    "source": "m1",
+    "target": "c2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_m1b_c2",
+    "source": "m1b",
+    "target": "c2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_m1e_c2",
+    "source": "m1e",
+    "target": "c2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c2_m2_l1",
+    "source": "c2",
+    "target": "m2",
+    "sourceHandle": "l1"
+   },
+   {
+    "id": "e_c2_m2b_l2",
+    "source": "c2",
+    "target": "m2b",
+    "sourceHandle": "l2"
+   },
+   {
+    "id": "e_c2_m2e_else",
+    "source": "c2",
+    "target": "m2e",
+    "sourceHandle": "else"
+   },
+   {
+    "id": "e_m2_c3",
+    "source": "m2",
+    "target": "c3",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_m2b_c3",
+    "source": "m2b",
+    "target": "c3",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_m2e_c3",
+    "source": "m2e",
+    "target": "c3",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c3_m3_w1",
+    "source": "c3",
+    "target": "m3",
+    "sourceHandle": "w1"
+   },
+   {
+    "id": "e_c3_m3b_w2",
+    "source": "c3",
+    "target": "m3b",
+    "sourceHandle": "w2"
+   },
+   {
+    "id": "e_c3_m3e_else",
+    "source": "c3",
+    "target": "m3e",
+    "sourceHandle": "else"
+   },
+   {
+    "id": "e_m3_c4",
+    "source": "m3",
+    "target": "c4",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_m3b_c4",
+    "source": "m3b",
+    "target": "c4",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_m3e_c4",
+    "source": "m3e",
+    "target": "c4",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c4_m4_k1",
+    "source": "c4",
+    "target": "m4",
+    "sourceHandle": "k1"
+   },
+   {
+    "id": "e_c4_m4b_k2",
+    "source": "c4",
+    "target": "m4b",
+    "sourceHandle": "k2"
+   },
+   {
+    "id": "e_c4_m4c_k3",
+    "source": "c4",
+    "target": "m4c",
+    "sourceHandle": "k3"
+   },
+   {
+    "id": "e_c4_m4e_else",
+    "source": "c4",
+    "target": "m4e",
+    "sourceHandle": "else"
+   }
+  ],
+  "menu_order": [],
+  "require_flow": false,
+  "revision": 3
+ },
+ "actions": [
+  {
+   "action": {
+    "op": "start"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t",
+        "label": "T",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f0"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "default"
+      }
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "open"
+     },
+     {
+      "seq": 2,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "m1e",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "C1 else"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "continue",
+      "nodeId": "m1e",
+      "label": "CONTINUE"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "C1 else",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1",
+     "m1e"
+    ],
+    "handoffState": null,
+    "flowPath": "T",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 3,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t",
+       "index": 1,
+       "label": "T"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 4,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 5,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": true,
+       "revisit": false
+      },
+      "node_id": "c1",
+      "kind": "condition"
+     },
+     {
+      "name": "condition_eval",
+      "ts": 1790000000000,
+      "seq": 6,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "matched": "else",
+       "rule_type": null
+      },
+      "node_id": "c1",
+      "kind": "condition"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 7,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "c1",
+       "handle": "else",
+       "via": "auto",
+       "depth": 3,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "m1e",
+      "kind": "message"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 3,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t"
+     },
+     {
+      "seq": 4,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 5,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "c1",
+      "from": "t",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     },
+     {
+      "seq": 6,
+      "type": "condition_eval",
+      "t": 1790000000000,
+      "node": "c1",
+      "ref": "else"
+     },
+     {
+      "seq": 7,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "m1e",
+      "from": "c1",
+      "ref": "else",
+      "auto": true
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setContext",
+    "patch": {
+     "businessOpen": false,
+     "locale": "en",
+     "returning": true,
+     "device": "mobile",
+     "now": "2026-10-03T08:00:00Z",
+     "utcOffset": "+00:00"
+    }
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "m1e",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "C1 else"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "continue",
+      "nodeId": "m1e",
+      "label": "CONTINUE"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "C1 else",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "en",
+     "device": "mobile",
+     "visitor.returning": "true",
+     "hours.state": "closed",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1",
+     "m1e"
+    ],
+    "handoffState": null,
+    "flowPath": "T",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "restart"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t",
+        "label": "T",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "en",
+     "device": "mobile",
+     "visitor.returning": "true",
+     "hours.state": "closed",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "restart",
+      "ts": 1790000000000,
+      "seq": 8,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "m1e",
+       "via": "nav"
+      },
+      "node_id": "m1e",
+      "kind": "message"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 9,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "m1e",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 8,
+      "type": "restart",
+      "t": 1790000000000,
+      "node": "m1e",
+      "ref": "nav",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 9,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "from": "m1e",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T",
+     "blocks": [
+      {
+       "key": "6:0",
+       "nodeId": "m1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "C1 closed"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "continue",
+      "nodeId": "m1",
+      "label": "CONTINUE"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "C1 closed",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "en",
+     "device": "mobile",
+     "visitor.returning": "true",
+     "hours.state": "closed",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1",
+     "m1"
+    ],
+    "handoffState": null,
+    "flowPath": "T",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 10,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t",
+       "index": 1,
+       "label": "T"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 11,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "t",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 12,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "c1",
+      "kind": "condition"
+     },
+     {
+      "name": "condition_eval",
+      "ts": 1790000000000,
+      "seq": 13,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "matched": "r1",
+       "rule_type": "business_hours"
+      },
+      "node_id": "c1",
+      "kind": "condition"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 14,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "c1",
+       "handle": "r1",
+       "via": "auto",
+       "depth": 3,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "m1",
+      "kind": "message"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 10,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t"
+     },
+     {
+      "seq": 11,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 12,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "c1",
+      "from": "t",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     },
+     {
+      "seq": 13,
+      "type": "condition_eval",
+      "t": 1790000000000,
+      "node": "c1",
+      "ref": "r1"
+     },
+     {
+      "seq": 14,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "m1",
+      "from": "c1",
+      "ref": "r1",
+      "auto": true
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setContext",
+    "patch": {
+     "businessOpen": true,
+     "agentsOnline": false,
+     "locale": "fa",
+     "returning": false,
+     "device": "desktop",
+     "now": "2026-10-06T23:15:00Z",
+     "utcOffset": "Asia/Tehran"
+    }
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T",
+     "blocks": [
+      {
+       "key": "6:0",
+       "nodeId": "m1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "C1 closed"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "continue",
+      "nodeId": "m1",
+      "label": "CONTINUE"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "C1 closed",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "no",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1",
+     "m1"
+    ],
+    "handoffState": null,
+    "flowPath": "T",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "restart"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t",
+        "label": "T",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "no",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "restart",
+      "ts": 1790000000000,
+      "seq": 15,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "m1",
+       "via": "nav"
+      },
+      "node_id": "m1",
+      "kind": "message"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 16,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "m1",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 15,
+      "type": "restart",
+      "t": 1790000000000,
+      "node": "m1",
+      "ref": "nav",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 16,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "from": "m1",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T",
+     "blocks": [
+      {
+       "key": "9:0",
+       "nodeId": "m1b",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "C1 no agents"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "continue",
+      "nodeId": "m1b",
+      "label": "CONTINUE"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "C1 no agents",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "no",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "c1",
+     "m1b"
+    ],
+    "handoffState": null,
+    "flowPath": "T",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 17,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t",
+       "index": 1,
+       "label": "T"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 18,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": true
+      },
+      "node_id": "t",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 19,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": true,
+       "revisit": true
+      },
+      "node_id": "c1",
+      "kind": "condition"
+     },
+     {
+      "name": "condition_eval",
+      "ts": 1790000000000,
+      "seq": 20,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "matched": "r2",
+       "rule_type": "agents_online"
+      },
+      "node_id": "c1",
+      "kind": "condition"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 21,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "c1",
+       "handle": "r2",
+       "via": "auto",
+       "depth": 3,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "m1b",
+      "kind": "message"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 17,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t"
+     },
+     {
+      "seq": 18,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 19,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "c1",
+      "from": "t",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     },
+     {
+      "seq": 20,
+      "type": "condition_eval",
+      "t": 1790000000000,
+      "node": "c1",
+      "ref": "r2"
+     },
+     {
+      "seq": 21,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "m1b",
+      "from": "c1",
+      "ref": "r2",
+      "auto": true
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  }
+ ]
+}

@@ -1,0 +1,190 @@
+{
+ "cases": [
+  {
+   "url": "https://a.test/x?y#z",
+   "parts": {
+    "protocol": "https:",
+    "hostname": "a.test",
+    "pathname": "/x"
+   },
+   "allowedHttps": true,
+   "allowedAll": true
+  },
+  {
+   "url": "http://A.Test:8080/Path/x%20y",
+   "parts": {
+    "protocol": "http:",
+    "hostname": "a.test",
+    "pathname": "/Path/x%20y"
+   },
+   "allowedHttps": false,
+   "allowedAll": true
+  },
+  {
+   "url": "https://user:pw@host.test/",
+   "parts": {
+    "protocol": "https:",
+    "hostname": "host.test",
+    "pathname": "/"
+   },
+   "allowedHttps": true,
+   "allowedAll": true
+  },
+  {
+   "url": "mailto:a@b.co",
+   "parts": {
+    "protocol": "mailto:",
+    "hostname": "",
+    "pathname": "a@b.co"
+   },
+   "allowedHttps": false,
+   "allowedAll": true
+  },
+  {
+   "url": "tel:+98911",
+   "parts": {
+    "protocol": "tel:",
+    "hostname": "",
+    "pathname": "+98911"
+   },
+   "allowedHttps": false,
+   "allowedAll": true
+  },
+  {
+   "url": "javascript:alert(1)",
+   "parts": {
+    "protocol": "javascript:",
+    "hostname": "",
+    "pathname": "alert(1)"
+   },
+   "allowedHttps": false,
+   "allowedAll": false
+  },
+  {
+   "url": "ftp://x.test/f",
+   "parts": {
+    "protocol": "ftp:",
+    "hostname": "x.test",
+    "pathname": "/f"
+   },
+   "allowedHttps": false,
+   "allowedAll": false
+  },
+  {
+   "url": "https://",
+   "parts": null,
+   "allowedHttps": false,
+   "allowedAll": false
+  },
+  {
+   "url": "not a url",
+   "parts": null,
+   "allowedHttps": false,
+   "allowedAll": false
+  },
+  {
+   "url": "//x.test/y",
+   "parts": null,
+   "allowedHttps": false,
+   "allowedAll": false
+  },
+  {
+   "url": "/relative/path",
+   "parts": null,
+   "allowedHttps": false,
+   "allowedAll": false
+  },
+  {
+   "url": "https://exa mple.com/",
+   "parts": null,
+   "allowedHttps": false,
+   "allowedAll": false
+  },
+  {
+   "url": "HTTPS://UPPER.COM",
+   "parts": {
+    "protocol": "https:",
+    "hostname": "upper.com",
+    "pathname": "/"
+   },
+   "allowedHttps": true,
+   "allowedAll": true
+  },
+  {
+   "url": "https://a.test",
+   "parts": {
+    "protocol": "https:",
+    "hostname": "a.test",
+    "pathname": "/"
+   },
+   "allowedHttps": true,
+   "allowedAll": true
+  },
+  {
+   "url": "https:\\\\a.test\\x",
+   "parts": {
+    "protocol": "https:",
+    "hostname": "a.test",
+    "pathname": "/x"
+   },
+   "allowedHttps": true,
+   "allowedAll": true
+  },
+  {
+   "url": "data:text/plain,hi",
+   "parts": {
+    "protocol": "data:",
+    "hostname": "",
+    "pathname": "text/plain,hi"
+   },
+   "allowedHttps": false,
+   "allowedAll": false
+  },
+  {
+   "url": " https://a.test/ ",
+   "parts": {
+    "protocol": "https:",
+    "hostname": "a.test",
+    "pathname": "/"
+   },
+   "allowedHttps": true,
+   "allowedAll": true
+  },
+  {
+   "url": "https://a.test/a b",
+   "parts": {
+    "protocol": "https:",
+    "hostname": "a.test",
+    "pathname": "/a%20b"
+   },
+   "allowedHttps": true,
+   "allowedAll": true
+  },
+  {
+   "url": "https://[::1]/",
+   "parts": {
+    "protocol": "https:",
+    "hostname": "[::1]",
+    "pathname": "/"
+   },
+   "allowedHttps": true,
+   "allowedAll": true
+  },
+  {
+   "url": "x:y",
+   "parts": {
+    "protocol": "x:",
+    "hostname": "",
+    "pathname": "y"
+   },
+   "allowedHttps": false,
+   "allowedAll": false
+  },
+  {
+   "url": "",
+   "parts": null,
+   "allowedHttps": false,
+   "allowedAll": false
+  }
+ ]
+}

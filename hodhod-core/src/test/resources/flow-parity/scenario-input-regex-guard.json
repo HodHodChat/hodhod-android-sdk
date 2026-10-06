@@ -1,0 +1,2803 @@
+{
+ "name": "input-regex-guard",
+ "description": "safe regex on Persian digits with cue, nested quantifier / lookahead patterns are ignored by the guard",
+ "flow": {
+  "schema": 2,
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T"
+    }
+   },
+   {
+    "id": "i1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "کد ملی",
+     "inputType": "text",
+     "regexPattern": "/^\\d{10}$/",
+     "regexCue": "ده رقم",
+     "variable": "code"
+    }
+   },
+   {
+    "id": "i2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "خطرناک",
+     "inputType": "text",
+     "regexPattern": "/(a+)+$/",
+     "variable": "bad"
+    }
+   },
+   {
+    "id": "i3",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "موبایل",
+     "inputType": "phone",
+     "regexPattern": "/^09[0-9]{9}$/i",
+     "regexCue": "با ۰۹ شروع شود"
+    }
+   },
+   {
+    "id": "i4",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "lookahead",
+     "inputType": "text",
+     "regexPattern": "/^(?=a)b/",
+     "variable": "la"
+    }
+   },
+   {
+    "id": "i5",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "بدون cue",
+     "inputType": "number",
+     "regexPattern": "^[1-9]\\d*$"
+    }
+   },
+   {
+    "id": "m",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "ok {{code}} {{bad}} {{la}}"
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_i1",
+    "source": "t",
+    "target": "i1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_i1_i2",
+    "source": "i1",
+    "target": "i2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_i2_i3",
+    "source": "i2",
+    "target": "i3",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_i3_i4",
+    "source": "i3",
+    "target": "i4",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_i4_i5",
+    "source": "i4",
+    "target": "i5",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_i5_m",
+    "source": "i5",
+    "target": "m",
+    "sourceHandle": null
+   }
+  ],
+  "require_flow": false,
+  "menu_order": [],
+  "settings": {},
+  "revision": 3
+ },
+ "options": {
+  "context": {
+   "now": "2026-10-03T10:00:00Z",
+   "utcOffset": "+00:00",
+   "businessOpen": true,
+   "agentsOnline": true,
+   "locale": "fa",
+   "pageUrl": "https://shop.test/pricing?x=1",
+   "device": "desktop",
+   "returning": false,
+   "contact": {
+    "name": "",
+    "email": "",
+    "phone": ""
+   },
+   "inboxId": 3,
+   "botId": 7,
+   "referrerHost": ""
+  },
+  "flowId": 7,
+  "revision": 3,
+  "bot": null,
+  "instant": true,
+  "persist": false,
+  "sessionId": "s-1",
+  "agent": [
+   "ok"
+  ],
+  "webhooks": {}
+ },
+ "doc": {
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "T",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "i1",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "کد ملی",
+     "inputType": "text",
+     "regexPattern": "/^\\d{10}$/",
+     "regexCue": "ده رقم",
+     "variable": "code",
+     "required": true,
+     "confirm": false,
+     "saveTo": "conversation_attribute"
+    }
+   },
+   {
+    "id": "i2",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "خطرناک",
+     "inputType": "text",
+     "regexPattern": "/(a+)+$/",
+     "variable": "bad",
+     "required": true,
+     "confirm": false,
+     "saveTo": "conversation_attribute"
+    }
+   },
+   {
+    "id": "i3",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "موبایل",
+     "inputType": "phone",
+     "regexPattern": "/^09[0-9]{9}$/i",
+     "regexCue": "با ۰۹ شروع شود",
+     "required": true,
+     "confirm": false,
+     "saveTo": "conversation_attribute"
+    }
+   },
+   {
+    "id": "i4",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "lookahead",
+     "inputType": "text",
+     "regexPattern": "/^(?=a)b/",
+     "variable": "la",
+     "required": true,
+     "confirm": false,
+     "saveTo": "conversation_attribute"
+    }
+   },
+   {
+    "id": "i5",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "بدون cue",
+     "inputType": "number",
+     "regexPattern": "^[1-9]\\d*$",
+     "required": true,
+     "confirm": false,
+     "saveTo": "conversation_attribute"
+    }
+   },
+   {
+    "id": "m",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "message",
+     "label": "ok {{code}} {{bad}} {{la}}",
+     "autoContinue": false
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_i1",
+    "source": "t",
+    "target": "i1",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_i1_i2",
+    "source": "i1",
+    "target": "i2",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_i2_i3",
+    "source": "i2",
+    "target": "i3",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_i3_i4",
+    "source": "i3",
+    "target": "i4",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_i4_i5",
+    "source": "i4",
+    "target": "i5",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_i5_m",
+    "source": "i5",
+    "target": "m",
+    "sourceHandle": null
+   }
+  ],
+  "menu_order": [],
+  "require_flow": false,
+  "revision": 3
+ },
+ "actions": [
+  {
+   "action": {
+    "op": "start"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t",
+        "label": "T",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f0"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "default"
+      }
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "open"
+     },
+     {
+      "seq": 2,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "i1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "کد ملی"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i1",
+      "stage": "typing",
+      "inputType": "text",
+      "label": "کد ملی",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "maxLength": 500,
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "کد ملی",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000000,
+      "seq": 3,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t",
+       "index": 1,
+       "label": "T"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 4,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 5,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "i1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 3,
+      "type": "option_select",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "t"
+     },
+     {
+      "seq": 4,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "t",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 5,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "i1",
+      "from": "t",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "123"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "i1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "کد ملی"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i1",
+      "stage": "typing",
+      "inputType": "text",
+      "label": "کد ملی",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "maxLength": 500,
+      "value": "123",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "کد ملی",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "i1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "کد ملی"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i1",
+      "stage": "typing",
+      "inputType": "text",
+      "label": "کد ملی",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "maxLength": 500,
+      "value": "123",
+      "pendingValue": null,
+      "error": "ده رقم"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "کد ملی",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_invalid",
+      "ts": 1790000000000,
+      "seq": 6,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "text",
+       "reason": "regex"
+      },
+      "node_id": "i1",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 6,
+      "type": "input_invalid",
+      "t": 1790000000000,
+      "node": "i1",
+      "ref": "pattern"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "۱۲۳۴۵۶۷۸۹۰"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "i1",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "کد ملی"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i1",
+      "stage": "typing",
+      "inputType": "text",
+      "label": "کد ملی",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "maxLength": 500,
+      "value": "۱۲۳۴۵۶۷۸۹۰",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "کد ملی",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "i2",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "خطرناک"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i2",
+      "stage": "typing",
+      "inputType": "text",
+      "label": "خطرناک",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "maxLength": 500,
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "خطرناک",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "code": "1234567890",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000000,
+      "seq": 7,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "text",
+       "length": 10,
+       "confirmed": false,
+       "saved_to": "conversation_attribute"
+      },
+      "node_id": "i1",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 8,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "i1",
+       "handle": "next",
+       "via": "next",
+       "depth": 3,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "i2",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 7,
+      "type": "input_submit",
+      "t": 1790000000000,
+      "node": "i1"
+     },
+     {
+      "seq": 8,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "i2",
+      "from": "i1",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "i2",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "خطرناک"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i2",
+      "stage": "typing",
+      "inputType": "text",
+      "label": "خطرناک",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "maxLength": 500,
+      "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "خطرناک",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "code": "1234567890",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک  ›  موبایل",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "i3",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "موبایل"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i3",
+      "stage": "typing",
+      "inputType": "phone",
+      "label": "موبایل",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "موبایل",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "code": "1234567890",
+     "bad": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2",
+     "i3"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک > موبایل",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      },
+      "i2": {
+       "variable": "bad",
+       "label": "خطرناک",
+       "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "display": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000000,
+      "seq": 9,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "text",
+       "length": 31,
+       "confirmed": false,
+       "saved_to": "conversation_attribute"
+      },
+      "node_id": "i2",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 10,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "i2",
+       "handle": "next",
+       "via": "next",
+       "depth": 4,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "i3",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 9,
+      "type": "input_submit",
+      "t": 1790000000000,
+      "node": "i2"
+     },
+     {
+      "seq": 10,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "i3",
+      "from": "i2",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "0912"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک  ›  موبایل",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "i3",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "موبایل"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i3",
+      "stage": "typing",
+      "inputType": "phone",
+      "label": "موبایل",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "0912",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "موبایل",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "code": "1234567890",
+     "bad": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2",
+     "i3"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک > موبایل",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      },
+      "i2": {
+       "variable": "bad",
+       "label": "خطرناک",
+       "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "display": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک  ›  موبایل",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "i3",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "موبایل"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i3",
+      "stage": "typing",
+      "inputType": "phone",
+      "label": "موبایل",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "0912",
+      "pendingValue": null,
+      "error": "INPUT.ERROR_PHONE"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "موبایل",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "code": "1234567890",
+     "bad": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2",
+     "i3"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک > موبایل",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      },
+      "i2": {
+       "variable": "bad",
+       "label": "خطرناک",
+       "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "display": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_invalid",
+      "ts": 1790000000000,
+      "seq": 11,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "phone",
+       "reason": "format"
+      },
+      "node_id": "i3",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 11,
+      "type": "input_invalid",
+      "t": 1790000000000,
+      "node": "i3",
+      "ref": "type"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "۰۹۱۲۳۴۵۶۷۸۹"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک  ›  موبایل",
+     "blocks": [
+      {
+       "key": "4:0",
+       "nodeId": "i3",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "موبایل"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i3",
+      "stage": "typing",
+      "inputType": "phone",
+      "label": "موبایل",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "۰۹۱۲۳۴۵۶۷۸۹",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "موبایل",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "code": "1234567890",
+     "bad": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2",
+     "i3"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک > موبایل",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      },
+      "i2": {
+       "variable": "bad",
+       "label": "خطرناک",
+       "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "display": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک  ›  موبایل  ›  lookahead",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "i4",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "lookahead"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i4",
+      "stage": "typing",
+      "inputType": "text",
+      "label": "lookahead",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "maxLength": 500,
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "lookahead",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "code": "1234567890",
+     "bad": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2",
+     "i3",
+     "i4"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک > موبایل > lookahead",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      },
+      "i2": {
+       "variable": "bad",
+       "label": "خطرناک",
+       "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "display": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "saveTo": "conversation_attribute"
+      },
+      "i3": {
+       "variable": null,
+       "label": "موبایل",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000000,
+      "seq": 12,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "phone",
+       "length": 11,
+       "confirmed": false,
+       "saved_to": "conversation_attribute"
+      },
+      "node_id": "i3",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 13,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "i3",
+       "handle": "next",
+       "via": "next",
+       "depth": 5,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "i4",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 12,
+      "type": "input_submit",
+      "t": 1790000000000,
+      "node": "i3"
+     },
+     {
+      "seq": 13,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "i4",
+      "from": "i3",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "zzz"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک  ›  موبایل  ›  lookahead",
+     "blocks": [
+      {
+       "key": "5:0",
+       "nodeId": "i4",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "lookahead"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i4",
+      "stage": "typing",
+      "inputType": "text",
+      "label": "lookahead",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "maxLength": 500,
+      "value": "zzz",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "lookahead",
+     "focusKey": "f4"
+    },
+    "variables": {
+     "code": "1234567890",
+     "bad": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2",
+     "i3",
+     "i4"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک > موبایل > lookahead",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      },
+      "i2": {
+       "variable": "bad",
+       "label": "خطرناک",
+       "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "display": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "saveTo": "conversation_attribute"
+      },
+      "i3": {
+       "variable": null,
+       "label": "موبایل",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک  ›  موبایل  ›  lookahead  ›  بدون cue",
+     "blocks": [
+      {
+       "key": "6:0",
+       "nodeId": "i5",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "بدون cue"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i5",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "بدون cue",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "بدون cue",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "code": "1234567890",
+     "bad": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+     "la": "zzz",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2",
+     "i3",
+     "i4",
+     "i5"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک > موبایل > lookahead > بدون cue",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      },
+      "i2": {
+       "variable": "bad",
+       "label": "خطرناک",
+       "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "display": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "saveTo": "conversation_attribute"
+      },
+      "i3": {
+       "variable": null,
+       "label": "موبایل",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "conversation_attribute"
+      },
+      "i4": {
+       "variable": "la",
+       "label": "lookahead",
+       "value": "zzz",
+       "display": "zzz",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000000,
+      "seq": 14,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "text",
+       "length": 3,
+       "confirmed": false,
+       "saved_to": "conversation_attribute"
+      },
+      "node_id": "i4",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 15,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "i4",
+       "handle": "next",
+       "via": "next",
+       "depth": 6,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "i5",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 14,
+      "type": "input_submit",
+      "t": 1790000000000,
+      "node": "i4"
+     },
+     {
+      "seq": 15,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "i5",
+      "from": "i4",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "0"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک  ›  موبایل  ›  lookahead  ›  بدون cue",
+     "blocks": [
+      {
+       "key": "6:0",
+       "nodeId": "i5",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "بدون cue"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i5",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "بدون cue",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "0",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "بدون cue",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "code": "1234567890",
+     "bad": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+     "la": "zzz",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2",
+     "i3",
+     "i4",
+     "i5"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک > موبایل > lookahead > بدون cue",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      },
+      "i2": {
+       "variable": "bad",
+       "label": "خطرناک",
+       "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "display": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "saveTo": "conversation_attribute"
+      },
+      "i3": {
+       "variable": null,
+       "label": "موبایل",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "conversation_attribute"
+      },
+      "i4": {
+       "variable": "la",
+       "label": "lookahead",
+       "value": "zzz",
+       "display": "zzz",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک  ›  موبایل  ›  lookahead  ›  بدون cue",
+     "blocks": [
+      {
+       "key": "6:0",
+       "nodeId": "i5",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "بدون cue"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i5",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "بدون cue",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "0",
+      "pendingValue": null,
+      "error": "INPUT_INVALID"
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "بدون cue",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "code": "1234567890",
+     "bad": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+     "la": "zzz",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2",
+     "i3",
+     "i4",
+     "i5"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک > موبایل > lookahead > بدون cue",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      },
+      "i2": {
+       "variable": "bad",
+       "label": "خطرناک",
+       "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "display": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "saveTo": "conversation_attribute"
+      },
+      "i3": {
+       "variable": null,
+       "label": "موبایل",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "conversation_attribute"
+      },
+      "i4": {
+       "variable": "la",
+       "label": "lookahead",
+       "value": "zzz",
+       "display": "zzz",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_invalid",
+      "ts": 1790000000000,
+      "seq": 16,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "number",
+       "reason": "regex"
+      },
+      "node_id": "i5",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 16,
+      "type": "input_invalid",
+      "t": 1790000000000,
+      "node": "i5",
+      "ref": "pattern"
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "۷"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک  ›  موبایل  ›  lookahead  ›  بدون cue",
+     "blocks": [
+      {
+       "key": "6:0",
+       "nodeId": "i5",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "بدون cue"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i5",
+      "stage": "typing",
+      "inputType": "number",
+      "label": "بدون cue",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "value": "۷",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "بدون cue",
+     "focusKey": "f5"
+    },
+    "variables": {
+     "code": "1234567890",
+     "bad": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+     "la": "zzz",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2",
+     "i3",
+     "i4",
+     "i5"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک > موبایل > lookahead > بدون cue",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      },
+      "i2": {
+       "variable": "bad",
+       "label": "خطرناک",
+       "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "display": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "saveTo": "conversation_attribute"
+      },
+      "i3": {
+       "variable": null,
+       "label": "موبایل",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "conversation_attribute"
+      },
+      "i4": {
+       "variable": "la",
+       "label": "lookahead",
+       "value": "zzz",
+       "display": "zzz",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "T  ›  کد ملی  ›  خطرناک  ›  موبایل  ›  lookahead  ›  بدون cue",
+     "blocks": [
+      {
+       "key": "7:0",
+       "nodeId": "m",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "ok 1234567890 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa! zzz"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "terminal",
+      "variant": "info",
+      "primaryRestart": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": true
+     },
+     "announce": "ok 1234567890 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa! zzz",
+     "focusKey": "f6"
+    },
+    "variables": {
+     "code": "1234567890",
+     "bad": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+     "la": "zzz",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i1",
+     "i2",
+     "i3",
+     "i4",
+     "i5",
+     "m"
+    ],
+    "handoffState": null,
+    "flowPath": "T > کد ملی > خطرناک > موبایل > lookahead > بدون cue",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i1": {
+       "variable": "code",
+       "label": "کد ملی",
+       "value": "1234567890",
+       "display": "1234567890",
+       "saveTo": "conversation_attribute"
+      },
+      "i2": {
+       "variable": "bad",
+       "label": "خطرناک",
+       "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "display": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+       "saveTo": "conversation_attribute"
+      },
+      "i3": {
+       "variable": null,
+       "label": "موبایل",
+       "value": "09123456789",
+       "display": "09123456789",
+       "saveTo": "conversation_attribute"
+      },
+      "i4": {
+       "variable": "la",
+       "label": "lookahead",
+       "value": "zzz",
+       "display": "zzz",
+       "saveTo": "conversation_attribute"
+      },
+      "i5": {
+       "variable": null,
+       "label": "بدون cue",
+       "value": "7",
+       "display": "7",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000000,
+      "seq": 17,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "number",
+       "length": 1,
+       "confirmed": false,
+       "saved_to": "conversation_attribute"
+      },
+      "node_id": "i5",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 18,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "i5",
+       "handle": "next",
+       "via": "next",
+       "depth": 7,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "m",
+      "kind": "message"
+     },
+     {
+      "name": "flow_resolved",
+      "ts": 1790000000000,
+      "seq": 19,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "via": "implicit_end"
+      },
+      "node_id": "m",
+      "kind": "message"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 17,
+      "type": "input_submit",
+      "t": 1790000000000,
+      "node": "i5"
+     },
+     {
+      "seq": 18,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "m",
+      "from": "i5",
+      "ref": "next",
+      "dwell_ms": 0
+     },
+     {
+      "seq": 19,
+      "type": "flow_resolved",
+      "t": 1790000000000,
+      "node": "m",
+      "ref": "implicit_end",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000000
+   }
+  }
+ ]
+}

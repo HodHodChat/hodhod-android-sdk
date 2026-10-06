@@ -1,0 +1,1205 @@
+{
+ "name": "handoff-live-agent-node",
+ "description": "agent node: payload (path, summary, trace, vars) and handoff_created after the promise resolves; saved session cleared",
+ "flow": {
+  "schema": 2,
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "پشتیبانی"
+    }
+   },
+   {
+    "id": "i",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "کد؟",
+     "inputType": "text",
+     "variable": "code"
+    }
+   },
+   {
+    "id": "c",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "choice",
+     "label": "نوع",
+     "options": [
+      {
+       "id": "o1",
+       "label": "الف"
+      },
+      {
+       "id": "o2",
+       "label": "ب"
+      }
+     ]
+    }
+   },
+   {
+    "id": "ag",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "agent",
+     "teamId": 5
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_i",
+    "source": "t",
+    "target": "i",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_i_c",
+    "source": "i",
+    "target": "c",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c_ag_o1",
+    "source": "c",
+    "target": "ag",
+    "sourceHandle": "o1"
+   }
+  ],
+  "require_flow": false,
+  "menu_order": [],
+  "settings": {},
+  "revision": 3
+ },
+ "options": {
+  "context": {
+   "now": "2026-10-03T10:00:00Z",
+   "utcOffset": "+00:00",
+   "businessOpen": true,
+   "agentsOnline": true,
+   "locale": "fa",
+   "pageUrl": "https://shop.test/pricing?x=1",
+   "device": "desktop",
+   "returning": false,
+   "contact": {
+    "name": "",
+    "email": "",
+    "phone": ""
+   },
+   "inboxId": 3,
+   "botId": 7,
+   "referrerHost": ""
+  },
+  "flowId": 7,
+  "revision": 3,
+  "bot": null,
+  "instant": true,
+  "persist": true,
+  "sessionId": "s-1",
+  "agent": [
+   "ok"
+  ],
+  "webhooks": {}
+ },
+ "doc": {
+  "nodes": [
+   {
+    "id": "t",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "topic",
+     "label": "پشتیبانی",
+     "inMenu": true
+    }
+   },
+   {
+    "id": "i",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "input",
+     "label": "کد؟",
+     "inputType": "text",
+     "variable": "code",
+     "required": true,
+     "confirm": false,
+     "saveTo": "conversation_attribute"
+    }
+   },
+   {
+    "id": "c",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "choice",
+     "label": "نوع",
+     "options": [
+      {
+       "id": "o1",
+       "label": "الف"
+      },
+      {
+       "id": "o2",
+       "label": "ب"
+      }
+     ],
+     "multiple": false,
+     "style": "list",
+     "allowOther": false
+    }
+   },
+   {
+    "id": "ag",
+    "type": "flowNode",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "kind": "agent",
+     "teamId": 5
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "e_t_i",
+    "source": "t",
+    "target": "i",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_i_c",
+    "source": "i",
+    "target": "c",
+    "sourceHandle": null
+   },
+   {
+    "id": "e_c_ag_o1",
+    "source": "c",
+    "target": "ag",
+    "sourceHandle": "o1"
+   }
+  ],
+  "menu_order": [],
+  "require_flow": false,
+  "revision": 3
+ },
+ "actions": [
+  {
+   "action": {
+    "op": "start"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "menu",
+      "rows": [
+       {
+        "id": "t",
+        "label": "پشتیبانی",
+        "emoji": "",
+        "index": 1,
+        "kind": "topic"
+       }
+      ]
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f0"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [],
+    "handoffState": null,
+    "flowPath": "",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "flow_start",
+      "ts": 1790000000000,
+      "seq": 1,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "context": {
+        "locale": "fa",
+        "page_path": "/pricing",
+        "device": "desktop",
+        "returning": false,
+        "referrer_host": "",
+        "inbox_id": 3,
+        "bot_id": 7,
+        "revision": 3
+       },
+       "trigger": "default"
+      }
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000000,
+      "seq": 2,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "next",
+       "depth": 0,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "$menu"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 1,
+      "type": "flow_start",
+      "t": 1790000000000,
+      "ref": "open"
+     },
+     {
+      "seq": 2,
+      "type": "node_view",
+      "t": 1790000000000,
+      "node": "$menu",
+      "ref": "next",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": {
+     "v": 2,
+     "flowId": 7,
+     "revision": 3,
+     "sessionId": "s-1",
+     "seq": 2,
+     "started": true,
+     "terminal": false,
+     "savedAt": 1790000000100,
+     "trail": [],
+     "values": {},
+     "picks": {},
+     "varsSet": {},
+     "splits": {},
+     "webhook": {}
+    },
+    "returned": null,
+    "now": 1790000000100
+   }
+  },
+  {
+   "action": {
+    "op": "selectOption",
+    "id": "t"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "پشتیبانی  ›  کد؟",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "i",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "کد؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i",
+      "stage": "typing",
+      "inputType": "text",
+      "label": "کد؟",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "maxLength": 500,
+      "value": "",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "کد؟",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i"
+    ],
+    "handoffState": null,
+    "flowPath": "پشتیبانی > کد؟",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000100,
+      "seq": 3,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "topic",
+       "option_id": "t",
+       "index": 1,
+       "label": "پشتیبانی"
+      },
+      "node_id": "$menu"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000100,
+      "seq": 4,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "$menu",
+       "handle": "next",
+       "via": "menu",
+       "depth": 1,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "t",
+      "kind": "topic"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000100,
+      "seq": 5,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "t",
+       "handle": "next",
+       "via": "auto",
+       "depth": 2,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "i",
+      "kind": "input"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 3,
+      "type": "option_select",
+      "t": 1790000000100,
+      "node": "$menu",
+      "ref": "t"
+     },
+     {
+      "seq": 4,
+      "type": "node_view",
+      "t": 1790000000100,
+      "node": "t",
+      "from": "$menu",
+      "ref": "next",
+      "dwell_ms": 100
+     },
+     {
+      "seq": 5,
+      "type": "node_view",
+      "t": 1790000000100,
+      "node": "i",
+      "from": "t",
+      "ref": "next",
+      "auto": true,
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": {
+     "v": 2,
+     "flowId": 7,
+     "revision": 3,
+     "sessionId": "s-1",
+     "seq": 5,
+     "started": true,
+     "terminal": false,
+     "savedAt": 1790000000200,
+     "trail": [
+      {
+       "id": "t",
+       "auto": false,
+       "via": "menu",
+       "handle": null
+      },
+      {
+       "id": "i",
+       "auto": true,
+       "via": "auto",
+       "handle": null
+      }
+     ],
+     "values": {},
+     "picks": {},
+     "varsSet": {},
+     "splits": {},
+     "webhook": {}
+    },
+    "returned": null,
+    "now": 1790000000200
+   }
+  },
+  {
+   "action": {
+    "op": "setInputValue",
+    "text": "XY-1"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "پشتیبانی  ›  کد؟",
+     "blocks": [
+      {
+       "key": "2:0",
+       "nodeId": "i",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "کد؟"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "input",
+      "nodeId": "i",
+      "stage": "typing",
+      "inputType": "text",
+      "label": "کد؟",
+      "placeholder": "",
+      "required": true,
+      "skippable": false,
+      "skipLabel": "SKIP",
+      "maxLength": 500,
+      "value": "XY-1",
+      "pendingValue": null,
+      "error": ""
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "کد؟",
+     "focusKey": "f1"
+    },
+    "variables": {
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i"
+    ],
+    "handoffState": null,
+    "flowPath": "پشتیبانی > کد؟",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {},
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": {
+     "v": 2,
+     "flowId": 7,
+     "revision": 3,
+     "sessionId": "s-1",
+     "seq": 5,
+     "started": true,
+     "terminal": false,
+     "savedAt": 1790000000300,
+     "trail": [
+      {
+       "id": "t",
+       "auto": false,
+       "via": "menu",
+       "handle": null
+      },
+      {
+       "id": "i",
+       "auto": true,
+       "via": "auto",
+       "handle": null
+      }
+     ],
+     "values": {},
+     "picks": {},
+     "varsSet": {},
+     "splits": {},
+     "webhook": {}
+    },
+    "returned": null,
+    "now": 1790000000300
+   }
+  },
+  {
+   "action": {
+    "op": "submitInput"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "پشتیبانی  ›  کد؟  ›  نوع",
+     "blocks": [
+      {
+       "key": "3:0",
+       "nodeId": "c",
+       "rich": [
+        {
+         "type": "p",
+         "children": [
+          {
+           "type": "text",
+           "value": "نوع"
+          }
+         ]
+        }
+       ],
+       "kind": "bot"
+      }
+     ],
+     "typing": false,
+     "control": {
+      "type": "choice",
+      "nodeId": "c",
+      "style": "list",
+      "allowOther": false,
+      "otherLabel": "OTHER",
+      "otherValue": "",
+      "options": [
+       {
+        "id": "o1",
+        "label": "الف",
+        "index": 1
+       },
+       {
+        "id": "o2",
+        "label": "ب",
+        "index": 2
+       }
+      ],
+      "otherOpen": false
+     },
+     "nav": {
+      "canBack": true,
+      "canRestart": true,
+      "agentLink": false
+     },
+     "announce": "نوع",
+     "focusKey": "f2"
+    },
+    "variables": {
+     "code": "XY-1",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i",
+     "c"
+    ],
+    "handoffState": null,
+    "flowPath": "پشتیبانی > کد؟ > نوع",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i": {
+       "variable": "code",
+       "label": "کد؟",
+       "value": "XY-1",
+       "display": "XY-1",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "input_submit",
+      "ts": 1790000000300,
+      "seq": 6,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "input_type": "text",
+       "length": 4,
+       "confirmed": false,
+       "saved_to": "conversation_attribute"
+      },
+      "node_id": "i",
+      "kind": "input"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000300,
+      "seq": 7,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "i",
+       "handle": "next",
+       "via": "next",
+       "depth": 3,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "c",
+      "kind": "choice"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 6,
+      "type": "input_submit",
+      "t": 1790000000300,
+      "node": "i"
+     },
+     {
+      "seq": 7,
+      "type": "node_view",
+      "t": 1790000000300,
+      "node": "c",
+      "from": "i",
+      "ref": "next",
+      "dwell_ms": 200
+     }
+    ],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": {
+     "v": 2,
+     "flowId": 7,
+     "revision": 3,
+     "sessionId": "s-1",
+     "seq": 7,
+     "started": true,
+     "terminal": false,
+     "savedAt": 1790000000400,
+     "trail": [
+      {
+       "id": "t",
+       "auto": false,
+       "via": "menu",
+       "handle": null
+      },
+      {
+       "id": "i",
+       "auto": true,
+       "via": "auto",
+       "handle": null
+      },
+      {
+       "id": "c",
+       "auto": false,
+       "via": "next",
+       "handle": null
+      }
+     ],
+     "values": {
+      "i": {
+       "variable": "code",
+       "label": "کد؟",
+       "value": "XY-1",
+       "display": "XY-1",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {},
+     "varsSet": {},
+     "splits": {},
+     "webhook": {}
+    },
+    "returned": null,
+    "now": 1790000000400
+   }
+  },
+  {
+   "action": {
+    "op": "chooseOption",
+    "id": "o1"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "پشتیبانی  ›  کد؟  ›  نوع  ›  الف",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "agent",
+      "variant": "connecting",
+      "label": "",
+      "ticket": false
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "code": "XY-1",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i",
+     "c",
+     "ag"
+    ],
+    "handoffState": "created",
+    "flowPath": "پشتیبانی > کد؟ > نوع > الف",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i": {
+       "variable": "code",
+       "label": "کد؟",
+       "value": "XY-1",
+       "display": "XY-1",
+       "saveTo": "conversation_attribute"
+      },
+      "c": {
+       "variable": null,
+       "label": "نوع",
+       "value": "الف",
+       "display": "الف",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {
+      "c": "الف"
+     },
+     "varsSet": {}
+    },
+    "events": [
+     {
+      "name": "option_select",
+      "ts": 1790000000400,
+      "seq": 8,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "option_kind": "choice",
+       "option_id": "o1",
+       "index": 1,
+       "label": "الف"
+      },
+      "node_id": "c",
+      "kind": "choice"
+     },
+     {
+      "name": "node_view",
+      "ts": 1790000000400,
+      "seq": 9,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "from_node_id": "c",
+       "handle": "o1",
+       "via": "next",
+       "depth": 4,
+       "passthrough": false,
+       "revisit": false
+      },
+      "node_id": "ag",
+      "kind": "agent"
+     },
+     {
+      "name": "handoff_request",
+      "ts": 1790000000400,
+      "seq": 10,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "reason": "agent_node"
+      },
+      "node_id": "ag",
+      "kind": "agent"
+     },
+     {
+      "name": "handoff_created",
+      "ts": 1790000000400,
+      "seq": 11,
+      "session_id": "s-1",
+      "flow": {
+       "bot_id": 7,
+       "revision": 3
+      },
+      "props": {
+       "conversation_id": 42,
+       "reason": "agent_node",
+       "kind": "live",
+       "elapsed_ms": 0
+      },
+      "node_id": "ag",
+      "kind": "agent"
+     }
+    ],
+    "wire": [
+     {
+      "seq": 8,
+      "type": "option_select",
+      "t": 1790000000400,
+      "node": "c",
+      "ref": "o1"
+     },
+     {
+      "seq": 9,
+      "type": "node_view",
+      "t": 1790000000400,
+      "node": "ag",
+      "from": "c",
+      "ref": "o1",
+      "dwell_ms": 100
+     },
+     {
+      "seq": 10,
+      "type": "handoff_request",
+      "t": 1790000000400,
+      "node": "ag",
+      "ref": "agent_node",
+      "dwell_ms": 0
+     }
+    ],
+    "agentCalls": [
+     {
+      "reason": "agent_node",
+      "teamId": 5,
+      "ticket": false,
+      "flowPath": "پشتیبانی > کد؟ > نوع > الف",
+      "summary": {
+       "steps": [
+        {
+         "id": "t",
+         "k": "topic",
+         "l": "پشتیبانی"
+        },
+        {
+         "id": "i",
+         "k": "input",
+         "l": "کد؟",
+         "pick": "XY-1"
+        },
+        {
+         "id": "c",
+         "k": "choice",
+         "l": "نوع",
+         "pick": "الف"
+        }
+       ]
+      },
+      "trace": [
+       {
+        "n": "t"
+       },
+       {
+        "n": "i"
+       },
+       {
+        "n": "c",
+        "h": "o1"
+       },
+       {
+        "n": "ag"
+       }
+      ],
+      "vars": {
+       "code": "XY-1"
+      },
+      "sessionId": "s-1",
+      "revision": 3
+     }
+    ],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000500
+   }
+  },
+  {
+   "action": {
+    "op": "goBack"
+   },
+   "expect": {
+    "view": {
+     "identity": null,
+     "breadcrumb": "پشتیبانی  ›  کد؟  ›  نوع  ›  الف",
+     "blocks": [],
+     "typing": false,
+     "control": {
+      "type": "agent",
+      "variant": "connecting",
+      "label": "",
+      "ticket": false
+     },
+     "nav": {
+      "canBack": false,
+      "canRestart": false,
+      "agentLink": false
+     },
+     "announce": "",
+     "focusKey": "f3"
+    },
+    "variables": {
+     "code": "XY-1",
+     "contact.name": "",
+     "contact.email": "",
+     "contact.phone": "",
+     "page.url": "https://shop.test/pricing?x=1",
+     "page.path": "/pricing",
+     "page.host": "shop.test",
+     "locale": "fa",
+     "device": "desktop",
+     "visitor.returning": "false",
+     "hours.state": "open",
+     "agents.online": "yes",
+     "session.id": "s-1",
+     "bot.name": "",
+     "feedback.helpful": "",
+     "feedback.reason": ""
+    },
+    "trail": [
+     "t",
+     "i",
+     "c",
+     "ag"
+    ],
+    "handoffState": "created",
+    "flowPath": "پشتیبانی > کد؟ > نوع > الف",
+    "session": {
+     "id": "s-1",
+     "restarts": 0
+    },
+    "debug": {
+     "values": {
+      "i": {
+       "variable": "code",
+       "label": "کد؟",
+       "value": "XY-1",
+       "display": "XY-1",
+       "saveTo": "conversation_attribute"
+      },
+      "c": {
+       "variable": null,
+       "label": "نوع",
+       "value": "الف",
+       "display": "الف",
+       "saveTo": "conversation_attribute"
+      }
+     },
+     "picks": {
+      "c": "الف"
+     },
+     "varsSet": {}
+    },
+    "events": [],
+    "wire": [],
+    "agentCalls": [],
+    "webhookCalls": [],
+    "persisted": null,
+    "returned": null,
+    "now": 1790000000600
+   }
+  }
+ ]
+}

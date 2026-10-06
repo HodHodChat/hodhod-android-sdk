@@ -1,0 +1,273 @@
+{
+ "vars": {
+  "contact.name": "علی",
+  "locale": "fa",
+  "name": "زهرا‌ی عزیز",
+  "empty": "",
+  "list": [
+   "a",
+   "b"
+  ],
+  "n": 5,
+  "page.url": "https://x.test/a b?q=1",
+  "nested": "{{name}}",
+  "long": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "amp": "a&b c/d?e=f#g",
+  "obj": {
+   "a": 1
+  },
+  "fa_digits": "۱۲۳"
+ },
+ "cases": [
+  {
+   "input": "سلام {{contact.name}}",
+   "ctx": "text",
+   "output": "سلام علی"
+  },
+  {
+   "input": "سلام {{contact.name}}",
+   "ctx": "url",
+   "output": "سلام %D8%B9%D9%84%DB%8C"
+  },
+  {
+   "input": "سلام {{ contact.name }}!",
+   "ctx": "text",
+   "output": "سلام علی!"
+  },
+  {
+   "input": "سلام {{ contact.name }}!",
+   "ctx": "url",
+   "output": "سلام %D8%B9%D9%84%DB%8C!"
+  },
+  {
+   "input": "{{unknown}}",
+   "ctx": "text",
+   "output": ""
+  },
+  {
+   "input": "{{unknown}}",
+   "ctx": "url",
+   "output": ""
+  },
+  {
+   "input": "{{unknown|default:\"پیش‌فرض\"}}",
+   "ctx": "text",
+   "output": "پیش‌فرض"
+  },
+  {
+   "input": "{{unknown|default:\"پیش‌فرض\"}}",
+   "ctx": "url",
+   "output": "%D9%BE%DB%8C%D8%B4%E2%80%8C%D9%81%D8%B1%D8%B6"
+  },
+  {
+   "input": "{{ unknown | default : \"x y\" }}",
+   "ctx": "text",
+   "output": "x y"
+  },
+  {
+   "input": "{{ unknown | default : \"x y\" }}",
+   "ctx": "url",
+   "output": "x%20y"
+  },
+  {
+   "input": "{{empty|default:\"E\"}}",
+   "ctx": "text",
+   "output": "E"
+  },
+  {
+   "input": "{{empty|default:\"E\"}}",
+   "ctx": "url",
+   "output": "E"
+  },
+  {
+   "input": "{{list}}",
+   "ctx": "text",
+   "output": "a, b"
+  },
+  {
+   "input": "{{list}}",
+   "ctx": "url",
+   "output": "a%2C%20b"
+  },
+  {
+   "input": "{{n}}",
+   "ctx": "text",
+   "output": "5"
+  },
+  {
+   "input": "{{n}}",
+   "ctx": "url",
+   "output": "5"
+  },
+  {
+   "input": "\\{{name}}",
+   "ctx": "text",
+   "output": "{{name}}"
+  },
+  {
+   "input": "\\{{name}}",
+   "ctx": "url",
+   "output": "{{name}}"
+  },
+  {
+   "input": "{{name}} {{nested}}",
+   "ctx": "text",
+   "output": "زهرا‌ی عزیز {{name}}"
+  },
+  {
+   "input": "{{name}} {{nested}}",
+   "ctx": "url",
+   "output": "%D8%B2%D9%87%D8%B1%D8%A7%E2%80%8C%DB%8C%20%D8%B9%D8%B2%DB%8C%D8%B2 %7B%7Bname%7D%7D"
+  },
+  {
+   "input": "{{long}}",
+   "ctx": "text",
+   "output": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "input": "{{long}}",
+   "ctx": "url",
+   "output": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "input": "{{bad syntax}}",
+   "ctx": "text",
+   "output": "{{bad syntax}}"
+  },
+  {
+   "input": "{{bad syntax}}",
+   "ctx": "url",
+   "output": "{{bad syntax}}"
+  },
+  {
+   "input": "{{ }}",
+   "ctx": "text",
+   "output": "{{ }}"
+  },
+  {
+   "input": "{{ }}",
+   "ctx": "url",
+   "output": "{{ }}"
+  },
+  {
+   "input": "{{a.b.c}}",
+   "ctx": "text",
+   "output": ""
+  },
+  {
+   "input": "{{a.b.c}}",
+   "ctx": "url",
+   "output": ""
+  },
+  {
+   "input": "x {{ name",
+   "ctx": "text",
+   "output": "x {{ name"
+  },
+  {
+   "input": "x {{ name",
+   "ctx": "url",
+   "output": "x {{ name"
+  },
+  {
+   "input": "{{NAME}}",
+   "ctx": "text",
+   "output": "{{NAME}}"
+  },
+  {
+   "input": "{{NAME}}",
+   "ctx": "url",
+   "output": "{{NAME}}"
+  },
+  {
+   "input": "{{fa_digits}}۱۲۳",
+   "ctx": "text",
+   "output": "۱۲۳۱۲۳"
+  },
+  {
+   "input": "{{fa_digits}}۱۲۳",
+   "ctx": "url",
+   "output": "%DB%B1%DB%B2%DB%B3۱۲۳"
+  },
+  {
+   "input": "{{obj}}",
+   "ctx": "text",
+   "output": ""
+  },
+  {
+   "input": "{{obj}}",
+   "ctx": "url",
+   "output": ""
+  },
+  {
+   "input": "متن‌با‌نیم‌فاصله {{name}}",
+   "ctx": "text",
+   "output": "متن‌با‌نیم‌فاصله زهرا‌ی عزیز"
+  },
+  {
+   "input": "متن‌با‌نیم‌فاصله {{name}}",
+   "ctx": "url",
+   "output": "متن‌با‌نیم‌فاصله %D8%B2%D9%87%D8%B1%D8%A7%E2%80%8C%DB%8C%20%D8%B9%D8%B2%DB%8C%D8%B2"
+  },
+  {
+   "input": "{{name|default:\"‌\"}}",
+   "ctx": "text",
+   "output": "زهرا‌ی عزیز"
+  },
+  {
+   "input": "{{name|default:\"‌\"}}",
+   "ctx": "url",
+   "output": "%D8%B2%D9%87%D8%B1%D8%A7%E2%80%8C%DB%8C%20%D8%B9%D8%B2%DB%8C%D8%B2"
+  },
+  {
+   "input": "{{amp}}",
+   "ctx": "text",
+   "output": "a&b c/d?e=f#g"
+  },
+  {
+   "input": "{{amp}}",
+   "ctx": "url",
+   "output": "a%26b%20c%2Fd%3Fe%3Df%23g"
+  },
+  {
+   "input": "{{contact.name}}{{locale}}",
+   "ctx": "text",
+   "output": "علیfa"
+  },
+  {
+   "input": "{{contact.name}}{{locale}}",
+   "ctx": "url",
+   "output": "%D8%B9%D9%84%DB%8Cfa"
+  },
+  {
+   "input": "{{n|default:\"zz\"}}",
+   "ctx": "text",
+   "output": "5"
+  },
+  {
+   "input": "{{n|default:\"zz\"}}",
+   "ctx": "url",
+   "output": "5"
+  },
+  {
+   "input": "{{default}}",
+   "ctx": "text",
+   "output": ""
+  },
+  {
+   "input": "{{default}}",
+   "ctx": "url",
+   "output": ""
+  },
+  {
+   "input": "{{page.url}}",
+   "ctx": "text",
+   "output": "https://x.test/a b?q=1"
+  },
+  {
+   "input": "{{page.url}}",
+   "ctx": "url",
+   "output": "https%3A%2F%2Fx.test%2Fa%20b%3Fq%3D1"
+  }
+ ]
+}

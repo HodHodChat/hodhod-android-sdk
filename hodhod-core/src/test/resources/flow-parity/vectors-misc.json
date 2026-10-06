@@ -1,0 +1,124 @@
+{
+ "cases": [
+  {
+   "numbers": [
+    {
+     "input": "",
+     "number": 0
+    },
+    {
+     "input": " ",
+     "number": 0
+    },
+    {
+     "input": "0",
+     "number": 0
+    },
+    {
+     "input": "12",
+     "number": 12
+    },
+    {
+     "input": " 12 ",
+     "number": 12
+    },
+    {
+     "input": "1e3",
+     "number": 1000
+    },
+    {
+     "input": "-1.5",
+     "number": -1.5
+    },
+    {
+     "input": ".5",
+     "number": 0.5
+    },
+    {
+     "input": "5.",
+     "number": 5
+    },
+    {
+     "input": "0x1f",
+     "number": 31
+    },
+    {
+     "input": "0b11",
+     "number": 3
+    },
+    {
+     "input": "0o17",
+     "number": 15
+    },
+    {
+     "input": "Infinity",
+     "number": "Infinity"
+    },
+    {
+     "input": "-Infinity",
+     "number": "-Infinity"
+    },
+    {
+     "input": "abc",
+     "number": "NaN"
+    },
+    {
+     "input": "1 2",
+     "number": "NaN"
+    },
+    {
+     "input": "+3",
+     "number": 3
+    },
+    {
+     "input": "--1",
+     "number": "NaN"
+    },
+    {
+     "input": "1_000",
+     "number": "NaN"
+    },
+    {
+     "input": " 7 ",
+     "number": 7
+    },
+    {
+     "input": "١٢٣",
+     "number": "NaN"
+    }
+   ],
+   "normalize": [
+    {
+     "input": "  ABC ",
+     "normalize": "abc",
+     "ascii": "  ABC "
+    },
+    {
+     "input": "علي",
+     "normalize": "علی",
+     "ascii": "علي"
+    },
+    {
+     "input": "كتاب ۱۲۳",
+     "normalize": "کتاب 123",
+     "ascii": "كتاب 123"
+    },
+    {
+     "input": "١٢٣abc",
+     "normalize": "123abc",
+     "ascii": "123abc"
+    },
+    {
+     "input": "Ünï",
+     "normalize": "ünï",
+     "ascii": "Ünï"
+    },
+    {
+     "input": "",
+     "normalize": "",
+     "ascii": ""
+    }
+   ]
+  }
+ ]
+}
