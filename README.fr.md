@@ -22,11 +22,11 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta03") // brings hodhod-core
+    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta04") // brings hodhod-core
 }
 ```
 
-Code source : <https://github.com/HodHodChat/hodhod-android-sdk>. [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) construit le paquet à partir du tag git `1.0.0-beta03` (le tag doit exister dans le dépôt ; voir `docs/RELEASING.md`). Module core seul : `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta03`.
+Code source : <https://github.com/HodHodChat/hodhod-android-sdk>. [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) construit le paquet à partir du tag git `1.0.0-beta04` (le tag doit exister dans le dépôt ; voir `docs/RELEASING.md`). Module core seul : `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta04`.
 
 ## Configuration
 
@@ -69,6 +69,18 @@ Si la boîte de réception a un [parcours de chatbot](https://hodhod.chat/featur
 ## Mes tickets
 
 Les visiteurs voient toujours **tous** leurs tickets, ouverts et fermés, quel que soit le mode de contact de la boîte (chat, ticket, les deux, ticket hors horaires). L'accueil affiche une ligne compacte « Mes tickets » avec le nombre de tickets ouverts dès qu'il existe au moins un ticket, même pendant un chat en direct. La liste propose les filtres Ouverts / Fermés / Tous avec compteurs (par défaut Ouverts s'il y en a, sinon Tous), des états vides par filtre, des badges de statut, des heures relatives, le tirer pour actualiser et le chargement de la suite. Les tickets qu'un agent a créés à partir d'un chat portent l'étiquette « Depuis le chat » ; s'il s'agit du chat en direct actuel, un appui ouvre le chat. Dans les boîtes uniquement ticket, la liste est l'accueil avec un bouton bien visible « Nouveau ticket » ; dans les boîtes uniquement chat, le bouton est masqué mais la liste reste accessible. Nécessite un serveur avec `GET /api/v1/widget/tickets?status=&page=&per_page=` et `/tickets/summary` ; les serveurs plus anciens sont comptés et filtrés côté client.
+
+## Annonces
+
+Une boîte de réception peut publier jusqu’à deux annonces (dans les réglages de la boîte du tableau de bord). Elles apparaissent tout en haut de l’écran de démarrage : Home, le panneau de tickets lorsqu’il tient lieu de Home et le formulaire de pré-chat, au-dessus du parcours, des cartes de démarrage et de la ligne « Mes tickets » ; les avis d’incident viennent après. Une *information* est un bandeau jaune, une *alerte* un bandeau rouge avec icône ; tous deux restent lisibles en clair et en sombre. Le contenu est du texte enrichi (gras, liens) et une image facultative. Les liens sont limités à `http`, `https`, `mailto` et `tel`, s’ouvrent avec `ACTION_VIEW` (navigateur, numéroteur, appli mail ; jamais une WebView) et le texte brut n’est jamais transformé en lien automatiquement. Les images doivent être en `https`, ont une hauteur maximale fixe, leur texte alternatif est lu par TalkBack, elles peuvent porter un lien et sont masquées si le chargement échoue. Les annonces fermables ont un bouton de fermeture (libellé TalkBack : « Fermer ») ; le choix est mémorisé sur l’appareil par `(websiteToken, id, updated_at)`, une annonce modifiée réapparaît donc.
+
+```kotlin
+val items by Hodhod.repository.announcements.collectAsState()   // non fermées, actualisées avec la configuration du widget
+Hodhod.repository.dismissAnnouncement(items.first().id)           // ignoré pour les annonces non fermables
+// WidgetConfig.announcements conserve la liste brute ; les anciens serveurs n’en envoient pas (liste vide)
+```
+
+À essayer sans serveur : `adb shell am start -n chat.hodhod.sample/.MainActivity --es token x --es fake announcements`.
 
 ## Identifier l’utilisateur
 

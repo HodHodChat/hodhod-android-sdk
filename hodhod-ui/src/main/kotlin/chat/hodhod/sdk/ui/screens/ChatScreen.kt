@@ -273,7 +273,10 @@ private fun Composer(vm: HodhodChatViewModel, config: WidgetConfig) {
     }
     val pickMedia = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { accept(it) }
     val pickFile = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { accept(it) }
-    val camera = rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) { ok -> if (ok) accept(cameraUri?.let { Uri.parse(it) }); cameraUri = null }
+    val camera = rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) { ok ->
+        cameraUri?.let { Uri.parse(it) }?.let { shot -> if (ok) accept(shot); ctx.deleteCameraShot(shot) } // the shot itself is not needed after the upload copy
+        cameraUri = null
+    }
     fun launchCamera() {
         val dir = File(ctx.cacheDir, "hodhod-camera").apply { mkdirs() }
         val f = File(dir, "photo_${System.currentTimeMillis()}.jpg")

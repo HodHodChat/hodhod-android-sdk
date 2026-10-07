@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12+ (android:dataExtractionRules). Keeps the Hodhod chat session out of cloud backup and device-to-device transfer. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="hodhod_session.xml" />
+        <exclude domain="sharedpref" path="hodhod_session_plain.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="hodhod_session.xml" />
+        <exclude domain="sharedpref" path="hodhod_session_plain.xml" />
+    </device-transfer>
+</data-extraction-rules>

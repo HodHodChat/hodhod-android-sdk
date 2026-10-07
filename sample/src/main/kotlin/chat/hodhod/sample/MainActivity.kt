@@ -33,17 +33,31 @@ class MainActivity : ComponentActivity() {
 
 /**
  * Offline UI demo: `--es fake chat|ticket|both|offline|messages` (add `-tickets`, e.g. `chat-tickets`, `ticket-tickets`: a visitor with open, closed and
- * chat-converted tickets, 25 in total so pagination shows) swaps the real repository for the in-memory fake. */
+ * chat-converted tickets, 25 in total so pagination shows) swaps the real repository for the in-memory fake. `announcements` (also `announcements-ticket`,
+ * `announcements-both`) adds two inbox announcements: a dismissible yellow notice with bold text and a link, and a red non-dismissible alert. */
 internal var lastFake: chat.hodhod.sdk.FakeHodhodRepository? = null
 private fun installFake(kind: String) {
-    val mode = when (kind) { "ticket", "ticket-tickets" -> chat.hodhod.sdk.ContactMode.TICKET; "both", "both-tickets" -> chat.hodhod.sdk.ContactMode.BOTH; else -> chat.hodhod.sdk.ContactMode.CHAT }
+    val mode = when (kind) {
+        "ticket", "ticket-tickets", "announcements-ticket" -> chat.hodhod.sdk.ContactMode.TICKET
+        "both", "both-tickets", "announcements-both" -> chat.hodhod.sdk.ContactMode.BOTH
+        else -> chat.hodhod.sdk.ContactMode.CHAT
+    }
     val now = System.currentTimeMillis() / 1000
     fun msg(id: Int, text: String, mine: Boolean, ago: Long, sender: chat.hodhod.sdk.Sender? = chat.hodhod.sdk.Sender(1, "Sara", null, "user")) = chat.hodhod.sdk.Message(
         id.toString(), id.toLong(), null, 1, text, if (mine) chat.hodhod.sdk.MessageType.INCOMING else chat.hodhod.sdk.MessageType.OUTGOING, null, emptyMap(), now - ago, emptyList(),
         if (mine) null else sender, chat.hodhod.sdk.MessageStatus.SENT)
     val msgs = if (kind == "messages") listOf(msg(1, "سلام، سفارشم هنوز نرسیده", true, 90000), msg(2, "سلام! وقت بخیر 👋 شماره سفارش را بفرمایید؟", false, 89000),
         msg(3, "**ORD-1234** — https://example.com/track", true, 300), msg(4, "پیگیری می‌کنم، چند لحظه لطفا", false, 120), msg(5, "Thanks, take your time", true, 60), msg(6, "Sure.", false, 30)) else emptyList()
-    val repo = chat.hodhod.sdk.FakeHodhodRepository(chat.hodhod.sdk.FakeHodhodRepository.sampleConfig(mode), msgs)
+    var cfg = chat.hodhod.sdk.FakeHodhodRepository.sampleConfig(mode)
+    if (kind.startsWith("announcements")) cfg = cfg.copy(announcements = listOf(
+        chat.hodhod.sdk.Announcement("demo-notice", chat.hodhod.sdk.AnnouncementKind.NOTICE, true, listOf(chat.hodhod.sdk.AnnouncementBlock.Text(listOf(
+            chat.hodhod.sdk.TextSegment("Scheduled maintenance tonight. ", bold = true), chat.hodhod.sdk.TextSegment("Details on the "),
+            chat.hodhod.sdk.TextSegment("status page", href = "https://example.com/status"), chat.hodhod.sdk.TextSegment(".")))), "v1"),
+        chat.hodhod.sdk.Announcement("demo-alert", chat.hodhod.sdk.AnnouncementKind.ALERT, false, listOf(chat.hodhod.sdk.AnnouncementBlock.Text(listOf(
+            chat.hodhod.sdk.TextSegment("Payments are delayed. ", bold = true), chat.hodhod.sdk.TextSegment("Call us on "),
+            chat.hodhod.sdk.TextSegment("+98 21 0000 0000", href = "tel:+982100000000")))), "v1"),
+    ))
+    val repo = chat.hodhod.sdk.FakeHodhodRepository(cfg, msgs)
     if (kind.endsWith("-tickets")) {
         val subjects = listOf("Refund for order 1042", "App crashes on login", "درخواست فاکتور", "Change my plan", "Delivery address wrong")
         repo.setTickets((1..25).map { n ->

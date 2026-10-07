@@ -18,9 +18,15 @@ import chat.hodhod.sdk.Hodhod
 public class HodhodChatActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Exported for the hodhod://chat deep link: if the SDK was never configured (foreign link in a cold process), close quietly instead of crashing the host app.
+        val repository = runCatching { Hodhod.repository }.getOrNull()
+        if (repository == null) {
+            finish()
+            return
+        }
         enableEdgeToEdge(SystemBarStyle.auto(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT), SystemBarStyle.auto(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT))
         setContent {
-            HodhodChatContent(Hodhod.repository, Hodhod.config, Modifier, onClose = { finish() }, applySystemBars = true)
+            HodhodChatContent(repository, Hodhod.config, Modifier, onClose = { finish() }, applySystemBars = true)
         }
     }
 }

@@ -13,6 +13,7 @@ import chat.hodhod.sdk.HodhodI18n
 import chat.hodhod.sdk.HodhodRepository
 import chat.hodhod.sdk.HodhodState
 import chat.hodhod.sdk.HodhodUser
+import chat.hodhod.sdk.Announcement
 import chat.hodhod.sdk.IssueNotice
 import chat.hodhod.sdk.Message
 import chat.hodhod.sdk.MessageAttachment
@@ -41,8 +42,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.contentOrNull
 import java.util.Date
 
 /**
@@ -69,6 +72,7 @@ internal class DefaultHodhodRepository(
     private val _state = MutableStateFlow<HodhodState>(HodhodState.Idle)
     private val _agents = MutableStateFlow<List<Agent>>(emptyList())
     private val _notices = MutableStateFlow<List<IssueNotice>>(emptyList())
+    private val _announcements = MutableStateFlow<List<Announcement>>(emptyList())
     private val _contact = MutableStateFlow(ContactInfo(null, null, hasName = false, hasEmail = false, hasPhone = false))
     private val _unread = MutableStateFlow(0)
     private val _hasActive = MutableStateFlow(false)
@@ -84,6 +88,7 @@ internal class DefaultHodhodRepository(
     override val state: StateFlow<HodhodState> = _state.asStateFlow()
     override val agents: StateFlow<List<Agent>> = _agents.asStateFlow()
     override val issueNotices: StateFlow<List<IssueNotice>> = _notices.asStateFlow()
+    override val announcements: StateFlow<List<Announcement>> = _announcements.asStateFlow()
     override val contact: StateFlow<ContactInfo> = _contact.asStateFlow()
     override val unreadCount: StateFlow<Int> = _unread.asStateFlow()
     override val hasActiveConversation: StateFlow<Boolean> = _hasActive.asStateFlow()
@@ -108,6 +113,9 @@ internal class DefaultHodhodRepository(
     private var endedId: Int? = null
     private var pendingConvAttrs: Map<String, Any?> = emptyMap()
     private var dismissed = setOf<Long>()
+    /** Announcements as the server sent them (before dismissal filtering) and the persisted dismissal keys (oldest first, null = not loaded yet). */
+    private var allAnnouncements: List<Announcement> = emptyList()
+    private var dismissedAnnouncements: List<String>? = null
     private var ticketConvIds = setOf<Int>()
     /** conversation display id -> ticket number of every ticket seen so far (all pages), to route websocket events. */
     private var ticketByConv = mapOf<Int, Int>()
@@ -155,8 +163,9 @@ internal class DefaultHodhodRepository(
                     null
                 }
             }
-            val cfg = Parsers.widgetConfig(root, extras) ?: throw HodhodException("server", "config missing")
+            val cfg = Parsers.widgetConfig(root, extras, devImageHosts) ?: throw HodhodException("server", "config missing")
             _config.value = cfg
+            setAnnouncements(cfg.announcements)
             _locale.value = HodhodI18n.resolve(config.locale, cfg.locale, deviceLocale())
             _state.value = HodhodState.Ready
             publish()
@@ -361,6 +370,8 @@ internal class DefaultHodhodRepository(
         _contact.value = ContactInfo(null, null, hasName = false, hasEmail = false, hasPhone = false)
         pendingFlow = null
         if (flowCreated) flowEngine.reset()
+        synchronized(lock) { dismissedAnnouncements = null } // the runtime cleared the store: dismissals are gone with the session
+        publishAnnouncements()
         _state.value = HodhodState.Idle
         publish()
     }
@@ -779,6 +790,44 @@ internal class DefaultHodhodRepository(
         _notices.value = _notices.value.filterNot { it.id == id }
     }
 
+    // ---- announcements: dismissal is remembered per (websiteToken, id, updated_at) in the session store ----
+
+    /** Cleartext (dev) servers serve their own uploads over http: those announcement images are accepted for the configured host and localhost only. */
+    private val devImageHosts: Set<String> by lazy {
+        if (!config.allowCleartext) emptySet()
+        else setOfNotNull(runCatching { java.net.URI(config.baseUrl).host?.lowercase() }.getOrNull(), "localhost", "127.0.0.1")
+    }
+
+    private fun announcementKey(a: Announcement) = "${config.websiteToken}:${a.id}:${a.updatedAt}"
+
+    /** Caller holds [lock]. */
+    private fun loadDismissedLocked(): List<String> = dismissedAnnouncements ?: runCatching {
+        parseJson(store.get(SessionStore.DISMISSED_ANNOUNCEMENTS).orEmpty()).arr()?.mapNotNull { (it as? JsonPrimitive)?.contentOrNull }
+    }.getOrNull().orEmpty().also { dismissedAnnouncements = it }
+
+    private fun publishAnnouncements() {
+        val visible = synchronized(lock) {
+            val gone = loadDismissedLocked().toSet()
+            allAnnouncements.filter { announcementKey(it) !in gone }
+        }
+        _announcements.value = visible
+    }
+
+    private fun setAnnouncements(list: List<Announcement>) {
+        synchronized(lock) { allAnnouncements = list }
+        publishAnnouncements()
+    }
+
+    override fun dismissAnnouncement(id: String) {
+        synchronized(lock) {
+            val target = allAnnouncements.firstOrNull { it.id == id && it.dismissible } ?: return
+            val updated = (loadDismissedLocked().filterNot { it == announcementKey(target) } + announcementKey(target)).takeLast(MAX_DISMISSED_ANNOUNCEMENTS)
+            dismissedAnnouncements = updated
+            store.put(SessionStore.DISMISSED_ANNOUNCEMENTS, JsonArray(updated.map(::JsonPrimitive)).toString())
+        }
+        publishAnnouncements()
+    }
+
     // =================================================================================================================
     // Websocket
     // =================================================================================================================
@@ -1040,6 +1089,7 @@ internal class DefaultHodhodRepository(
     companion object {
         const val PAGE_SIZE = 20
         const val TICKET_PAGE_SIZE = 20
+        const val MAX_DISMISSED_ANNOUNCEMENTS = 50
         const val TYPING_IDLE_MS = 5_000L
         const val TYPING_REPEAT_MS = 4_000L
         const val REMOTE_TYPING_TIMEOUT_MS = 30_000L

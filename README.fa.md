@@ -24,11 +24,11 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta03") // brings hodhod-core
+    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta04") // brings hodhod-core
 }
 ```
 
-کد منبع: <https://github.com/HodHodChat/hodhod-android-sdk>. بسته را [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) از روی تگ گیت `1.0.0-beta03` می‌سازد (این تگ باید در مخزن وجود داشته باشد؛ `docs/RELEASING.md` را ببینید). فقط ماژول هسته: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta03`.
+کد منبع: <https://github.com/HodHodChat/hodhod-android-sdk>. بسته را [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) از روی تگ گیت `1.0.0-beta04` می‌سازد (این تگ باید در مخزن وجود داشته باشد؛ `docs/RELEASING.md` را ببینید). فقط ماژول هسته: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta04`.
 
 ## پیکربندی
 
@@ -74,6 +74,18 @@ fun Home() = Box(Modifier.fillMaxSize()) {
 
 برای رابط‌های سفارشی: `repository.ticketSummary` (باز/کل) و `repository.loadTickets(TicketFilter.OPEN, page)`.
 
+## اطلاعیه‌ها
+
+هر صندوق می‌تواند تا دو اطلاعیه منتشر کند (از تنظیمات صندوق در داشبورد). اطلاعیه‌ها بالای صفحهٔ شروع نمایش داده می‌شوند: صفحهٔ خانه، پنل تیکت وقتی نقش صفحهٔ خانه را دارد و فرم پیش از گفت‌وگو؛ بالاتر از اجرای فلو، کارت‌های شروع و ردیف «تیکت‌های من»؛ اعلان‌های اختلال بعد از آن‌ها می‌آیند. نوع *اطلاعیه* نوار زردِ اطلاع‌رسانی و نوع *هشدار* نوار قرمز با آیکون است و هر دو در حالت روشن و تاریک خوانا هستند. محتوا متن غنی (پررنگ و پیوند) و یک تصویر اختیاری است. پیوندها فقط `http`، `https`، `mailto` و `tel` هستند، با `ACTION_VIEW` باز می‌شوند (مرورگر، شماره‌گیر، برنامهٔ ایمیل؛ هرگز WebView) و متن ساده هرگز خودکار به پیوند تبدیل نمی‌شود. تصویر باید `https` باشد، حداکثر ارتفاع ثابت دارد، متن جایگزین برای TalkBack خوانده می‌شود، می‌تواند پیوند داشته باشد و اگر بارگذاری نشود پنهان می‌شود. اطلاعیه‌های قابل‌بستن دکمهٔ بستن دارند (برچسب TalkBack: «بستن»)؛ انتخاب کاربر روی دستگاه و به‌ازای `(websiteToken, id, updated_at)` به خاطر سپرده می‌شود، پس با ویرایش اطلاعیه دوباره نمایش داده می‌شود.
+
+```kotlin
+val items by Hodhod.repository.announcements.collectAsState()   // بسته‌نشده‌ها؛ همراه پیکربندی ویجت تازه می‌شود
+Hodhod.repository.dismissAnnouncement(items.first().id)           // برای اطلاعیهٔ غیرقابل‌بستن نادیده گرفته می‌شود
+// WidgetConfig.announcements فهرست خام را نگه می‌دارد؛ سرورهای قدیمی چیزی نمی‌فرستند (فهرست خالی)
+```
+
+بدون سرور امتحان کنید: `adb shell am start -n chat.hodhod.sample/.MainActivity --es token x --es fake announcements`.
+
 ## شناسایی کاربر
 
 کاربران واردشده را شناسایی کنید (اختیاری). `identifierHash` همان HMAC-SHA256 شناسه با توکن HMAC صندوق است و باید توسط **سرور شما** محاسبه شود، نه داخل برنامه:
@@ -108,6 +120,19 @@ HodhodConfig(
 python3 tools/gen_strings.py            # regenerate hodhod-ui/src/main/res/values*/hodhod_strings.xml
 ./gradlew :hodhod-ui:testDebugUnitTest  # fails if a locale misses a key
 ```
+
+## حریم خصوصی: پشتیبان‌گیری و کش
+
+* نشست گفت‌وگو (توکن‌ها) در فایل `hodhod_session` (رمزنگاری‌شده با Keystore اندروید) نگه‌داری می‌شود؛ نسخهٔ ساده `hodhod_session_plain` فقط وقتی Keystore کار نکند ساخته می‌شود. کلیدهای Keystore در پشتیبان قرار نمی‌گیرند. کتابخانه نمی‌تواند `android:allowBackup="false"` را اجباری کند (هنگام ادغام مانیفست با برنامهٔ میزبان تداخل ایجاد می‌شود)؛ پس برنامهٔ میزبان یا `android:allowBackup="false"` بگذارد یا قوانین همراه `hodhod-core` را معرفی کند:
+
+```xml
+<application
+    android:dataExtractionRules="@xml/hodhod_data_extraction_rules"  <!-- Android 12+ -->
+    android:fullBackupContent="@xml/hodhod_backup_rules">             <!-- Android 11 and lower -->
+```
+
+  اگر برنامه قوانین خودش را دارد، دو خط `<exclude domain="sharedpref" path="hodhod_session.xml" />` و `hodhod_session_plain.xml` را به آن اضافه کنید.
+* فایل‌هایی که کاربر انتخاب یا عکس‌برداری می‌کند فقط برای آپلود در کش برنامه کپی می‌شوند و پس از آپلود موفق (و با `Hodhod.logout()`) پاک می‌شوند؛ باقی‌ماندهٔ آپلودهای ناموفق پس از ۲۴ ساعت پاک می‌شود.
 
 ## برنامهٔ نمونه
 

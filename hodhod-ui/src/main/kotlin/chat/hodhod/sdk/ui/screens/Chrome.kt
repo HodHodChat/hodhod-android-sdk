@@ -148,12 +148,30 @@ internal fun Banners(connection: ConnectionState, loaded: Boolean, notices: List
             Text(stringResource(R.string.hodhod_ui_offline), color = c.amberText, fontSize = 13.sp, fontWeight = FontWeight.Medium)
         }
     }
-    notices.forEach { n ->
-        Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp).clip(RoundedCornerShape(14.dp)).background(c.amberSoft).padding(start = 14.dp, top = 2.dp, bottom = 2.dp, end = 2.dp),
-            verticalAlignment = Alignment.CenterVertically) {
-            Text(n.message, Modifier.weight(1f).padding(vertical = 8.dp), color = c.amberText, fontSize = 13.sp, lineHeight = 21.sp)
-            SquareIconButton(Icons.Rounded.Close, stringResource(R.string.hodhod_issue_notice_dismiss), { onDismiss(n.id) }, size = 48.dp, tint = c.amberText, bordered = false)
-        }
+    notices.forEach { n -> IssueNoticeBanner(n, { onDismiss(n.id) }, Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) }
+}
+
+/** One incident banner (amber, dismissible). */
+@Composable
+internal fun IssueNoticeBanner(n: IssueNotice, onDismiss: () -> Unit, modifier: Modifier = Modifier) {
+    val c = HodhodTheme.colors
+    Row(modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(c.amberSoft).padding(start = 14.dp, top = 2.dp, bottom = 2.dp, end = 2.dp),
+        verticalAlignment = Alignment.CenterVertically) {
+        Text(n.message, Modifier.weight(1f).padding(vertical = 8.dp), color = c.amberText, fontSize = 13.sp, lineHeight = 21.sp)
+        SquareIconButton(Icons.Rounded.Close, stringResource(R.string.hodhod_issue_notice_dismiss), onDismiss, size = 48.dp, tint = c.amberText, bordered = false)
+    }
+}
+
+/**
+ * Top of the scrolling start screens (Home, ticket panel when it is Home, pre-chat): announcements first, then the incident
+ * notices (which stay in the fixed [Banners] area on every other screen). Emits nothing when both lists are empty.
+ */
+@Composable
+internal fun StartTopBanners(announcements: List<Announcement>, notices: List<IssueNotice>, onDismissAnnouncement: (String) -> Unit, onDismissNotice: (Long) -> Unit) {
+    if (announcements.isEmpty() && notices.isEmpty()) return
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        AnnouncementBanners(announcements, onDismissAnnouncement)
+        notices.forEach { n -> IssueNoticeBanner(n, { onDismissNotice(n.id) }) }
     }
 }
 

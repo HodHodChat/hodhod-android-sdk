@@ -168,6 +168,12 @@ EXTRA = {
         'en': 'Updated {time}', 'fa': 'به\u200cروزرسانی {time}', 'ar': 'آخر تحديث {time}', 'de': 'Aktualisiert {time}', 'es': 'Actualizado {time}', 'fr': 'Mis à jour {time}'},
     'hodhod_ui_tickets_open_chat_hint': {
         'en': 'Opens your current chat', 'fa': 'گفت\u200cوگوی فعلی شما باز می\u200cشود', 'ar': 'يفتح محادثتك الحالية', 'de': 'Öffnet deinen aktuellen Chat', 'es': 'Abre tu chat actual', 'fr': 'Ouvre votre chat en cours'},
+    'hodhod_ui_announcement_dismiss': {
+        'en': 'Dismiss', 'fa': 'بستن', 'ar': 'إغلاق', 'de': 'Schließen', 'es': 'Cerrar', 'fr': 'Fermer'},
+    'hodhod_ui_announcement_notice': {
+        'en': 'Notice', 'fa': 'اطلاعیه', 'ar': 'إشعار', 'de': 'Hinweis', 'es': 'Aviso', 'fr': 'Information'},
+    'hodhod_ui_announcement_alert': {
+        'en': 'Warning', 'fa': 'هشدار', 'ar': 'تحذير', 'de': 'Warnung', 'es': 'Advertencia', 'fr': 'Avertissement'},
     'hodhod_ui_tickets_now': {
         'en': 'just now', 'fa': 'همین الان', 'ar': 'الآن', 'de': 'gerade eben', 'es': 'ahora mismo', 'fr': "à l'instant"},
 }

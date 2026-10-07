@@ -120,6 +120,8 @@ public data class WidgetConfig(
     /** Server account locale (`fa`). */
     val locale: String?,
     val disableBranding: Boolean,
+    /** Inbox announcements (enabled + in schedule, ordered, at most 2) from the public widget config; empty when absent/invalid. Use [HodhodRepository.announcements] for the not-yet-dismissed ones. */
+    val announcements: List<Announcement> = emptyList(),
 ) {
     /** True when the inbox is staffed right now (always true when working hours are disabled). */
     public fun isInWorkingHours(nowMillis: Long = System.currentTimeMillis()): Boolean =

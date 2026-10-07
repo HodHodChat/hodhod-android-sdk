@@ -22,11 +22,11 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta03") // brings hodhod-core
+    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta04") // brings hodhod-core
 }
 ```
 
-Quellcode: <https://github.com/HodHodChat/hodhod-android-sdk>. [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) baut das Paket aus dem Git-Tag `1.0.0-beta03` (der Tag muss im Repository existieren; siehe `docs/RELEASING.md`). Nur das Core-Modul: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta03`.
+Quellcode: <https://github.com/HodHodChat/hodhod-android-sdk>. [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) baut das Paket aus dem Git-Tag `1.0.0-beta04` (der Tag muss im Repository existieren; siehe `docs/RELEASING.md`). Nur das Core-Modul: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta04`.
 
 ## Konfiguration
 
@@ -69,6 +69,18 @@ Hat der Posteingang einen aktiven [Chatbot-Ablauf](https://hodhod.chat/features/
 ## Meine Tickets
 
 Besucher sehen immer **alle** ihre Tickets, offene und geschlossene, unabhängig vom Kontaktmodus des Posteingangs (Chat, Ticket, beides, Ticket außerhalb der Geschäftszeiten). Der Startbildschirm zeigt eine kompakte Zeile „Meine Tickets“ mit der Anzahl offener Tickets, sobald es mindestens ein Ticket gibt, auch während eines Live-Chats. Die Liste hat die Filter Offen / Geschlossen / Alle mit Zählern (Standard: Offen, wenn es offene gibt, sonst Alle), leere Zustände je Filter, Statusabzeichen, relative Zeiten, Pull-to-Refresh und Nachladen. Von einem Agenten aus einem Chat erstellte Tickets sind mit „Aus dem Chat“ markiert; ist es der aktuelle Live-Chat, öffnet ein Tipp den Chat. In reinen Ticket-Postfächern ist die Liste der Startbildschirm mit prominentem Button „Neues Ticket“; in reinen Chat-Postfächern ist der Button ausgeblendet, die Liste bleibt erreichbar. Benötigt einen Server mit `GET /api/v1/widget/tickets?status=&page=&per_page=` und `/tickets/summary`; ältere Server werden clientseitig gezählt und gefiltert.
+
+## Ankündigungen
+
+Ein Posteingang kann bis zu zwei Ankündigungen veröffentlichen (in den Posteingangs-Einstellungen des Dashboards). Sie erscheinen ganz oben auf dem Startbildschirm: Home, das Ticket-Panel, wenn es Home ersetzt, und das Pre-Chat-Formular, über dem Flow, den Startkarten und der Zeile „Meine Tickets“; Störungshinweise folgen danach. Ein *Hinweis* ist ein gelbes Informationsbanner, eine *Warnung* ein rotes Banner mit Symbol; beide sind im hellen und dunklen Design gut lesbar. Der Inhalt ist formatierter Text (fett, Links) und optional ein Bild. Links sind auf `http`, `https`, `mailto` und `tel` beschränkt, werden mit `ACTION_VIEW` geöffnet (Browser, Telefon, Mail-App; nie ein WebView), normaler Text wird nie automatisch verlinkt. Bilder müssen `https` sein, haben eine feste Maximalhöhe, ihr Alternativtext wird von TalkBack gelesen, sie können verlinkt sein und werden bei Ladefehlern ausgeblendet. Schließbare Ankündigungen haben eine Schaltfläche (TalkBack: „Schließen“); die Wahl wird pro `(websiteToken, id, updated_at)` auf dem Gerät gespeichert, eine bearbeitete Ankündigung erscheint also erneut.
+
+```kotlin
+val items by Hodhod.repository.announcements.collectAsState()   // noch nicht geschlossen, mit der Widget-Konfiguration aktualisiert
+Hodhod.repository.dismissAnnouncement(items.first().id)           // bei nicht schließbaren Ankündigungen ignoriert
+// WidgetConfig.announcements enthält die Rohliste; ältere Server senden keine (leere Liste)
+```
+
+Ohne Server ausprobieren: `adb shell am start -n chat.hodhod.sample/.MainActivity --es token x --es fake announcements`.
 
 ## Benutzer identifizieren
 

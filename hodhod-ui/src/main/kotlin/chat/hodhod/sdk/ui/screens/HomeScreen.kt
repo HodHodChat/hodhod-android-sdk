@@ -32,11 +32,13 @@ import chat.hodhod.sdk.ui.util.isTeamOnline
 internal fun HomeBody(
     config: WidgetConfig, agents: List<Agent>, hasActive: Boolean, unread: Int, decision: StartDecision, showTickets: Boolean,
     ticketSummary: TicketSummaryCounts, flowSlot: @Composable () -> Boolean,
-    onStartChat: () -> Unit, onOpenTickets: () -> Unit, modifier: Modifier = Modifier,
+    onStartChat: () -> Unit, onOpenTickets: () -> Unit, modifier: Modifier = Modifier, top: @Composable () -> Unit = {},
 ) {
     val c = HodhodTheme.colors
     val ctx = LocalContext.current
     Column(modifier.padding(horizontal = 16.dp, vertical = 16.dp), verticalArrangement = Arrangement.spacedBy(20.dp)) {
+        // Announcements (and incident notices) come first, above the flow runner / start cards / «My tickets».
+        top()
         // FlowRunnerSlot: the FLOW engineer plugs the chatbot-flow runner here (returns true when it took over the start card).
         val flowTookOver = flowSlot()
         if (!flowTookOver) {

@@ -30,6 +30,8 @@ public class FakeHodhodRepository(
     private val _state = MutableStateFlow(startState)
     private val _agents = MutableStateFlow(initialAgents)
     private val _notices = MutableStateFlow<List<IssueNotice>>(emptyList())
+    private val _announcements = MutableStateFlow(config?.announcements.orEmpty())
+    private val dismissedAnnouncements = mutableSetOf<String>()
     private val _contact = MutableStateFlow(ContactInfo(1, null, hasName = false, hasEmail = false, hasPhone = false))
     private val _unread = MutableStateFlow(0)
     private val _hasActive = MutableStateFlow(initialMessages.isNotEmpty())
@@ -54,6 +56,7 @@ public class FakeHodhodRepository(
     override val state: StateFlow<HodhodState> = _state.asStateFlow()
     override val agents: StateFlow<List<Agent>> = _agents.asStateFlow()
     override val issueNotices: StateFlow<List<IssueNotice>> = _notices.asStateFlow()
+    override val announcements: StateFlow<List<Announcement>> = _announcements.asStateFlow()
     override val contact: StateFlow<ContactInfo> = _contact.asStateFlow()
     override val unreadCount: StateFlow<Int> = _unread.asStateFlow()
     override val hasActiveConversation: StateFlow<Boolean> = _hasActive.asStateFlow()
@@ -196,6 +199,12 @@ public class FakeHodhodRepository(
         _notices.update { l -> l.filterNot { it.id == id } }
     }
 
+    override fun dismissAnnouncement(id: String) {
+        val target = _announcements.value.firstOrNull { it.id == id && it.dismissible } ?: return
+        dismissedAnnouncements += "${target.id}:${target.updatedAt}"
+        _announcements.update { l -> l.filterNot { it.id == id } }
+    }
+
     // ---- test/preview helpers ----
 
     private val ticketMessages = mutableMapOf<Int, List<Message>>()
@@ -235,7 +244,13 @@ public class FakeHodhodRepository(
 
     public fun setWidgetConfig(config: WidgetConfig?) {
         _config.value = config
+        _announcements.value = config?.announcements.orEmpty().filter { "${it.id}:${it.updatedAt}" !in dismissedAnnouncements }
         _state.value = if (config != null) HodhodState.Ready else HodhodState.Idle
+    }
+
+    /** Replace the announcements as if the server config changed (dismissed ones stay hidden unless their `updatedAt` changed). */
+    public fun setAnnouncements(list: List<Announcement>) {
+        _announcements.value = list.filter { "${it.id}:${it.updatedAt}" !in dismissedAnnouncements }
     }
 
     public fun setIssueNotices(notices: List<IssueNotice>) {

@@ -181,7 +181,7 @@ internal fun TicketCard(t: TicketSummary, locale: String?, openChatHint: Boolean
 @Composable
 internal fun TicketListPane(
     vm: HodhodChatViewModel, ui: TicketListUi, locale: String?, canGoBack: Boolean, canCreate: Boolean, prominentNew: Boolean,
-    onBack: () -> Unit, onOpen: (TicketSummary) -> Unit, onNew: () -> Unit, modifier: Modifier = Modifier,
+    onBack: () -> Unit, onOpen: (TicketSummary) -> Unit, onNew: () -> Unit, modifier: Modifier = Modifier, top: @Composable () -> Unit = {},
 ) {
     val c = HodhodTheme.colors
     val ctl = vm.ticketList
@@ -189,6 +189,7 @@ internal fun TicketListPane(
     val activeId = (activeChat as? chat.hodhod.sdk.ConversationState.Active)?.id
     PullToRefreshBox(isRefreshing = ui.refreshing, onRefresh = { ctl.refresh() }, modifier = modifier.fillMaxSize()) {
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp).imePadding(), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+            top()
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                 SectionTitle(stringResource(R.string.hodhod_widget_ticket_my_tickets), Modifier.semantics { heading() })
                 if (canGoBack) GhostButton(stringResource(R.string.hodhod_widget_ticket_back), onBack)

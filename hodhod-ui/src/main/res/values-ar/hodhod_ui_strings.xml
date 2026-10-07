@@ -22,5 +22,8 @@
     <string name="hodhod_ui_tickets_load_more">تحميل المزيد</string>
     <string name="hodhod_ui_tickets_updated">آخر تحديث %1$s</string>
     <string name="hodhod_ui_tickets_open_chat_hint">يفتح محادثتك الحالية</string>
+    <string name="hodhod_ui_announcement_dismiss">إغلاق</string>
+    <string name="hodhod_ui_announcement_notice">إشعار</string>
+    <string name="hodhod_ui_announcement_alert">تحذير</string>
     <string name="hodhod_ui_tickets_now">الآن</string>
 </resources>

@@ -1,6 +1,9 @@
 package chat.hodhod.sdk.internal
 
 import chat.hodhod.sdk.Agent
+import chat.hodhod.sdk.Announcement
+import chat.hodhod.sdk.AnnouncementBlock
+import chat.hodhod.sdk.AnnouncementKind
 import chat.hodhod.sdk.ContactInfo
 import chat.hodhod.sdk.ContactMode
 import chat.hodhod.sdk.ConversationStatus
@@ -14,6 +17,7 @@ import chat.hodhod.sdk.MessageType
 import chat.hodhod.sdk.PreChatField
 import chat.hodhod.sdk.PreChatForm
 import chat.hodhod.sdk.Sender
+import chat.hodhod.sdk.TextSegment
 import chat.hodhod.sdk.TicketCategory
 import chat.hodhod.sdk.TicketFormConfig
 import chat.hodhod.sdk.TicketStatus
@@ -200,7 +204,7 @@ internal object Parsers {
         )
     }
 
-    fun widgetConfig(root: JsonObject, extras: Extras?): WidgetConfig? {
+    fun widgetConfig(root: JsonObject, extras: Extras?, devImageHosts: Set<String> = emptySet()): WidgetConfig? {
         val c = root.sub("website_channel_config") ?: return null
         val own = extrasFromJson(c)
         val flags = c.list("enabled_features")?.mapNotNull { (it as? JsonPrimitive)?.content }.orEmpty().toSet()
@@ -239,8 +243,65 @@ internal object Parsers {
             ),
             locale = c.str("locale"),
             disableBranding = c.bool("disable_branding") ?: false,
+            announcements = announcements(c.list("announcements") ?: root.list("announcements"), devImageHosts),
         )
     }
+
+    private const val MAX_ANNOUNCEMENTS = 2
+    private const val MAX_BLOCKS = 20
+    private const val MAX_SEGMENTS = 100
+    private const val MAX_TEXT = 4000
+    private val URL_SCHEME = Regex("^([A-Za-z][A-Za-z0-9+.-]*):")
+
+    /** Link target allow-list: http/https (with a host), mailto, tel. Anything else (javascript:, intent:, file:, data:, ...) is dropped. */
+    fun safeHref(raw: String?): String? {
+        val s = raw?.trim().orEmpty()
+        if (s.isEmpty() || s.length > 2048 || s.any { it.code <= 0x20 || it.code == 0x7f }) return null
+        return when (URL_SCHEME.find(s)?.groupValues?.get(1)?.lowercase()) {
+            "http", "https" -> s.takeIf { Regex("^[A-Za-z]+://[^/?#]+", RegexOption.IGNORE_CASE).containsMatchIn(it) }
+            "mailto", "tel" -> s.takeIf { it.substringAfter(':').isNotEmpty() }
+            else -> null
+        }
+    }
+
+    /**
+     * Image sources must be https with a host. Development exception: with `allowCleartext` the caller passes [devHosts] (the configured
+     * server, localhost) and an `http` ActiveStorage upload of the Rails server itself is accepted too (a local server serves its own blobs over http).
+     */
+    fun safeImageUrl(raw: String?, devHosts: Set<String> = emptySet()): String? {
+        val s = safeHref(raw) ?: return null
+        if (s.startsWith("https://", ignoreCase = true)) return s
+        if (devHosts.isEmpty() || !s.startsWith("http://", ignoreCase = true)) return null
+        val uri = runCatching { java.net.URI(s) }.getOrNull() ?: return null
+        return s.takeIf { uri.host?.lowercase() in devHosts && uri.path.orEmpty().startsWith("/rails/active_storage/") }
+    }
+
+    private fun segment(o: JsonObject): TextSegment? {
+        val text = o.str("text")?.take(MAX_TEXT)?.takeIf { it.isNotEmpty() } ?: return null
+        return TextSegment(text, bold = o.bool("bold") == true, href = safeHref(o.str("href")))
+    }
+
+    private fun announcementBlock(o: JsonObject, devHosts: Set<String>): AnnouncementBlock? = when (o.str("type")) {
+        "text" -> o.list("segments")?.take(MAX_SEGMENTS)?.mapNotNull { (it as? JsonObject)?.let(::segment) }?.takeIf { it.isNotEmpty() }
+            ?.let { AnnouncementBlock.Text(it) }
+        "image" -> safeImageUrl(o.str("url"), devHosts)?.let { AnnouncementBlock.Image(it, o.str("alt")?.trim()?.takeIf { a -> a.isNotEmpty() }?.take(MAX_TEXT), safeHref(o.str("href"))) }
+        else -> null // unknown block types (newer server) are ignored
+    }
+
+    /** Tolerant parse of the public config `announcements` (missing / not a list / broken entries -> skipped; at most [MAX_ANNOUNCEMENTS]). */
+    fun announcements(arr: JsonArray?, devImageHosts: Set<String> = emptySet()): List<Announcement> = arr?.mapNotNull { el ->
+        val o = el as? JsonObject ?: return@mapNotNull null
+        val id = o.str("id")?.trim()?.takeIf { it.isNotEmpty() } ?: return@mapNotNull null
+        val blocks = o.list("blocks")?.take(MAX_BLOCKS)?.mapNotNull { (it as? JsonObject)?.let { b -> announcementBlock(b, devImageHosts) } }.orEmpty()
+        if (blocks.isEmpty()) return@mapNotNull null
+        Announcement(
+            id = id,
+            kind = if (o.str("kind") == "alert") AnnouncementKind.ALERT else AnnouncementKind.NOTICE,
+            dismissible = o.bool("dismissible") ?: true,
+            blocks = blocks,
+            updatedAt = o.str("updated_at").orEmpty(),
+        )
+    }?.take(MAX_ANNOUNCEMENTS).orEmpty()
 
     /** True when the config JSON already carries every extra, so the `/widget` HTML fetch can be skipped. */
     fun hasAllExtras(root: JsonObject): Boolean {

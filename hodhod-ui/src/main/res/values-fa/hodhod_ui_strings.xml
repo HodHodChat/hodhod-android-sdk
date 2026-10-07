@@ -22,5 +22,8 @@
     <string name="hodhod_ui_tickets_load_more">بارگذاری بیشتر</string>
     <string name="hodhod_ui_tickets_updated">به‌روزرسانی %1$s</string>
     <string name="hodhod_ui_tickets_open_chat_hint">گفت‌وگوی فعلی شما باز می‌شود</string>
+    <string name="hodhod_ui_announcement_dismiss">بستن</string>
+    <string name="hodhod_ui_announcement_notice">اطلاعیه</string>
+    <string name="hodhod_ui_announcement_alert">هشدار</string>
     <string name="hodhod_ui_tickets_now">همین الان</string>
 </resources>

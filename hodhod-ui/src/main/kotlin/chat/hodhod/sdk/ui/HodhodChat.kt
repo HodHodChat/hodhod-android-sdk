@@ -126,6 +126,7 @@ private fun HodhodChatLoaded(vm: HodhodChatViewModel, config: WidgetConfig, loca
     val unread by repo.unreadCount.collectAsState()
     val contact by repo.contact.collectAsState()
     val notices by repo.issueNotices.collectAsState()
+    val announcements by repo.announcements.collectAsState()
     val connection by repo.connection.collectAsState()
     val ticketSummary by repo.ticketSummary.collectAsState()
     val showTickets by vm.showTickets.collectAsState()
@@ -140,6 +141,12 @@ private fun HodhodChatLoaded(vm: HodhodChatViewModel, config: WidgetConfig, loca
     LaunchedEffect(route, convo) { if (route == Route.HOME && convo is ConversationState.Ended) repo.resetConversation() }
     // Home entry: unknown visitors go straight to the pre-chat form (never in ticket panel).
     LaunchedEffect(route, needsPreChat, showTicketPanel) { if (route == Route.HOME && needsPreChat && !showTicketPanel) vm.go(Route.PRECHAT) }
+
+    // Announcements lead the scrolling start screens (Home, ticket panel acting as Home, pre-chat); incident notices move below them there.
+    // (Not on a ticket thread / success screen: there the notices stay in the fixed area and the announcements are not repeated.)
+    val ticketEntryView = ticketView == null || ticketView == TicketView.LIST || ticketView == TicketView.FORM
+    val startTopInBody = route == Route.PRECHAT || (route == Route.HOME && !showTickets && (!showTicketPanel || ticketEntryView))
+    val startTop: @Composable () -> Unit = { StartTopBanners(announcements, notices, repo::dismissAnnouncement, repo::dismissIssueNotice) }
 
     fun startChat() { if (needsPreChat) vm.go(Route.PRECHAT) else vm.go(Route.CHAT) }
 
@@ -178,12 +185,12 @@ private fun HodhodChatLoaded(vm: HodhodChatViewModel, config: WidgetConfig, loca
                 menu = menu, onBack = { vm.go(Route.HOME) }, onClose = onClose)
         }
         HorizontalDivider(color = c.borderWeak)
-        Banners(connection, loaded = true, notices = notices, onDismiss = repo::dismissIssueNotice)
+        Banners(connection, loaded = true, notices = if (startTopInBody) emptyList() else notices, onDismiss = repo::dismissIssueNotice)
         // ---- body
         Box(Modifier.weight(1f).fillMaxWidth()) {
             when (route) {
                 Route.HOME -> if (showTicketPanel) TicketsPanel(vm, config, decision.offlineReason, canGoBack = showTickets, locale = locale, onBack = { vm.setShowTickets(false) },
-                    onOpenChat = { vm.setShowTickets(false); vm.go(Route.CHAT) })
+                    onOpenChat = { vm.setShowTickets(false); vm.go(Route.CHAT) }, top = if (startTopInBody) startTop else ({}))
                 else Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
                     HomeBody(config, agents, hasActive, unread, decision, showTickets, ticketSummary,
                         flowSlot = {
@@ -192,9 +199,9 @@ private fun HodhodChatLoaded(vm: HodhodChatViewModel, config: WidgetConfig, loca
                             else chat.hodhod.sdk.ui.flow.FlowRunnerHost(repo, config, hasActive) { startChat() }
                         },
                         // Direct start card: mark the flow session as "manual" so the first message carries the handoff body (web onDirectStart).
-                        onStartChat = { if (!hasActive) repo.flow.prepareDirectStart(); startChat() }, onOpenTickets = { vm.setShowTickets(true) })
+                        onStartChat = { if (!hasActive) repo.flow.prepareDirectStart(); startChat() }, onOpenTickets = { vm.setShowTickets(true) }, top = startTop)
                 }
-                Route.PRECHAT -> PreChatBody(vm, config) { vm.go(Route.CHAT) }
+                Route.PRECHAT -> PreChatBody(vm, config, top = startTop) { vm.go(Route.CHAT) }
                 Route.CHAT -> ChatBody(vm, config, convo, messages, locale, onStartNew = { vm.startNewConversation() })
             }
         }

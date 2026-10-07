@@ -81,7 +81,7 @@ internal fun TicketStatusBadge(status: TicketStatus) {
 @Composable
 internal fun TicketsPanel(
     vm: HodhodChatViewModel, config: WidgetConfig, offlineReason: Boolean, canGoBack: Boolean, locale: String?, onBack: () -> Unit, modifier: Modifier = Modifier,
-    canCreate: Boolean = config.contactMode != ContactMode.CHAT, onOpenChat: () -> Unit = {},
+    canCreate: Boolean = config.contactMode != ContactMode.CHAT, onOpenChat: () -> Unit = {}, top: @Composable () -> Unit = {},
 ) {
     val repo = vm.repo
     val summary by repo.ticketSummary.collectAsState()
@@ -107,10 +107,12 @@ internal fun TicketsPanel(
     }
     if (current == TicketView.LIST) {
         TicketListPane(vm, listUi, locale, canGoBack, canCreate, prominentNew = config.contactMode == ContactMode.TICKET, onBack = onBack, onOpen = ::openTicket,
-            onNew = { vm.setTicketView(TicketView.FORM) }, modifier = modifier)
+            onNew = { vm.setTicketView(TicketView.FORM) }, modifier = modifier, top = top)
         return
     }
     Column(modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(16.dp).imePadding(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        // The top banners (announcements) only on the entry views, not inside a thread / success screen.
+        if (current == null || current == TicketView.FORM) top()
         when (current) {
             null -> TicketSkeleton(3)
             TicketView.THREAD -> TicketThreadView(vm, number ?: 0, locale) { vm.setTicketView(TicketView.LIST); vm.ticketList.refresh() }
@@ -211,7 +213,7 @@ private fun TicketFormView(vm: HodhodChatViewModel, config: WidgetConfig, offlin
                 val r = vm.repo.createTicket(TicketForm(subject.trim(), description.trim(), if (showCategory) categoryId else null, if (showName) name.trim().ifEmpty { null } else null,
                     if (showEmail) email.trim().ifEmpty { null } else null, files.toList(), null))
                 submitting = false
-                r.onSuccess { files.clear(); subject = ""; description = ""; vm.onTicketCreated(it) }
+                r.onSuccess { files.forEach { it.deleteTemp() }; files.clear(); subject = ""; description = ""; vm.onTicketCreated(it) }
                     .onFailure { formError = ctx.widgetString("WIDGET_TICKET.ERRORS.${(it as? HodhodException)?.code}") ?: ctx.getString(R.string.hodhod_widget_ticket_errors_generic) }
             }
         }, loading = submitting, enabled = !submitting, trailing = null)

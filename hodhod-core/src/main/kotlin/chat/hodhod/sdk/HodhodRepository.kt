@@ -43,6 +43,13 @@ public interface HodhodRepository {
     /** Ongoing incident banners (up to 3). Refreshed by [refresh]. */
     public val issueNotices: StateFlow<List<IssueNotice>>
 
+    /**
+     * Announcements to show at the start of the widget (from the public widget config, refreshed with [refresh]) minus the ones the
+     * visitor dismissed. Dismissal is remembered per `(websiteToken, id, updatedAt)`: editing an announcement shows it again.
+     */
+    public val announcements: StateFlow<List<Announcement>>
+        get() = NoAnnouncements
+
     /** What the server knows about the visitor (drives prechat gate and ticket form name/email fields). */
     public val contact: StateFlow<ContactInfo>
 
@@ -133,6 +140,10 @@ public interface HodhodRepository {
     /** Dismiss a banner for this session. */
     public fun dismissIssueNotice(id: Long)
 
+    /** Hide the announcement [id] (its current version) for good on this device; ignored for non-dismissible announcements. */
+    public fun dismissAnnouncement(id: String) {
+    }
+
     public companion object {
         /** Fresh random client id for optimistic messages. */
         public fun newClientId(): String = java.util.UUID.randomUUID().toString()
@@ -145,3 +156,5 @@ public class HodhodException(public val code: String, message: String? = null, p
 
 /** A message arrived on ticket [ticketNumber] (it is not part of [HodhodRepository.messages]). */
 public data class TicketActivity(val ticketNumber: Int, val message: Message)
+
+private val NoAnnouncements: StateFlow<List<Announcement>> = kotlinx.coroutines.flow.MutableStateFlow(emptyList())

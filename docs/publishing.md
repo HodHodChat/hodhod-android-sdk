@@ -5,7 +5,7 @@ Repository: <https://github.com/HodHodChat/hodhod-android-sdk>. Distribution: Ji
 Coordinates depend on where the build runs (root `build.gradle.kts`):
 
 * On JitPack (`JITPACK=true`): `com.github.HodHodChat.hodhod-android-sdk:hodhod-core` and `:hodhod-ui`, version = the git tag (passed as `-Pversion=$VERSION`).
-* Elsewhere (local, CI, a future Maven Central release): group `chat.hodhod`, version `1.0.0-beta03` unless `-Pversion` is given.
+* Elsewhere (local, CI, a future Maven Central release): group `chat.hodhod`, version `1.0.0-beta04` unless `-Pversion` is given.
 
 ## Option 1: Maven Central (recommended for a public SDK)
 
@@ -20,7 +20,7 @@ Add a `maven { url = uri("https://maven.pkg.github.com/<owner>/<repo>"); credent
 
 ## Option 3: JitPack (configured)
 
-`jitpack.yml` (JDK 17) runs `./gradlew -Pversion=$VERSION :hodhod-core:publishReleasePublicationToMavenLocal :hodhod-ui:publishReleasePublicationToMavenLocal -x test`. JitPack builds a git tag of the public GitHub repo and serves the modules as `com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:<tag>` and `...:hodhod-core:<tag>`; consumers add `maven { url = uri("https://jitpack.io") }`. No credentials are needed. The tag `1.0.0-beta03` must exist before the README snippet works; the exact commands are in `docs/RELEASING.md`. Status page: <https://jitpack.io/#HodHodChat/hodhod-android-sdk>.
+`jitpack.yml` (JDK 17) runs `./gradlew -Pversion=$VERSION :hodhod-core:publishReleasePublicationToMavenLocal :hodhod-ui:publishReleasePublicationToMavenLocal -x test`. JitPack builds a git tag of the public GitHub repo and serves the modules as `com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:<tag>` and `...:hodhod-core:<tag>`; consumers add `maven { url = uri("https://jitpack.io") }`. No credentials are needed. The tag `1.0.0-beta04` must exist before the README snippet works; the exact commands are in `docs/RELEASING.md`. Status page: <https://jitpack.io/#HodHodChat/hodhod-android-sdk>.
 
 The sample app is not built by the JitPack command, and the build has no dependency on files outside this repository (generated `hodhod_strings.xml` files and fonts are committed; `tools/` needs the Rails tree only for maintainers).
 

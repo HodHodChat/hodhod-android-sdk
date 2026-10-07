@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 11 and lower (android:fullBackupContent). Keeps the Hodhod chat session out of Auto Backup. -->
+<full-backup-content>
+    <exclude domain="sharedpref" path="hodhod_session.xml" />
+    <exclude domain="sharedpref" path="hodhod_session_plain.xml" />
+</full-backup-content>

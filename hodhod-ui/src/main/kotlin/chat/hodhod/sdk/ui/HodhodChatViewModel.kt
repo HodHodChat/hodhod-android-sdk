@@ -131,12 +131,34 @@ internal class HodhodChatViewModel(val repo: HodhodRepository, private val saved
     }
 
     fun sendAttachment(a: Attachment, caption: String = "") {
-        viewModelScope.launch { repo.sendMessage(caption, listOf(a)) }
+        // Privacy: the cache copy is removed once uploaded; a FAILED bubble keeps it for «retry» (stale copies are purged on the next pick / logout).
+        viewModelScope.launch { if (repo.sendMessage(caption, listOf(a)).isSuccess) a.deleteTemp() }
     }
+}
+
+private const val UPLOAD_DIR = "hodhod-uploads"
+private const val CAMERA_DIR = "hodhod-camera"
+private const val STALE_TEMP_MS = 24L * 60 * 60 * 1000
+
+/** Deletes the cache copy made by [attachmentFromUri]; files that do not live in our own cache dirs (host-owned) are never touched. */
+internal fun Attachment.deleteTemp() {
+    if (file.parentFile?.name == UPLOAD_DIR || file.parentFile?.name == CAMERA_DIR) file.delete()
+}
+
+/** Removes the camera shot behind a FileProvider [uri] once it has been copied for upload. */
+internal fun Context.deleteCameraShot(uri: Uri) {
+    uri.lastPathSegment?.let { File(File(cacheDir, CAMERA_DIR), it).delete() }
+}
+
+/** Drops leftovers of earlier picks (failed/discarded uploads, killed process) older than a day. */
+private fun Context.purgeStaleTemp() {
+    val limit = System.currentTimeMillis() - STALE_TEMP_MS
+    listOf(UPLOAD_DIR, CAMERA_DIR).forEach { d -> File(cacheDir, d).listFiles()?.filter { it.lastModified() < limit }?.forEach { it.delete() } }
 }
 
 /** Copies a picked content [uri] into the app cache and wraps it as an [Attachment] (core uploads from a [File]). */
 internal fun Context.attachmentFromUri(uri: Uri): Attachment? = runCatching {
+    purgeStaleTemp()
     var name = "file"
     var size = -1L
     contentResolver.query(uri, null, null, null, null)?.use { c ->
@@ -147,7 +169,7 @@ internal fun Context.attachmentFromUri(uri: Uri): Attachment? = runCatching {
             if (si >= 0 && !c.isNull(si)) size = c.getLong(si)
         }
     }
-    val dir = File(cacheDir, "hodhod-uploads").apply { mkdirs() }
+    val dir = File(cacheDir, UPLOAD_DIR).apply { mkdirs() }
     val safe = name.replace(Regex("[^\\p{L}\\p{N}._-]"), "_").ifEmpty { "file" }
     val out = File(dir, "${System.nanoTime()}_$safe")
     contentResolver.openInputStream(uri)?.use { i -> out.outputStream().use { o -> i.copyTo(o) } } ?: return null

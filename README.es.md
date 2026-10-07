@@ -22,11 +22,11 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta03") // brings hodhod-core
+    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta04") // brings hodhod-core
 }
 ```
 
-Código fuente: <https://github.com/HodHodChat/hodhod-android-sdk>. [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) compila el paquete a partir de la etiqueta git `1.0.0-beta03` (la etiqueta debe existir en el repositorio; véase `docs/RELEASING.md`). Solo el módulo core: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta03`.
+Código fuente: <https://github.com/HodHodChat/hodhod-android-sdk>. [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) compila el paquete a partir de la etiqueta git `1.0.0-beta04` (la etiqueta debe existir en el repositorio; véase `docs/RELEASING.md`). Solo el módulo core: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta04`.
 
 ## Configuración
 
@@ -69,6 +69,18 @@ Si la bandeja tiene un [flujo de chatbot](https://hodhod.chat/features/chatbot-f
 ## Mis tickets
 
 Los visitantes siempre ven **todos** sus tickets, abiertos y cerrados, sea cual sea el modo de contacto de la bandeja (chat, ticket, ambos, ticket fuera de horario). La pantalla de inicio muestra una fila compacta «Mis tickets» con el número de tickets abiertos cuando hay al menos un ticket, también durante un chat en vivo. La lista tiene los filtros Abiertos / Cerrados / Todos con contadores (por defecto Abiertos si hay alguno, si no Todos), estados vacíos por filtro, insignias de estado, tiempos relativos, tirar para actualizar y cargar más. Los tickets que un agente convirtió desde un chat llevan la etiqueta «Del chat»; si es el chat en vivo actual, al tocarlo se abre el chat. En bandejas solo de tickets la lista es la pantalla de inicio con un botón destacado «Nuevo ticket»; en bandejas solo de chat el botón se oculta pero la lista sigue accesible. Requiere un servidor con `GET /api/v1/widget/tickets?status=&page=&per_page=` y `/tickets/summary`; los servidores antiguos se cuentan y filtran en el cliente.
+
+## Anuncios
+
+Una bandeja puede publicar hasta dos anuncios (en los ajustes de la bandeja del panel). Aparecen en lo más alto de la pantalla de inicio: Home, el panel de tickets cuando hace de Home y el formulario previo al chat, por encima del flujo, las tarjetas de inicio y la fila «Mis tickets»; los avisos de incidencias van después. Un *aviso* es un banner amarillo informativo y una *advertencia* un banner rojo con icono; ambos se leen bien en claro y oscuro. El contenido es texto enriquecido (negrita, enlaces) y una imagen opcional. Los enlaces se limitan a `http`, `https`, `mailto` y `tel`, se abren con `ACTION_VIEW` (navegador, marcador, app de correo; nunca un WebView) y el texto sin formato nunca se convierte en enlace automáticamente. Las imágenes deben ser `https`, tienen una altura máxima fija, TalkBack lee su texto alternativo, pueden llevar un enlace y se ocultan si no cargan. Los anuncios descartables tienen un botón de cierre (etiqueta de TalkBack: «Cerrar»); la elección se recuerda en el dispositivo por `(websiteToken, id, updated_at)`, así que un anuncio editado vuelve a mostrarse.
+
+```kotlin
+val items by Hodhod.repository.announcements.collectAsState()   // los no descartados, actualizados con la configuración del widget
+Hodhod.repository.dismissAnnouncement(items.first().id)           // se ignora en anuncios no descartables
+// WidgetConfig.announcements conserva la lista original; los servidores antiguos no envían nada (lista vacía)
+```
+
+Pruébalo sin servidor: `adb shell am start -n chat.hodhod.sample/.MainActivity --es token x --es fake announcements`.
 
 ## Identificar al usuario
 

@@ -129,6 +129,38 @@ public data class ContactInfo(
 /** Active incident banner (`/issue_notices`). */
 public data class IssueNotice(val id: Long, val message: String)
 
+/** Inbox announcement flavour: [NOTICE] = yellow information, [ALERT] = red warning. */
+public enum class AnnouncementKind { NOTICE, ALERT }
+
+/**
+ * One run of announcement text. [bold] = emphasised, [href] = link target (already restricted to http/https/mailto/tel by the parser,
+ * never null-checked again by the UI beyond the same allow-list).
+ */
+public data class TextSegment(val text: String, val bold: Boolean = false, val href: String? = null)
+
+/** A block of an [Announcement]. Unknown server block types are dropped by the parser. */
+public sealed interface AnnouncementBlock {
+    /** A paragraph made of [segments]. */
+    public data class Text(val segments: List<TextSegment>) : AnnouncementBlock
+
+    /** An image ([url] is https only), optional [alt] text and optional tap target [href] (http/https/mailto/tel). */
+    public data class Image(val url: String, val alt: String? = null, val href: String? = null) : AnnouncementBlock
+}
+
+/**
+ * Inbox announcement shown at the start of the widget (`announcements` of the public widget config). The server already filters by
+ * enabled + schedule and orders them (at most 2). [updatedAt] is an opaque version: dismissing is remembered per `(id, updatedAt)`,
+ * so an edited announcement is shown again.
+ */
+public data class Announcement(
+    /** Server-generated identifier (UUID). */
+    val id: String,
+    val kind: AnnouncementKind,
+    val dismissible: Boolean,
+    val blocks: List<AnnouncementBlock>,
+    val updatedAt: String,
+)
+
 /** Ticket form submission (`/api/v1/widget/tickets`). [website] is the honeypot -- keep null. */
 public class TicketForm(
     public val subject: String,

@@ -22,11 +22,11 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta03") // brings hodhod-core
+    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta04") // brings hodhod-core
 }
 ```
 
-Source: <https://github.com/HodHodChat/hodhod-android-sdk>. Built by [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) from the git tag `1.0.0-beta03` (the tag must exist in the repository; see `docs/RELEASING.md`). The core module alone: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta03`.
+Source: <https://github.com/HodHodChat/hodhod-android-sdk>. Built by [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) from the git tag `1.0.0-beta04` (the tag must exist in the repository; see `docs/RELEASING.md`). The core module alone: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta04`.
 
 ## Configure
 
@@ -72,6 +72,18 @@ Visitors can always see **all** their tickets, open and closed, whatever the inb
 
 For custom UIs: `repository.ticketSummary` (open/total, hot `StateFlow`) and `repository.loadTickets(TicketFilter.OPEN, page)`.
 
+## Announcements
+
+An inbox can publish up to two announcements (set in the dashboard inbox settings). They appear at the very top of the start screen: Home, the ticket panel when it acts as Home, and the pre-chat form, above the flow runner, the start cards and the "My tickets" row; incident notices come after them. A *notice* is a yellow information banner, an *alert* a red warning with an icon; both are readable in light and dark. The content is rich text (bold, links) and an optional image. Links are limited to `http`, `https`, `mailto` and `tel`, are opened with `ACTION_VIEW` (browser, dialer, mail app; never a WebView) and plain text is never auto-linked. Images must be `https`, have a fixed maximum height, use the alt text for TalkBack, can link somewhere and are hidden when they fail to load. Dismissible announcements have a close button (TalkBack label "Dismiss"); the choice is remembered on the device per `(websiteToken, id, updated_at)`, so editing an announcement shows it again.
+
+```kotlin
+val items by Hodhod.repository.announcements.collectAsState()   // not yet dismissed, refreshed with the widget config
+Hodhod.repository.dismissAnnouncement(items.first().id)           // ignored for non-dismissible announcements
+// WidgetConfig.announcements keeps the raw list; older servers send none (empty list)
+```
+
+Try it without a server: `adb shell am start -n chat.hodhod.sample/.MainActivity --es token x --es fake announcements`.
+
 ## Identify the user
 
 Identify signed-in users (optional). `identifierHash` is the HMAC-SHA256 of the identifier with the inbox HMAC token and must be computed by **your backend**, never in the app:
@@ -106,6 +118,19 @@ All texts come from the web widget locale files and are generated into Android r
 python3 tools/gen_strings.py            # maintainers only (needs the web widget locale files); output is committed. Regenerates hodhod-ui/src/main/res/values*/hodhod_strings.xml
 ./gradlew :hodhod-ui:testDebugUnitTest  # fails if a locale misses a key
 ```
+
+## Privacy: backup and cache
+
+* The chat session (auth/pubsub tokens) is stored in the Android Keystore backed `hodhod_session` preferences file (plain `hodhod_session_plain` only if the Keystore is unusable). Keystore keys are never backed up, so a restored file is useless, and the plain fallback would carry tokens to the cloud. A library cannot safely force `android:allowBackup="false"` (it conflicts with the host manifest at merge time), so the host app should either set `android:allowBackup="false"` or reference the rules shipped with `hodhod-core`:
+
+```xml
+<application
+    android:dataExtractionRules="@xml/hodhod_data_extraction_rules"  <!-- Android 12+ -->
+    android:fullBackupContent="@xml/hodhod_backup_rules">             <!-- Android 11 and lower -->
+```
+
+  If your app already has its own rules, copy the two `<exclude domain="sharedpref" path="hodhod_session.xml" />` / `hodhod_session_plain.xml` lines into them (an app can only point to one rules file).
+* Files the visitor picks or photographs are copied into the app cache only for the upload and are deleted after it succeeds (and on `Hodhod.logout()`); leftovers of failed uploads are purged after 24 hours.
 
 ## Sample app
 

@@ -46,7 +46,7 @@ internal fun toAsciiDigits(s: String) = s.map { AR_DIGITS[it] ?: it }.joinToStri
 
 /** Pre-chat form (widget PreChat/Form.vue): only fields the server does not already know, native keyboards, inline validation. */
 @Composable
-internal fun PreChatBody(vm: HodhodChatViewModel, config: WidgetConfig, modifier: Modifier = Modifier, onDone: () -> Unit) {
+internal fun PreChatBody(vm: HodhodChatViewModel, config: WidgetConfig, modifier: Modifier = Modifier, top: @Composable () -> Unit = {}, onDone: () -> Unit) {
     val c = HodhodTheme.colors
     val ctx = LocalContext.current
     val contact by vm.repo.contact.collectAsState()
@@ -82,6 +82,7 @@ internal fun PreChatBody(vm: HodhodChatViewModel, config: WidgetConfig, modifier
         errors = e; return e.isEmpty()
     }
     Column(modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(16.dp).imePadding(), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        top()
         if (!form.message.isNullOrBlank()) Text(form.message!!, color = c.textSecondary, fontSize = 14.sp, lineHeight = 24.sp)
         fields.forEach { f ->
             val v = values[f.name] ?: ""

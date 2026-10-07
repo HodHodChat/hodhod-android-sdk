@@ -24,11 +24,11 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta03") // brings hodhod-core
+    implementation("com.github.HodHodChat.hodhod-android-sdk:hodhod-ui:1.0.0-beta04") // brings hodhod-core
 }
 ```
 
-الشيفرة المصدرية: <https://github.com/HodHodChat/hodhod-android-sdk>. تبني [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) الحزمة من وسم git ‏`1.0.0-beta03` (يجب أن يكون الوسم موجودًا في المستودع؛ راجع `docs/RELEASING.md`). وحدة النواة وحدها: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta03`.
+الشيفرة المصدرية: <https://github.com/HodHodChat/hodhod-android-sdk>. تبني [JitPack](https://jitpack.io/#HodHodChat/hodhod-android-sdk) الحزمة من وسم git ‏`1.0.0-beta04` (يجب أن يكون الوسم موجودًا في المستودع؛ راجع `docs/RELEASING.md`). وحدة النواة وحدها: `com.github.HodHodChat.hodhod-android-sdk:hodhod-core:1.0.0-beta04`.
 
 ## الإعداد
 
@@ -71,6 +71,18 @@ fun Home() = Box(Modifier.fillMaxSize()) {
 ## تذاكري
 
 يستطيع الزائر دائمًا رؤية **جميع** تذاكره، المفتوحة والمغلقة، مهما كان وضع الاتصال في الصندوق (محادثة، تذكرة، كلاهما، تذكرة خارج ساعات العمل). تعرض الشاشة الرئيسية صفًّا مضغوطًا «تذاكري» مع عدّاد التذاكر المفتوحة عندما يملك الزائر تذكرة واحدة على الأقل، حتى أثناء محادثة مباشرة. تحتوي القائمة على مرشحات «مفتوحة / مغلقة / الكل» مع الأعداد، وحالات فارغة لكل مرشح، وشارات الحالة، والأوقات النسبية، والسحب للتحديث وتحميل المزيد. التذاكر التي حوّلها وكيل من محادثة تحمل وسم «من المحادثة»، وإذا كانت هي المحادثة الحالية فإن الضغط عليها يفتح شاشة المحادثة. في الصناديق الخاصة بالتذاكر فقط تكون القائمة هي الشاشة الرئيسية مع زر بارز «تذكرة جديدة»؛ وفي صناديق المحادثة فقط يُخفى الزر وتبقى القائمة متاحة. يلزم خادم يدعم `GET /api/v1/widget/tickets?status=&page=&per_page=` و`/tickets/summary`؛ أما الخوادم الأقدم فتُحسب وتُرشَّح على جهة العميل.
+
+## الإعلانات
+
+يمكن لكل صندوق نشر إعلانين كحدّ أقصى (من إعدادات الصندوق في لوحة التحكم). تظهر في أعلى شاشة البداية: الرئيسية، ولوحة التذاكر عندما تؤدي دور الرئيسية، ونموذج ما قبل المحادثة، فوق مشغّل التدفق وبطاقات البدء وصف «تذاكري»؛ وتأتي إشعارات الأعطال بعدها. النوع *إشعار* شريط معلومات أصفر والنوع *تحذير* شريط أحمر مع أيقونة، وكلاهما مقروء في الوضعين الفاتح والداكن. المحتوى نص منسّق (غامق وروابط) وصورة اختيارية. الروابط محصورة في `http` و`https` و`mailto` و`tel` وتُفتح عبر `ACTION_VIEW` (المتصفح أو الطالب أو تطبيق البريد، ولا WebView أبدًا) ولا يُحوَّل النص العادي إلى روابط تلقائيًا. يجب أن تكون الصورة `https` بحدّ أقصى ثابت للارتفاع، ويقرأ TalkBack نصها البديل، ويمكن أن ترتبط برابط، وتُخفى إن فشل تحميلها. للإعلانات القابلة للإغلاق زرّ إغلاق (تسمية TalkBack: «إغلاق»)، ويُحفظ الاختيار على الجهاز لكل `(websiteToken, id, updated_at)` فيعود الإعلان للظهور بعد تعديله.
+
+```kotlin
+val items by Hodhod.repository.announcements.collectAsState()   // غير المغلقة، وتتحدّث مع إعدادات الأداة
+Hodhod.repository.dismissAnnouncement(items.first().id)           // يُتجاهل للإعلانات غير القابلة للإغلاق
+// WidgetConfig.announcements يحتفظ بالقائمة الخام؛ الخوادم القديمة لا ترسل شيئًا (قائمة فارغة)
+```
+
+جرّبه بلا خادم: `adb shell am start -n chat.hodhod.sample/.MainActivity --es token x --es fake announcements`.
 
 ## تعريف المستخدم
 

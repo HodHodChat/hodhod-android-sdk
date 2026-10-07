@@ -133,6 +133,8 @@ internal class HodhodRuntime(private val app: Application, val config: HodhodCon
     fun logout() {
         scope.launch {
             store.clear()
+            // Privacy: picked/captured files copied for upload by the UI module must not outlive the session.
+            listOf("hodhod-uploads", "hodhod-camera").forEach { java.io.File(app.cacheDir, it).deleteRecursively() }
             impl.resetSession()
         }
     }

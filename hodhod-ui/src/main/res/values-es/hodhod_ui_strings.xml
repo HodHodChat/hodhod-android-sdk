@@ -22,5 +22,8 @@
     <string name="hodhod_ui_tickets_load_more">Cargar más</string>
     <string name="hodhod_ui_tickets_updated">Actualizado %1$s</string>
     <string name="hodhod_ui_tickets_open_chat_hint">Abre tu chat actual</string>
+    <string name="hodhod_ui_announcement_dismiss">Cerrar</string>
+    <string name="hodhod_ui_announcement_notice">Aviso</string>
+    <string name="hodhod_ui_announcement_alert">Advertencia</string>
     <string name="hodhod_ui_tickets_now">ahora mismo</string>
 </resources>
